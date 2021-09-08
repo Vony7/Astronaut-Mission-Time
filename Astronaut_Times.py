@@ -109,6 +109,7 @@ EVAs = [sz7eva1,sz12eva1,sz12eva2]
 
 #%% Prepare Data for plot
 sorted_astro = sorted(astro,key = operator.attrgetter("num_of_missions"))
+fprop_title = fm.FontProperties(fname='font/ZhiMangXing-Regular.ttf')
 fprop = fm.FontProperties(fname='font/NotoSansSC-Regular.otf')
 y_names,x_vals = zip(*[(i.name,float(i.num_of_missions)) for i in sorted_astro])
 y_pos = np.arange(len(sorted_astro))
@@ -129,8 +130,10 @@ for sz in missions:
     ptt = plt.bar(astro_names,c[idx_sz],bottom=bottom)
     #axx.bar_label(ptt,label_type='center',fmt='%.2f')
     bottom +=c[idx_sz]
-plt.legend(legend_names,prop=fprop,loc='upper center',ncol=len(astro))
+I=plt.legend(legend_names,prop=fprop,loc='upper center',facecolor='black',ncol=len(astro),frameon=False)
 plt.plot(astro_names,astro_total,'.k')
+for text in I.get_texts():
+    text.set_color('white')
 # add data labels
 for rect in axx.patches:
     height = rect.get_height()
@@ -145,18 +148,29 @@ for rect in axx.patches:
 #make labels
 for i in range(len(astro)):
     datastr = "{:.2f}".format(astro_total[i])
-    plt.annotate(datastr,xy=(astro_names[i],astro_total[i]),ha='center',va='bottom')
-plt.xlabel("中国航天员", fontproperties=fprop)
-axx.set_xticklabels(astro_names,fontproperties=fprop)
+    plt.annotate(datastr,xy=(astro_names[i],astro_total[i]),ha='center',va='bottom',color='white')
+plt.xlabel("航天员", fontproperties=fprop,fontsize=20,color='white')
+ymax = np.amax(astro_total)
+print(np.arange(0,ymax+10,step=10))
+axx.set_xticklabels(astro_names,fontproperties=fprop,fontsize=16,color='white')
+axx.set_yticks(np.arange(0,ymax+10,step=10))
+axx.set_yticklabels(np.arange(0,ymax+10,step=10),fontproperties=fprop,fontsize=16,color='white')
 #data labels
-plt.ylabel("在轨时间（天）", fontproperties=fprop)
+plt.ylabel("在轨时间（天）", fontproperties=fprop,fontsize=20,color='white')
 plt.ylim(0,np.amax(astro_total)+10)
-plt.title("中国航天员在轨时间统计",fontproperties=fprop,fontsize=20)
+plt.title("中国航天员在轨时间统计",fontproperties=fprop_title,fontsize=40,color='white')
 now = datetime.datetime.utcnow()+datetime.timedelta(hours=8)
-#axx.tick_params(axis='y',which='minor',bottom=True)
 axx.yaxis.set_minor_locator(tck.AutoMinorLocator())
 axx.text(.4, 0.95,"截至北京时间："+ now.strftime("%Y/%m/%d %H:%M:%S.%f"), fontproperties=fprop,color="gray",transform=axx.transAxes,va='center')
 axx.text(.45, 0.92,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=axx.transAxes)
+axx.set_facecolor("black")
+plt.rcParams['savefig.facecolor']='black'
+axx.spines['bottom'].set_color('white')
+axx.spines['top'].set_color('white') 
+axx.spines['right'].set_color('white')
+axx.spines['left'].set_color('white')
+axx.tick_params(axis='x', colors='white')
+axx.tick_params(axis='y', which='both',colors='white')
 plt.savefig('mission-time-stacked.png')
 #%% plot person by person
 
