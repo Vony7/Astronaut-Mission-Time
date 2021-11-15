@@ -118,7 +118,7 @@
 # 2021/11
 11/03/2021T15:43    CHN 1   CZ-2C       Yaogan-32_Group-2
 11/05/2021T10:19    CHN 1   CZ-6        Guangmu-Earth-Science
-11/06/2021T11:00    CHN 1   CZ-2D        Yaogan-35-ABC
+11/06/2021T11:00    CHN 1   CZ-2D       Yaogan-35-ABC
 11/09/2021T08:55    JPN 1   Epsilong    RAISE-2,Teikyosat-4,ASTERISC,ZSAT,DRUMS,Hibari,KOSEN-1,ARICA,NanoDragon
 11/11/2021T10:03    USA 1   Falcon-9B5  Dragon-Crew-3
 11/13/2021T20:19    USA 1   Falcon-9B5  53xStarlink-Group4-1
