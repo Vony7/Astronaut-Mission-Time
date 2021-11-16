@@ -40,7 +40,6 @@ color_country = ['red','green','#3989b9','#322825','#79a49e','#3c7ba6','#193852'
 launch_success = np.zeros(len(countries),dtype=int)
 launch_failure = np.zeros(len(countries),dtype=int)
 launch_overall = np.zeros(len(countries),dtype=int)
-print(launch_failure)
 for i in np.arange(0,len(launch_time)):
     country = launch_country[i]
     idx = [i for i,x in enumerate(countries) if x ==country]
@@ -49,7 +48,7 @@ for i in np.arange(0,len(launch_time)):
     else:
         launch_failure[idx]+=1
     launch_total[i][idx]=1
-    launch_overall +=1
+    launch_overall[idx] +=1
     if(i>0):
         launch_total[i]=launch_total[i-1]
         launch_total[i][idx]=launch_total[i-1][idx]+1 
@@ -75,12 +74,31 @@ ax.yaxis.tick_right()
 ax.yaxis.set_label_position('right')
 plt.savefig('launch_global.png')
 
-#%% Bar By Rocket
+#%% Bar By Country
 fig,ax = plt.subplots(1,figsize=(8,6),dpi=300)
+plt.bar(countries, launch_overall)
+ax.xaxis.set_ticks(np.arange(0,len(xaxis_labels)))
+ax.xaxis.set_ticklabels(xaxis_labels,fontproperties = fprop)
+# Data Labels
+for rect in ax.patches:
+    y_value = rect.get_height()
+    x_value = rect.get_x()+rect.get_width()/2
+    space = 0
+    va = 'bottom'
+    if y_value<0:
+        space*=-1
+        va='top'
+    label="{:.0f}".format(y_value)
+    ax.annotate(
+        label,
+        (x_value,y_value),
+        xytext=(0,space),
+        textcoords = "offset points",
+        ha = 'center',
+        va = va
+    )    
 plt.bar(countries,launch_failure,color = '#e22030',label='失败')
 plt.bar(countries, launch_success,bottom = launch_failure, color = '#00aeac',label='成功')
-
-ax.set_xticklabels(xaxis_labels,fontproperties = fprop)
 from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
 ax.text(.3, 0.85,"截至北京时间："+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
@@ -93,4 +111,5 @@ plt.legend(loc='upper center', prop =fprop)
 plt.savefig('launch_2021_barplot.png')
 
 #%% Print out
-print('Total Launches: ', len(launch_time))
+print('\n')
+print('Total Launches: ', len(launch_time),'\n')
