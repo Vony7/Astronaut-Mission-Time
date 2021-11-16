@@ -159,7 +159,8 @@ def css_astronauts():
         plt.annotate(datastr,xy=(astro_names[i],eva_total[i]),ha='center',va='bottom',color='white')
     plt.xlabel("航天员", fontproperties=fprop,fontsize=20,color='white')
     ymax = np.amax(eva_total)
-    ax.set_xticklabels(astro_names,fontproperties=fprop,fontsize=16,color='white')
+    ax.xaxis.set_ticks(np.arange(0,len(astro)))
+    ax.xaxis.set_ticklabels(astro_names,fontproperties=fprop,fontsize=16,color='white')
     ax.set_yticks(np.arange(0,ymax+10,step=1))
     ax.set_yticklabels(np.arange(0,ymax+10,step=1),fontproperties=fprop,fontsize=16,color='white')
     #data labels
@@ -219,8 +220,8 @@ def css_astronauts():
         plt.annotate(datastr,xy=(astro_names[i],astro_total[i]),ha='center',va='bottom',color='white')
     plt.xlabel("航天员", fontproperties=fprop,fontsize=20,color='white')
     ymax = np.amax(astro_total)
-    print(np.arange(0,ymax+10,step=10))
-    axx.set_xticklabels(astro_names,fontproperties=fprop,fontsize=16,color='white')
+    axx.xaxis.set_ticks(np.arange(0,len(astro)))
+    axx.xaxis.set_ticklabels(astro_names,fontproperties=fprop,fontsize=16,color='white')
     axx.set_yticks(np.arange(0,ymax+10,step=10))
     axx.set_yticklabels(np.arange(0,ymax+10,step=10),fontproperties=fprop,fontsize=16,color='white')
     #data labels
