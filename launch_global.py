@@ -91,3 +91,6 @@ plt.ylabel('发射次数', fontproperties = fprop)
 plt.title('2021年全球航天入轨发射统计',fontproperties = fprop_title, fontsize = 30)
 plt.legend(loc='upper center', prop =fprop)
 plt.savefig('launch_2021_barplot.png')
+
+#%% Print out
+print('Total Launches: ', len(launch_time))
