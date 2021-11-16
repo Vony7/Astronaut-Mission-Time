@@ -1,5 +1,9 @@
 # images
 *.png 
+
+# windows desktop manager
+*.ini
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
