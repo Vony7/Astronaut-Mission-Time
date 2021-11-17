@@ -112,4 +112,8 @@ plt.savefig('launch_2021_barplot.png')
 
 #%% Print out
 print('\n')
-print('Total Launches: ', len(launch_time),'\n')
+print('Total Launches: ', len(launch_time))
+print(countries)
+print(launch_overall)
+print(launch_success)
+print(launch_failure)
