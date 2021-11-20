@@ -61,6 +61,7 @@ for j in np.arange(0,countries.size):
 plt.legend(prop =fprop)
 ax.yaxis.set_major_locator(MultipleLocator(5))
 ax.yaxis.set_minor_locator(MultipleLocator(1))
+print(launch_total)
 from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
 ax.text(.3, 0.95,"截至北京时间："+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
@@ -69,7 +70,7 @@ plt.title('2021年全球航天入轨发射统计',fontproperties = fprop_title, 
 plt.xlabel('时间',fontproperties=fprop)
 plt.ylabel('发射次数',fontproperties=fprop)
 plt.ylim(ymin=0)
-plt.xlim(xmin=min(x_value),xmax=max(x_value))
+plt.xlim(datetime(2021,1,8,0,0),xmax=max(x_value))
 ax.yaxis.tick_right()
 ax.yaxis.set_label_position('right')
 plt.savefig('launch_global.png')
