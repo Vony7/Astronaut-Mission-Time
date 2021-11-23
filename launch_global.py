@@ -36,7 +36,7 @@ countries = np.unique(launch_country)
 xaxis_labels = ['中国','欧空局','印度','伊朗','日本','俄罗斯','韩国','美国']
 # Launch countries x time
 launch_total = np.zeros((len(launch_time),countries.size),dtype=int)
-color_country = ['red','#194852','#3989b9','#322825','#fcc9b9','#0033A0','#000022','#002868']
+color_country = ['#FF0000','#194852','#3989b9','cyan','#fcc9b9','#0033A0','#FFA500','#002868']
 launch_success = np.zeros(len(countries),dtype=int)
 launch_failure = np.zeros(len(countries),dtype=int)
 launch_overall = np.zeros(len(countries),dtype=int)
