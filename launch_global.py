@@ -111,7 +111,6 @@ plt.legend(loc='upper center', prop =fprop)
 plt.savefig('launch_2021_barplot.png')
 
 #%% Print out
-print('\n')
 print('Total Launches: ', len(launch_time))
 print(countries)
 print(launch_overall)
