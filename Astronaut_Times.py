@@ -182,7 +182,7 @@ def css_astronauts():
     plt.savefig('astronauts-eva-time-stacked.png')
 
     #%% plot different missions
-    color_sets= ['#1e295b','#f4b305','#322825','#79a49e','#3c7ba6','#194852','#161c37','#1a425b','#c6ca74']
+    color_sets= ['#800000','#483d8b','#daa520','#79a49e','#3c7ba6','#194852','#161c37','#1a425b','#c6ca74']
     # plot bars in stack manner
     c = np.zeros((len(missions),len(astro)))
     figx,axx = plt.subplots(figsize=(16,12),dpi=300)
