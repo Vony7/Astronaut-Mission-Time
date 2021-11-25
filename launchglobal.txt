@@ -125,9 +125,9 @@
 11/16/2021T17:27    ESA 1   Vega        Ceres-1,2,3
 11/18/2021T09:38    USA 1   Electron    BlackSky-14,15
 11/20/2021T09:51    CHN 1   CZ-4B       Gaofen11-03
-11/20/2021T14:16    USA 1   Rocket3.3   Simulated_Payload
-11/23/2021T07:45    CHN 1   CZ-4C       Gaofen3-02
-11/24/2021T14:21    USA 1   Falcon-9B5  DART
-11/24/2021T21:06    RUS 1   Soyuz-2.1b  Prichal
-11/25/2021T07:41    CHN 1   Kuaizhou-1A Shiyan-11   Jiuquan
-11/25/2021T09:09    RUS 1   Soyuz-2.1b/Fregat   EKS-5   Plesetsk
+11/20/2021T14:16    USA 1   Rocket3.3   Kodaik  Simulated_Payload
+11/23/2021T07:45    CHN 1   CZ-4C       Gaofen3-02  
+11/24/2021T14:21    USA 1   Falcon-9B5  Vandenberg  DART    
+11/24/2021T21:06    RUS 1   Soyuz-2.1b  Baikonur    Prichal 
+11/25/2021T07:41    CHN 1   Kuaizhou-1A Jiuquan Shiyan-11   
+11/25/2021T09:09    RUS 1   Soyuz-2.1b/Fregat   Plesetsk    EKS-5   
