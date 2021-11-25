@@ -116,3 +116,14 @@ print(countries)
 print(launch_overall)
 print(launch_success)
 print(launch_failure)
+
+#%% Pie Chart
+# Pie chart, where the slices will be ordered and plotted counter-clockwise:
+fig,ax = plt.subplots(1,figsize=(8,8),dpi=200)
+sizes = launch_overall/len(launch_time)*100
+explode = (0, 0,0,0,0,0,0,0)
+l_text,p_text=plt.pie(sizes, labels=xaxis_labels,colors = color_country,explode=explode, shadow=False, startangle=90)
+for font in p_text:
+    font.set_fontproperties(fprop)
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.savefig('launch_2021_piechart.png')
