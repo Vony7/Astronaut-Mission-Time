@@ -39,9 +39,7 @@ countries = np.unique(launch_country)
 L_sites = np.unique(launch_sites)
 print(L_sites)
 c_dict = {'CHN':'中国','ESA':'欧空局','IND':'印度','IRN':'伊朗','JPN':'日本','RUS':'俄罗斯','SKO':'韩国','USA':'美国'}
-xaxis_labels = []
-for country in countries:
-    xaxis_labels.append(c_dict[country])
+
 # Launch countries x time
 launch_total = np.zeros((len(launch_time),countries.size),dtype=int)
 color_country = ['#FF0000','#194852','#3989b9','cyan','#fcc9b9','#0033A0','#FFA500','#002868']
@@ -83,8 +81,12 @@ ax.yaxis.set_label_position('right')
 plt.savefig('launch_2021_step.png')
 
 #%% Bar By Country
+x_idx = np.argsort(launch_overall)
+xaxis_labels = []
+for country in countries[x_idx]:
+    xaxis_labels.append(c_dict[country])
 fig,ax = plt.subplots(1,figsize=(8,6),dpi=300)
-plt.bar(countries, launch_overall)
+plt.bar(countries, launch_overall[x_idx])
 ax.xaxis.set_ticks(np.arange(0,len(countries)))
 ax.xaxis.set_ticklabels(xaxis_labels,fontproperties = fprop)
 # Data Labels
@@ -105,17 +107,17 @@ for rect in ax.patches:
         ha = 'center',
         va = va
     )    
-plt.bar(countries,launch_failure,color = '#e22030',label='失败')
-plt.bar(countries, launch_success,bottom = launch_failure, color = '#00aeac',label='成功')
+plt.bar(countries,launch_failure[x_idx],color = '#e22030',label='失败')
+plt.bar(countries, launch_success[x_idx],bottom = launch_failure[x_idx], color = '#053047',label='成功')
 from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
-ax.text(.3, 0.85,"截至北京时间："+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
-ax.text(.42, 0.80,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
+ax.text(.3, 0.92,"截至北京时间："+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
+ax.text(.42, 0.87,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
 ax.yaxis.set_major_locator(MultipleLocator(10))
 ax.yaxis.set_minor_locator(MultipleLocator(1))
 plt.ylabel('发射次数', fontproperties = fprop)
 plt.title('2021年全球航天入轨发射统计',fontproperties = fprop_title, fontsize = 30)
-plt.legend(loc='upper center', prop =fprop)
+plt.legend(loc='upper center', prop =fprop,ncol=2,frameon=False)
 plt.savefig('launch_2021_barplot.png')
 
 #%% Print out
