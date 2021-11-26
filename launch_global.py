@@ -18,6 +18,7 @@ linestoken=token.readlines()
 launch_time = []
 launch_country = []
 launch_results = []
+launch_sites = []
 launch_rockets = []
 for x in linestoken:
     if not x.startswith("#"):
@@ -26,14 +27,21 @@ for x in linestoken:
         launch_time.append(time_liftoff)
         launch_country.append(x.split()[1])
         launch_results.append(int(x.split()[2]))
-        launch_rockets.append(x.split()[3])
+        launch_sites.append(x.split()[3])
+        launch_rockets.append(x.split()[4])
 token.close()
 
 # Process Data
 rockets = np.unique(launch_rockets)
 # Launch countries
 countries = np.unique(launch_country)
-xaxis_labels = ['中国','欧空局','印度','伊朗','日本','俄罗斯','韩国','美国']
+# Launch Sites
+L_sites = np.unique(launch_sites)
+print(L_sites)
+c_dict = {'CHN':'中国','ESA':'欧空局','IND':'印度','IRN':'伊朗','JPN':'日本','RUS':'俄罗斯','SKO':'韩国','USA':'美国'}
+xaxis_labels = []
+for country in countries:
+    xaxis_labels.append(c_dict[country])
 # Launch countries x time
 launch_total = np.zeros((len(launch_time),countries.size),dtype=int)
 color_country = ['#FF0000','#194852','#3989b9','cyan','#fcc9b9','#0033A0','#FFA500','#002868']
@@ -57,7 +65,7 @@ fig,ax = plt.subplots(1,figsize=(12,8),dpi=200)
 for j in np.arange(0,countries.size):
     x_value = launch_time
     y_value = launch_total[:,j]
-    plt.step(x_value,y_value,'-',color = color_country[j],label=xaxis_labels[j],linewidth=4)
+    plt.step(x_value,y_value,'-',color = color_country[j],label=c_dict[countries[j]],linewidth=4)
 plt.legend(prop =fprop)
 ax.yaxis.set_major_locator(MultipleLocator(5))
 ax.yaxis.set_minor_locator(MultipleLocator(1))
@@ -72,12 +80,12 @@ plt.ylim(ymin=0)
 plt.xlim(datetime(2021,1,8,0,0),xmax=max(x_value))
 ax.yaxis.tick_right()
 ax.yaxis.set_label_position('right')
-plt.savefig('launch_global.png')
+plt.savefig('launch_2021_step.png')
 
 #%% Bar By Country
 fig,ax = plt.subplots(1,figsize=(8,6),dpi=300)
 plt.bar(countries, launch_overall)
-ax.xaxis.set_ticks(np.arange(0,len(xaxis_labels)))
+ax.xaxis.set_ticks(np.arange(0,len(countries)))
 ax.xaxis.set_ticklabels(xaxis_labels,fontproperties = fprop)
 # Data Labels
 for rect in ax.patches:
@@ -119,7 +127,7 @@ print(launch_failure)
 
 #%% Pie Chart
 # Pie chart, where the slices will be ordered and plotted counter-clockwise:
-fig,ax = plt.subplots(1,figsize=(8,8),dpi=200)
+fig,ax = plt.subplots(1,figsize=(12,8),dpi=200)
 sizes = launch_overall/len(launch_time)*100
 explode = (0, 0,0,0,0,0,0,0)
 l_text,p_text=plt.pie(sizes, labels=xaxis_labels,colors = color_country,explode=explode, shadow=False, startangle=90)
@@ -127,3 +135,7 @@ for font in p_text:
     font.set_fontproperties(fprop)
 plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
 plt.savefig('launch_2021_piechart.png')
+
+#%% By Launch Site
+
+#%% By Launch Vehicle

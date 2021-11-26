@@ -126,7 +126,7 @@
 11/18/2021T09:38    USA 1   Mahia       Electron    BlackSky-14,15
 11/20/2021T09:51    CHN 1   TSLC        CZ-4B       Gaofen11-03
 11/20/2021T14:16    USA 1   Kodaik      Rocket3.3   Simulated_Payload
-11/23/2021T07:45    CHN 1   CZ-4C       Gaofen3-02  
+11/23/2021T07:45    CHN 1   JSLC        CZ-4C       Gaofen3-02  
 11/24/2021T14:21    USA 1   Vandenberg  Falcon-9B5  Vandenberg  DART    
 11/24/2021T21:06    RUS 1   Baikonur    Soyuz-2.1b  Prichal 
 11/25/2021T07:41    CHN 1   JSLC        Kuaizhou-1A Shiyan-11   
