@@ -57,7 +57,7 @@
 6/4/2021T1:29	    USA	1   KSC         Falcon-9B5  CRS-22
 6/6/2021T12:25  	USA	1   KSC         Falcon-9B5  SXM-8
 6/11/2021T11:00  	CHN	1   TSLC        CZ-2D       Beijing-3-01_etc
-6/12/2021T0:00	    IRN	0   IKSLT       Simorgh     Unknown
+6/12/2021T0:00	    IRN	0   Semnan       Simorgh     Unknown
 6/13/2021T16:11  	USA	1   Vandenberg  Pegasus-XL  Odyssey
 6/15/2021T21:35  	USA	1   Wallops     Minotar-1   USA-316,317,318/NROL-111
 6/17/2021T9:22	    CHN	1   JSLC        CZ-2F       Shenzhou-12
@@ -109,7 +109,7 @@
 10/14/2021T18:51    CHN	1   TSLC        CZ-2D       CHASE/Xihe
 10/16/2021T0:23	    CHN	1   JSLC        CZ-2F       Shenzhou-13
 10/16/2021T17:37  	USA	1   KSC         Atlas-V     LUCY
-10/21/2021T16:00    SKO	0   NSC         KSLV-II     Simulated_Payload
+10/21/2021T16:00    SKO	0   Naro         KSLV-II     Simulated_Payload
 10/24/2021T9:27	    CHN	1   XSLC        CZ-3B/E     Shijian_21
 10/24/2021T10:10    ESA	1   Kourou      Ariane-5    SES-17_SYGNASE-4A
 10/26/2021T10:19    JPN	1   Tanegashima H-IIA       QZR-1R
