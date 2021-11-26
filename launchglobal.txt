@@ -131,3 +131,4 @@
 11/24/2021T21:06    RUS 1   Baikonur    Soyuz-2.1b  Prichal 
 11/25/2021T07:41    CHN 1   JSLC        Kuaizhou-1A Shiyan-11   
 11/25/2021T09:09    RUS 1   Plesetsk    Soyuz-2.1b/Fregat    EKS-5   
+11/27/2021T00:40    CHN 1   XSLC        CZ-3B       ChinaSat-1D
