@@ -42,7 +42,7 @@ L_vehicles = np.unique(launch_vehicles)
 c_dict = {'CHN':'中国','ESA':'欧空局','IND':'印度','IRN':'伊朗','JPN':'日本','RUS':'俄罗斯','SKO':'韩国','USA':'美国'}
 # Launch countries x time
 launch_total = np.zeros((len(launch_time),countries.size),dtype=int)
-color_country = np.array(['#FF0000','#194852','#3989b9','cyan','#fcc9b9','#0033A0','#FFA500','#002868'])
+color_country = np.array(['#A30000','#194852','#3989b9','cyan','#fcc9b9','#0033A0','#FFA500','#002868'])
 launch_success = np.zeros(len(countries),dtype=int)
 launch_failure = np.zeros(len(countries),dtype=int)
 launch_overall = np.zeros(len(countries),dtype=int)
@@ -130,18 +130,6 @@ print(launch_overall)
 print(launch_success)
 print(launch_failure)
 
-#%% Pie Chart
-# Pie chart, where the slices will be ordered and plotted counter-clockwise:
-fig,ax = plt.subplots(1,figsize=(12,8),dpi=200)
-sizes = launch_overall[x_idx]/len(launch_time)*100
-explode = (0, 0,0,0,0,0,0,0)
-l_text,p_text=plt.pie(sizes, labels=xaxis_labels,colors = color_country[x_idx],explode=explode, shadow=False, startangle=90)
-for font in p_text:
-    font.set_fontproperties(fprop)
-plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-plt.tight_layout()
-plt.savefig('launch_2021_piechart.png')
-
 #%% By Launch Site
 dict_sites = {'Baikonur':'拜科努', 'Semnan':'森南', 'JSLC':'酒泉', 'KSC':'肯尼迪', 'Kodaik':'柯迪科', 'Kourou':'库鲁', 'Mahia':'玛西亚', 'Mojave':'莫哈维', 'Naro':'罗老','Plesetsk':'普列谢', 'SDSC':'萨第什','TSLC':'太原','Tanegashima':'种子岛','USC':'内之浦','Vandenberg':'范登堡','Vostochny':'东方','WSLS':'文昌','Wallops':'沃乐普','XSLC':'西昌'}
 cc_dict = {'CHN':'#A30000','ESA':'#194852','IND':'#3989b9','IRN':'cyan','JPN':'#fcc9b9','RUS':'#0033A0','SKO':'#FFA500','USA':'#002868'}
@@ -165,8 +153,7 @@ ax2.xaxis.set_ticks(np.arange(0,len(dict_sites)))
 ax2.xaxis.set_ticklabels(x_labels[sites_idx],fontproperties = fprop)
 ax2.yaxis.set_major_locator(MultipleLocator(5))
 ax2.yaxis.set_minor_locator(MultipleLocator(1))
-plt.ylabel('发射次数',fontproperties=fprop)
-plt.xlabel('航天发射场/中心名称',fontproperties=fprop)
+
 # Data Labels
 for rect in ax2.patches:
     y_value = rect.get_height()
@@ -189,3 +176,44 @@ plt.title('2021年全球航天入轨各发射场统计',fontproperties = fprop_t
 plt.tight_layout()
 plt.savefig('launch_2021_by_Launch_sites.png')
 #%% By Launch Vehicle
+
+#%% 
+fig=plt.figure(figsize=(12,8),dpi=300)
+axes1 = fig.add_axes([0.1, 0.1, 0.8, 0.8]) # main axes
+axes1.xaxis.set_ticks(np.arange(0,len(dict_sites)))
+axes1.xaxis.set_ticklabels(x_labels[sites_idx],fontproperties = fprop)
+axes1.yaxis.set_major_locator(MultipleLocator(5))
+axes1.yaxis.set_minor_locator(MultipleLocator(1))
+plt.title('2021年全球航天入轨各发射场统计',fontproperties = fprop_title, fontsize = 30)
+plt.ylabel('发射次数',fontproperties=fprop)
+plt.xlabel('航天发射场/中心名称',fontproperties=fprop)
+from datetime import datetime
+time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
+axes1.text(.9, 1.35,"截至北京时间："+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
+axes1.text(.9, 1.30,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
+axes2 = fig.add_axes([-.05, 0.25, 0.7, 0.7]) # inset axes
+axes1.bar(L_sites[sites_idx],launch_Bysites[sites_idx],color = site_colors[sites_idx])
+for rect in axes1.patches:
+    y_value = rect.get_height()
+    x_value = rect.get_x()+rect.get_width()/2
+    space = 0
+    va = 'bottom'
+    if y_value<0:
+        space*=-1
+        va='top'
+    label="{:.0f}".format(y_value)
+    axes1.annotate(
+        label,
+        (x_value,y_value),
+        xytext=(0,space),
+        textcoords = "offset points",
+        ha = 'center',
+        va = va
+    )  
+sizes = launch_overall[x_idx]/len(launch_time)*100
+explode = (0, 0,0,0,0,0,0,0)
+patches,p_text=axes2.pie(sizes,colors = color_country[x_idx],explode=explode, shadow=False, startangle=90)
+axes2.legend(patches,xaxis_labels,loc='center right',bbox_to_anchor=(1.1, 0.5),prop =fprop)
+for font in p_text:
+    font.set_fontproperties(fprop)
+plt.savefig('launch_2021_by_sites2.png')
