@@ -2,7 +2,7 @@
 # 2021/01
 1/8/2021T10:15  	USA	1   KSC         Falcon-9B5  Turksat-5A   
 1/18/2021T3:38	    USA	1   Mojave      LauncherOne CACTUS-1_etc
-1/20/2021T0:25	    CHN	1   XSLC        CZ-3B/E     Tiantong-1_03
+1/20/2021T0:25	    CHN	1   XSLC        CZ-3A     Tiantong-1_03   3B/E
 1/20/2021T15:26  	USA	1   Mahia       Electron    GMS-T
 1/20/2021T21:02  	USA	1   KSC         Falcon-9B5  StarkLinkx60
 1/21/2021T22:14  	USA	1   KSC         Falcon-9B5  Transporter-1
@@ -11,7 +11,7 @@
 2/1/2021T16:15  	CHN	0   JSLC        Hyperbola-1 Tianshu
 2/3/2021T4:45	    RUS	1   Plesetsk    Soyuz-2.1  Lotos-S1No.4    2.1b
 2/4/2021T14:19  	USA	1   KSC         Falcon-9B5  StarkLinkx60
-2/5/2021T23:30  	CHN	1   XSLC        CZ-3B/E     TJSW-6
+2/5/2021T23:30  	CHN	1   XSLC        CZ-3A     TJSW-6  3B/E
 2/15/2021T12:45  	RUS	1   Baikonur    Soyuz-2.1  Progress_MS-16  2.1a
 2/16/2021T11:59  	USA	1   KSC         Falcon-9B5  StarkLinkx60
 2/21/2021T1:36	    USA	1   Wallops     Antares     Cygnus_NG-15
@@ -53,7 +53,7 @@
 5/29/2021T1:38	    RUS	1   Vostochny   Soyuz-2.1   OneWeb36    2.1b/Fregat
 5/29/2021T20:55  	CHN	1   WSLS        CZ-7        Tianzhou-2
 # 2021/6    
-6/3/2021T0:15	    CHN	1   XSLC        CZ-3B/E     Fengyun-4B
+6/3/2021T0:15	    CHN	1   XSLC        CZ-3A     Fengyun-4B  3B/E
 6/4/2021T1:29	    USA	1   KSC         Falcon-9B5  CRS-22
 6/6/2021T12:25  	USA	1   KSC         Falcon-9B5  SXM-8
 6/11/2021T11:00  	CHN	1   TSLC        CZ-2D       Beijing-3-01_etc
@@ -71,7 +71,7 @@
 7/1/2021T20:48  	RUS	1   Vostochny   Soyuz-2.1   OneWeb36    2.1b/Fregat
 7/3/2021T10:51  	CHN	1   TSLC        CZ-2D       Jilin-1-kuanfu-01B,Jilin-1-Gaofen-03D,Xingshidai-10
 7/5/2021T7:28	    CHN	1   JSLC        CZ-4C       Fengyun-3E
-7/7/2021T23:53  	CHN	1   XSLC        CZ-3C/E     Tianlian-1-05
+7/7/2021T23:53  	CHN	1   XSLC        CZ-3A     Tianlian-1-05 3C/E
 7/9/2021T19:59  	CHN	1   TSLC        CZ-6        Zhuzhou-1x5
 7/19/2021T8:19	    CHN	1   XSLC        CZ-2C       Yaogan-30-10(A,B,C),Tianqi-15
 7/21/2021T22:58  	RUS	1   Baikonur    Proton-M    Nauka
@@ -81,27 +81,27 @@
 # 2021/8    
 8/3/2021T15:31  	CHN	0   JSLC        Hyperbola-1 Jilin-1-Mofang-01A
 8/4/2021T19:01  	CHN	1   TSLC        CZ-6        KL-BetaA/KL-BetaB
-8/6/2021T0:30	    CHN	1   XSLC        CZ-3B/E     ChinaSat-2E
+8/6/2021T0:30	    CHN	1   XSLC        CZ-3A     ChinaSat-2E     3B/E
 8/11/2021T0:01	    USA	1   Wallops     Antares     Cygnus-NG16
 8/12/2021T7:13	    IND	0   SDSC        GSLV-MKII   EOS-03/GISAT-1
 8/17/2021T9:47	    ESA	1   Kourou      Vega        Pleiades-Neo4,etc 
 8/19/2021T6:32	    CHN	1   TSLC        CZ-4B       Tianhui-2-02A,02B
 8/20/2021T6:23	    RUS	1   Baikonur    Soyuz-2.1   OneWeb34    2.1b/Fregat
 8/24/2021T19:15  	CHN	1   JSLC        CZ-2C       RSW-1,RSW-1,Classified  2C/YZ-1S
-8/24/2021T23:41  	CHN	1   XSLC        CZ-3B/E     TJSW-7
+8/24/2021T23:41  	CHN	1   XSLC        CZ-3A     TJSW-7  3B/E
 8/29/2021T6:35	    USA	0   Kodaik      Rocket-3.3    STP-27AD1
 8/29/2021T15:37  	USA	1   KSC         Falcon-9B5  CRS-23
 # 2021/9    
 9/3/2021T9:59	    USA	0   Vandenberg  Firefly-Alpha   FLTA001
 9/7/2021T11:01  	CHN	1   TSLC        CZ-4C       gaofen-5-02
-9/9/2021T19:49  	CHN	1   XSLC        CZ-3B/E     ChinaSat-9B 
+9/9/2021T19:49  	CHN	1   XSLC        CZ-3A     ChinaSat-9B 3B/E
 9/10/2021T3:59	    RUS	1   Plesetsk    Soyuz-2.1   EMKA-No.2/Kosmos-2551   2.1v/Volga
 9/14/2021T11:55  	USA	1   Vandenberg  Falcon-9B5  StarkLinkx51G2-1
 9/14/2021T4:07	    RUS	1   Baikonur    Soyuz-2.1   OneWeb34    2.1b/Fregat
 9/16/2021T8:02	    USA	1   KSC         Falcon-9B5  Inspiration-4
 9/20/2021T15:10  	CHN	1   WSLS        CZ-7        Tianhou-3
 9/27/2021T14:19	    CHN	1   JSLC        Kuaizhou-1A Jilin-1-Gaofen-02D
-9/27/2021T16:20	    CHN	1   XSLC        CZ-3B/E     Shiyan-10
+9/27/2021T16:20	    CHN	1   XSLC        CZ-3A     Shiyan-10 3B/E
 9/28/2021T2:12	    USA	1   Vandenberg  Atlas-V     Landsat-9
 # 2021/10   
 10/5/2021T16:55  	RUS	1   Baikonur    Soyuz-2.1   Soyuz-MS-19 2.1a
@@ -110,7 +110,7 @@
 10/16/2021T0:23	    CHN	1   JSLC        CZ-2F       Shenzhou-13
 10/16/2021T17:37  	USA	1   KSC         Atlas-V     LUCY
 10/21/2021T16:00    SKO	0   Naro        KSLV-II     Simulated_Payload
-10/24/2021T9:27	    CHN	1   XSLC        CZ-3B/E     Shijian_21
+10/24/2021T9:27	    CHN	1   XSLC        CZ-3A     Shijian_21  3B/E
 10/24/2021T10:10    ESA	1   Kourou      Ariane-5    SES-17_SYGNASE-4A
 10/26/2021T10:19    JPN	1   Tanegashima H-IIA       QZR-1R
 10/27/2021T14:19    CHN 1   JSLC        Kuaizhou-1A Jiling_01_GF_02F
@@ -131,4 +131,4 @@
 11/24/2021T21:06    RUS 1   Baikonur    Soyuz-2.1   Prichal     2.1b
 11/25/2021T07:41    CHN 1   JSLC        Kuaizhou-1A Shiyan-11   
 11/25/2021T09:09    RUS 1   Plesetsk    Soyuz-2.1    EKS-5      2.1b/Fregat
-11/27/2021T00:40    CHN 1   XSLC        CZ-3B/E       ChinaSat-1D
+11/27/2021T00:40    CHN 1   XSLC        CZ-3A       ChinaSat-1D 3B/E
