@@ -247,3 +247,11 @@ ax4.text(.9, 1.35,"截至北京时间："+ time_now, fontproperties=fprop,color=
 ax4.text(.9, 1.30,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
 plt.tight_layout()
 plt.savefig('launch_2021_by_lv.png')
+
+# CZ3A series Piechart
+
+# Soyuz 2.1 series Piechart
+
+# CZ-4 series Piechart
+
+# CZ7 series Pie chart
