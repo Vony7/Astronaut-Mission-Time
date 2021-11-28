@@ -19,7 +19,8 @@ launch_time = []
 launch_country = []
 launch_results = []
 launch_sites = []
-launch_vehicles = []
+launch_vehicles_family = []
+launch_rockets = []
 for x in linestoken:
     if not x.startswith("#"):
         from datetime import datetime
@@ -28,21 +29,27 @@ for x in linestoken:
         launch_country.append(x.split()[1])
         launch_results.append(int(x.split()[2]))
         launch_sites.append(x.split()[3])
-        launch_vehicles.append(x.split()[4])
+        launch_vehicles_family.append(x.split()[4])
+        launch_rockets.append(x.split()[5])
 token.close()
 
 # Process Data
-rockets = np.unique(launch_vehicles)
+rockets = np.unique(launch_vehicles_family)
 # Launch countries
 countries = np.unique(launch_country)
 # Launch Sites
 L_sites = np.unique(launch_sites)
 # Launch vechicles
-L_vehicles = np.unique(launch_vehicles)
+L_vehicles = np.unique(launch_vehicles_family)
+# Launch rockets
+L_rockets = np.unique(launch_rockets)
+# country dictionary EN => CN
 c_dict = {'CHN':'中国','ESA':'欧空局','IND':'印度','IRN':'伊朗','JPN':'日本','RUS':'俄罗斯','SKO':'韩国','USA':'美国'}
+# color code by country
+color_country = np.array(['#A30000','#194852','#3989b9','cyan','#fcc9b9','#0033A0','#FFA500','#002868'])
+
 # Launch countries x time
 launch_total = np.zeros((len(launch_time),countries.size),dtype=int)
-color_country = np.array(['#A30000','#194852','#3989b9','cyan','#fcc9b9','#0033A0','#FFA500','#002868'])
 launch_success = np.zeros(len(countries),dtype=int)
 launch_failure = np.zeros(len(countries),dtype=int)
 launch_overall = np.zeros(len(countries),dtype=int)
@@ -53,7 +60,7 @@ for i in np.arange(0,len(launch_time)):
     site_idx = [id for id,x in enumerate(L_sites) if x ==launch_sites[i]]
     launch_Bysites[site_idx]+=1
     #launch vehicles
-    lv_idx = [id for id,x in enumerate(L_vehicles) if x ==launch_vehicles[i]]
+    lv_idx = [id for id,x in enumerate(L_vehicles) if x ==launch_vehicles_family[i]]
     launch_Byvehicles[lv_idx]+=1
     #launch country
     country = launch_country[i]
@@ -192,21 +199,14 @@ patches,p_text=axes2.pie(sizes,colors = color_country[x_idx],explode=explode, sh
 axes2.legend(patches,xaxis_labels,loc='center right',bbox_to_anchor=(1.1, 0.5),prop =fprop)
 for font in p_text:
     font.set_fontproperties(fprop)
-plt.savefig('launch_2021_by_sites2.png')
+plt.savefig('launch_2021_by_sites.png')
 
 #%% By Launch Vehicle
-dict_vehicles = {'Antares' 'Ariane-5' 'Atlas-V' 'CZ-2C' 'CZ-2C/YZ-1S' 'CZ-2D' 'CZ-2F'
- 'CZ-3B/E' 'CZ-3C/E' 'CZ-4B' 'CZ-4C' 'CZ-5B' 'CZ-6' 'CZ-7' 'CZ-7A'
- 'Delta-IVH' 'Electron' 'Epsilong' 'Falcon-9B5' 'Firefly-Alpha'
- 'GSLV-MKII' 'H-IIA' 'Hyperbola-1' 'KSLV-II' 'Kuaizhou-1A' 'LauncherOne'
- 'Minotar-1' 'PSLV-DL' 'Pegasus-XL' 'Proton-M' 'Rocket-3.3' 'Simorgh'
- 'Soyuz-2.1a' 'Soyuz-2.1a/Fregat' 'Soyuz-2.1b' 'Soyuz-2.1b/Fregat'
- 'Soyuz-2.1v/Volga' 'Vega'}
 cc_dict = {'CHN':'#A30000','ESA':'#194852','IND':'#3989b9','IRN':'cyan','JPN':'#fcc9b9','RUS':'#0033A0','SKO':'#FFA500','USA':'#002868'}
 vehicles_colors = []
 launch_country = np.array(launch_country)
 for vehicle in L_vehicles:
-    v_idx = launch_vehicles.index(vehicle)
+    v_idx = launch_vehicles_family.index(vehicle)
     v_country = launch_country[v_idx]
     v_bar_color = cc_dict[v_country]
     vehicles_colors.append(v_bar_color)
@@ -248,10 +248,84 @@ ax4.text(.9, 1.30,"绘制：@Vony7", fontproperties=fprop,color="gray", transfor
 plt.tight_layout()
 plt.savefig('launch_2021_by_lv.png')
 
-# CZ3A series Piechart
+#%% CZ3A series Piechart
+# find all CZ-3A launches
+rocket_series = np.array(launch_vehicles_family)
+all_rockets = np.array(launch_rockets)
+cz_3a_idx = np.where(rocket_series=='CZ-3A')
+cz_3as = all_rockets[cz_3a_idx]
+cz_3as_unq,cz_3as_count = np.unique(cz_3as,return_counts=True)
+def pie_chart_labels(data):
+    total = int(np.sum(data))
+    percentages = [100.0 * x / total for x in data]
+    fmt_str = "{:.0f}%\n({:d})"
+    return [fmt_str.format(p,i) for p,i in zip(percentages, data)]
+fig3as,ax3as = plt.subplots(1,figsize=(12,8),dpi=200)
+wedges, texts,  = ax3as.pie(cz_3as_count, labels=pie_chart_labels(cz_3as_count))
+# shrink label positions to be inside the pie
+for t in texts:
+    x,y = t.get_position()
+    t.set_x(0.5 * x)
+    t.set_y(0.5 * y)
+plt.setp(texts, size=10, weight="bold", color="w", ha='center')
+ax3as.legend(cz_3as_unq)
+plt.savefig('count-cz-3a.png')
 
-# Soyuz 2.1 series Piechart
+#%% Soyuz 2.1 series Piechart
+cz_3a_idx = np.where(rocket_series=='Soyuz-2.1')
+cz_3as = all_rockets[cz_3a_idx]
+cz_3as_unq,cz_3as_count = np.unique(cz_3as,return_counts=True)
+def pie_chart_labels(data):
+    total = int(np.sum(data))
+    percentages = [100.0 * x / total for x in data]
+    fmt_str = "{:.0f}%\n({:d})"
+    return [fmt_str.format(p,i) for p,i in zip(percentages, data)]
+fig3as,ax3as = plt.subplots(1,figsize=(12,8),dpi=200)
+wedges, texts,  = ax3as.pie(cz_3as_count, labels=pie_chart_labels(cz_3as_count))
+# shrink label positions to be inside the pie
+for t in texts:
+    x,y = t.get_position()
+    t.set_x(0.5 * x)
+    t.set_y(0.5 * y)
+plt.setp(texts, size=10, weight="bold", color="w", ha='center')
+ax3as.legend(cz_3as_unq,bbox_to_anchor=(.9, 1.0))
+plt.savefig('count-Soyuz-2.1.png')
 
-# CZ-4 series Piechart
-
-# CZ7 series Pie chart
+#%% CZ7 series Pie chart
+cz_3a_idx = np.where(rocket_series=='CZ-7')
+cz_3as = all_rockets[cz_3a_idx]
+cz_3as_unq,cz_3as_count = np.unique(cz_3as,return_counts=True)
+def pie_chart_labels(data):
+    total = int(np.sum(data))
+    percentages = [100.0 * x / total for x in data]
+    fmt_str = "{:.0f}%\n({:d})"
+    return [fmt_str.format(p,i) for p,i in zip(percentages, data)]
+fig3as,ax3as = plt.subplots(1,figsize=(12,8),dpi=200)
+wedges, texts,  = ax3as.pie(cz_3as_count, labels=pie_chart_labels(cz_3as_count))
+# shrink label positions to be inside the pie
+for t in texts:
+    x,y = t.get_position()
+    t.set_x(0.5 * x)
+    t.set_y(0.5 * y)
+plt.setp(texts, size=10, weight="bold", color="w", ha='center')
+ax3as.legend(cz_3as_unq)
+plt.savefig('count-cz-7.png')
+#%% CZ-4 series Piechart
+cz_3a_idx = np.where(rocket_series=='CZ-4')
+cz_3as = all_rockets[cz_3a_idx]
+cz_3as_unq,cz_3as_count = np.unique(cz_3as,return_counts=True)
+def pie_chart_labels(data):
+    total = int(np.sum(data))
+    percentages = [100.0 * x / total for x in data]
+    fmt_str = "{:.0f}%\n({:d})"
+    return [fmt_str.format(p,i) for p,i in zip(percentages, data)]
+fig3as,ax3as = plt.subplots(1,figsize=(12,8),dpi=200)
+wedges, texts,  = ax3as.pie(cz_3as_count, labels=pie_chart_labels(cz_3as_count))
+# shrink label positions to be inside the pie
+for t in texts:
+    x,y = t.get_position()
+    t.set_x(0.5 * x)
+    t.set_y(0.5 * y)
+plt.setp(texts, size=10, weight="bold", color="w", ha='center')
+ax3as.legend(cz_3as_unq)
+plt.savefig('count-cz-4.png')
