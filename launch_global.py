@@ -216,9 +216,10 @@ vehicles_colors = np.array(vehicles_colors)
 launch_Byvehicles = np.array(launch_Byvehicles)
 L_vehicles = np.array(L_vehicles)
 lv_idx = argsort(launch_Byvehicles)
-fig4,ax4 = plt.subplots(1,figsize=(12,8),dpi=300)
-plt.bar(L_vehicles[lv_idx],launch_Byvehicles[lv_idx],color = vehicles_colors[lv_idx])
-for rect in ax4.patches:
+fig=plt.figure(figsize=(12,8),dpi=300)
+axes1 = fig.add_axes([0.1, 0.1, 0.8, 0.8]) # main axes
+axes1.bar(L_vehicles[lv_idx],launch_Byvehicles[lv_idx],color = vehicles_colors[lv_idx])
+for rect in axes1.patches:
     y_value = rect.get_height()
     x_value = rect.get_x()+rect.get_width()/2
     space = 0
@@ -227,7 +228,7 @@ for rect in ax4.patches:
         space*=-1
         va='top'
     label="{:.0f}".format(y_value)
-    ax4.annotate(
+    axes1.annotate(
         label,
         (x_value,y_value),
         xytext=(0,space),
@@ -235,23 +236,106 @@ for rect in ax4.patches:
         ha = 'center',
         va = va
     )  
-plt.setp(ax4.get_xticklabels(),rotation=45,ha="right",rotation_mode="anchor")
-ax4.yaxis.set_major_locator(MultipleLocator(5))
-ax4.yaxis.set_minor_locator(MultipleLocator(1))
+plt.setp(axes1.get_xticklabels(),rotation=45,ha="right",rotation_mode="anchor")
+axes1.yaxis.set_major_locator(MultipleLocator(5))
+axes1.yaxis.set_minor_locator(MultipleLocator(1))
 plt.title('2021年全球航天入轨按火箭统计',fontproperties = fprop_title, fontsize = 30)
 plt.ylabel('发射次数',fontproperties=fprop)
 plt.xlabel('运载火箭',fontproperties=fprop)
 from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
-ax4.text(.9, 1.35,"截至北京时间："+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
-ax4.text(.9, 1.30,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
-plt.tight_layout()
+axes1.text(.92, 1.35,"截至北京时间："+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
+axes1.text(.92, 1.30,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
+# add axes 2, soyuz 
+axes2 = fig.add_axes([0.0,0.4,0.5,0.5])
+rocket_series = np.array(launch_vehicles_family)
+all_rockets = np.array(launch_rockets)
+cz_3a_idx = np.where(rocket_series=='Soyuz-2.1')
+cz_3as = all_rockets[cz_3a_idx]
+cz_3as_unq,cz_3as_count = np.unique(cz_3as,return_counts=True)
+def pie_chart_labels(data):
+    total = int(np.sum(data))
+    percentages = [100.0 * x / total for x in data]
+    fmt_str = "{:.0f}%\n({:d})"
+    return [fmt_str.format(p,i) for p,i in zip(percentages, data)]
+wedges, texts,  = axes2.pie(cz_3as_count, labels=pie_chart_labels(cz_3as_count))
+# shrink label positions to be inside the pie
+for t in texts:
+    x,y = t.get_position()
+    t.set_x(0.5 * x)
+    t.set_y(0.5 * y)
+plt.setp(texts, size=10, weight="bold", color="w", ha='center')
+axes2.legend(cz_3as_unq,bbox_to_anchor=(.9, 1.0))
+
+# add, CZ-4
+axes3 = fig.add_axes([0.15,0.2,0.25,0.25])
+rocket_series = np.array(launch_vehicles_family)
+all_rockets = np.array(launch_rockets)
+cz_3a_idx = np.where(rocket_series=='CZ-4')
+cz_3as = all_rockets[cz_3a_idx]
+cz_3as_unq,cz_3as_count = np.unique(cz_3as,return_counts=True)
+def pie_chart_labels(data):
+    total = int(np.sum(data))
+    percentages = [100.0 * x / total for x in data]
+    fmt_str = "{:.0f}%\n({:d})"
+    return [fmt_str.format(p,i) for p,i in zip(percentages, data)]
+wedges, texts,  = axes3.pie(cz_3as_count, labels=pie_chart_labels(cz_3as_count))
+# shrink label positions to be inside the pie
+for t in texts:
+    x,y = t.get_position()
+    t.set_x(0.5 * x)
+    t.set_y(0.5 * y)
+plt.setp(texts, size=10, weight="bold", color="w", ha='center')
+axes3.legend(cz_3as_unq,bbox_to_anchor=(.9, 1.0))
+
+# add CZ-3A
+axes4 = fig.add_axes([0.4,0.2,0.25,0.25])
+rocket_series = np.array(launch_vehicles_family)
+all_rockets = np.array(launch_rockets)
+cz_3a_idx = np.where(rocket_series=='CZ-3A')
+cz_3as = all_rockets[cz_3a_idx]
+cz_3as_unq,cz_3as_count = np.unique(cz_3as,return_counts=True)
+def pie_chart_labels(data):
+    total = int(np.sum(data))
+    percentages = [100.0 * x / total for x in data]
+    fmt_str = "{:.0f}%\n({:d})"
+    return [fmt_str.format(p,i) for p,i in zip(percentages, data)]
+wedges, texts,  = axes4.pie(cz_3as_count, labels=pie_chart_labels(cz_3as_count))
+# shrink label positions to be inside the pie
+for t in texts:
+    x,y = t.get_position()
+    t.set_x(0.5 * x)
+    t.set_y(0.5 * y)
+plt.setp(texts, size=10, weight="bold", color="w", ha='center')
+axes4.legend(cz_3as_unq,bbox_to_anchor=(.9, 1.0))
+
+# add CZ-7
+axes5 = fig.add_axes([0.4,0.5,0.25,0.25])
+rocket_series = np.array(launch_vehicles_family)
+all_rockets = np.array(launch_rockets)
+cz_3a_idx = np.where(rocket_series=='CZ-2C')
+cz_3as = all_rockets[cz_3a_idx]
+cz_3as_unq,cz_3as_count = np.unique(cz_3as,return_counts=True)
+def pie_chart_labels(data):
+    total = int(np.sum(data))
+    percentages = [100.0 * x / total for x in data]
+    fmt_str = "{:.0f}%\n({:d})"
+    return [fmt_str.format(p,i) for p,i in zip(percentages, data)]
+wedges, texts,  = axes5.pie(cz_3as_count, labels=pie_chart_labels(cz_3as_count))
+# shrink label positions to be inside the pie
+for t in texts:
+    x,y = t.get_position()
+    t.set_x(0.5 * x)
+    t.set_y(0.5 * y)
+plt.setp(texts, size=10, weight="bold", color="w", ha='center')
+axes5.legend(cz_3as_unq,bbox_to_anchor=(.9, 1.0))
+# save
+#plt.tight_layout()
 plt.savefig('launch_2021_by_lv.png')
 
 #%% CZ3A series Piechart
 # find all CZ-3A launches
-rocket_series = np.array(launch_vehicles_family)
-all_rockets = np.array(launch_rockets)
+
 cz_3a_idx = np.where(rocket_series=='CZ-3A')
 cz_3as = all_rockets[cz_3a_idx]
 cz_3as_unq,cz_3as_count = np.unique(cz_3as,return_counts=True)
