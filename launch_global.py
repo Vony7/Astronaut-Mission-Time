@@ -255,7 +255,7 @@ for country in countries:
 plt.legend(handles = handles,loc='upper center',ncol=len(countries),prop=fprop)
 
 # add axes 2, soyuz 
-axes2 = fig.add_axes([0.0,0.35,0.5,0.5])
+axes2 = fig.add_axes([0.0,0.36,0.5,0.5])
 rocket_series = np.array(launch_vehicles_family)
 all_rockets = np.array(launch_rockets)
 cz_3a_idx = np.where(rocket_series=='Soyuz-2.1')
@@ -276,7 +276,7 @@ plt.setp(texts, size=10, weight="bold", color="w", ha='center')
 axes2.legend(cz_3as_unq,bbox_to_anchor=(.9, 1.0))
 
 # add, CZ-4
-axes3 = fig.add_axes([0.15,0.15,0.25,0.25])
+axes3 = fig.add_axes([0.05,0.15,0.25,0.25])
 rocket_series = np.array(launch_vehicles_family)
 all_rockets = np.array(launch_rockets)
 cz_3a_idx = np.where(rocket_series=='CZ-4')
@@ -297,7 +297,7 @@ plt.setp(texts, size=10, weight="bold", color="w", ha='center')
 axes3.legend(cz_3as_unq,bbox_to_anchor=(.9, 1.0))
 
 # add CZ-3A
-axes4 = fig.add_axes([0.4,0.18,0.25,0.25])
+axes4 = fig.add_axes([0.52,0.32,0.25,0.25])
 rocket_series = np.array(launch_vehicles_family)
 all_rockets = np.array(launch_rockets)
 cz_3a_idx = np.where(rocket_series=='CZ-3A')
@@ -318,7 +318,7 @@ plt.setp(texts, size=10, weight="bold", color="w", ha='center')
 axes4.legend(cz_3as_unq,bbox_to_anchor=(.9, 1.0))
 
 # add CZ-2C
-axes5 = fig.add_axes([0.4,0.45,0.25,0.25])
+axes5 = fig.add_axes([0.52,0.55,0.25,0.25])
 rocket_series = np.array(launch_vehicles_family)
 all_rockets = np.array(launch_rockets)
 cz_3a_idx = np.where(rocket_series=='CZ-2C')
@@ -337,6 +337,27 @@ for t in texts:
     t.set_y(0.5 * y)
 plt.setp(texts, size=10, weight="bold", color="w", ha='center')
 axes5.legend(cz_3as_unq,bbox_to_anchor=(.9, 1.0))
+
+# add CZ-7
+axes6 = fig.add_axes([0.28,0.18,0.25,0.25])
+rocket_series = np.array(launch_vehicles_family)
+all_rockets = np.array(launch_rockets)
+cz_3a_idx = np.where(rocket_series=='CZ-7')
+cz_3as = all_rockets[cz_3a_idx]
+cz_3as_unq,cz_3as_count = np.unique(cz_3as,return_counts=True)
+def pie_chart_labels(data):
+    total = int(np.sum(data))
+    percentages = [100.0 * x / total for x in data]
+    fmt_str = "{:.0f}%\n({:d})"
+    return [fmt_str.format(p,i) for p,i in zip(percentages, data)]
+wedges, texts,  = axes6.pie(cz_3as_count, labels=pie_chart_labels(cz_3as_count))
+# shrink label positions to be inside the pie
+for t in texts:
+    x,y = t.get_position()
+    t.set_x(0.5 * x)
+    t.set_y(0.5 * y)
+plt.setp(texts, size=10, weight="bold", color="w", ha='center')
+axes6.legend(cz_3as_unq,bbox_to_anchor=(.9, 1.0))
 # save
 #plt.tight_layout()
 plt.savefig('launch_2021_by_lv.png')
