@@ -276,7 +276,7 @@ plt.setp(texts, size=10, weight="bold", color="w", ha='center')
 axes2.legend(cz_3as_unq,bbox_to_anchor=(.9, 1.0))
 
 # add, CZ-4
-axes3 = fig.add_axes([0.05,0.15,0.25,0.25])
+axes3 = fig.add_axes([0.08,0.18,0.2,0.2])
 rocket_series = np.array(launch_vehicles_family)
 all_rockets = np.array(launch_rockets)
 cz_3a_idx = np.where(rocket_series=='CZ-4')
@@ -297,7 +297,7 @@ plt.setp(texts, size=10, weight="bold", color="w", ha='center')
 axes3.legend(cz_3as_unq,bbox_to_anchor=(.9, 1.0))
 
 # add CZ-3A
-axes4 = fig.add_axes([0.52,0.32,0.25,0.25])
+axes4 = fig.add_axes([0.52,0.32,0.2,0.2])
 rocket_series = np.array(launch_vehicles_family)
 all_rockets = np.array(launch_rockets)
 cz_3a_idx = np.where(rocket_series=='CZ-3A')
@@ -318,7 +318,7 @@ plt.setp(texts, size=10, weight="bold", color="w", ha='center')
 axes4.legend(cz_3as_unq,bbox_to_anchor=(.9, 1.0))
 
 # add CZ-2C
-axes5 = fig.add_axes([0.52,0.55,0.25,0.25])
+axes5 = fig.add_axes([0.52,0.55,0.2,0.2])
 rocket_series = np.array(launch_vehicles_family)
 all_rockets = np.array(launch_rockets)
 cz_3a_idx = np.where(rocket_series=='CZ-2C')
@@ -339,7 +339,7 @@ plt.setp(texts, size=10, weight="bold", color="w", ha='center')
 axes5.legend(cz_3as_unq,bbox_to_anchor=(.9, 1.0))
 
 # add CZ-7
-axes6 = fig.add_axes([0.28,0.18,0.25,0.25])
+axes6 = fig.add_axes([0.28,0.18,0.2,0.2])
 rocket_series = np.array(launch_vehicles_family)
 all_rockets = np.array(launch_rockets)
 cz_3a_idx = np.where(rocket_series=='CZ-7')
@@ -364,7 +364,6 @@ plt.savefig('launch_2021_by_lv.png')
 
 #%% CZ3A series Piechart
 # find all CZ-3A launches
-
 cz_3a_idx = np.where(rocket_series=='CZ-3A')
 cz_3as = all_rockets[cz_3a_idx]
 cz_3as_unq,cz_3as_count = np.unique(cz_3as,return_counts=True)
