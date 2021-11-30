@@ -244,8 +244,8 @@ plt.ylabel('发射次数',fontproperties=fprop)
 plt.xlabel('运载火箭',fontproperties=fprop)
 from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
-axes1.text(.92, 1.30,"截至北京时间："+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
-axes1.text(.92, 1.26,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
+axes1.text(.62, 1.30,"截至北京时间："+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
+axes1.text(.62, 1.26,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
 # add legend for bar plot
 import matplotlib.patches as mpatches
 handles = []
@@ -273,7 +273,7 @@ for t in texts:
     t.set_x(0.5 * x)
     t.set_y(0.5 * y)
 plt.setp(texts, size=10, weight="bold", color="w", ha='center')
-axes2.legend(cz_3as_unq,bbox_to_anchor=(.9, 1.0))
+axes2.legend(cz_3as_unq,loc='center left',bbox_to_anchor=(.9,0.5))
 
 # add, CZ-4
 axes3 = fig.add_axes([0.08,0.18,0.2,0.2])
