@@ -132,3 +132,4 @@
 11/25/2021T07:41    CHN 1   JSLC        Kuaizhou-1A Kuaizhou-1A Shiyan-11   
 11/25/2021T09:09    RUS 1   Plesetsk    Soyuz-2.1   Soyuz-2.1b/Fregat   EKS-5
 11/27/2021T00:40    CHN 1   XSLC        CZ-3A       CZ-3B/E     ChinaSat-1D
+12/03/2021T07:12    USA 1   KSC         Falcon      Falcon-9B5  48xStarLink,2xBlackSky
