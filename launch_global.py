@@ -258,7 +258,7 @@ plt.legend(handles = handles,loc='upper center',ncol=len(countries),prop=fprop)
 axes2 = fig.add_axes([0.0,0.36,0.5,0.5])
 rocket_series = np.array(launch_vehicles_family)
 all_rockets = np.array(launch_rockets)
-cz_3a_idx = np.where(rocket_series=='Soyuz-2.1')
+cz_3a_idx = np.where(rocket_series=='Soyuz-2')
 cz_3as = all_rockets[cz_3a_idx]
 cz_3as_unq,cz_3as_count = np.unique(cz_3as,return_counts=True)
 def pie_chart_labels(data):
