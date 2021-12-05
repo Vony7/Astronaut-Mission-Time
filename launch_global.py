@@ -318,7 +318,7 @@ plt.setp(texts, size=10, weight="bold", color="w", ha='center')
 axes4.legend(cz_3as_unq,bbox_to_anchor=(.9, 1.0))
 
 # add CZ-2C
-axes5 = fig.add_axes([0.52,0.55,0.2,0.2])
+axes5 = fig.add_axes([0.52,0.65,0.2,0.2])
 rocket_series = np.array(launch_vehicles_family)
 all_rockets = np.array(launch_rockets)
 cz_3a_idx = np.where(rocket_series=='CZ-2C')
