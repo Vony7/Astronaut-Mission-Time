@@ -74,7 +74,7 @@ for i in np.arange(0,len(launch_time)):
     if(i>0):
         launch_total[i]=launch_total[i-1]
         launch_total[i][idx]=launch_total[i-1][idx]+1 
-print(launch_time)
+#print(launch_time)
 
 #%% Step PLOT by Country
 x_value = launch_time
