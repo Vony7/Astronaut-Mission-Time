@@ -74,19 +74,23 @@ for i in np.arange(0,len(launch_time)):
     if(i>0):
         launch_total[i]=launch_total[i-1]
         launch_total[i][idx]=launch_total[i-1][idx]+1 
-# Step PLOT by Country
+#print(launch_time)
+
+#%% Step PLOT by Country
+x_value = launch_time
+x_value.append(datetime.now())
 fig,ax = plt.subplots(1,figsize=(12,8),dpi=200)
 for j in np.arange(0,countries.size):
-    x_value = launch_time
     y_value = launch_total[:,j]
-    plt.step(x_value,y_value,'-',color = color_country[j],label=c_dict[countries[j]],linewidth=4)
+    y_value=np.append(y_value,y_value[-1])
+    plt.plot(x_value,y_value,drawstyle='steps-post',color = color_country[j],label=c_dict[countries[j]],linewidth=3)
 plt.legend(prop =fprop)
 ax.yaxis.set_major_locator(MultipleLocator(5))
 ax.yaxis.set_minor_locator(MultipleLocator(1))
 from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
 ax.text(.3, 0.95,"截至北京时间："+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
-ax.text(.32, 0.90,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
+ax.text(.3, 0.90,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
 plt.title('2021年全球航天入轨发射统计',fontproperties = fprop_title, fontsize = 30)
 plt.xlabel('时间',fontproperties=fprop)
 plt.ylabel('发射次数',fontproperties=fprop)
@@ -144,7 +148,7 @@ print(launch_success)
 print(launch_failure)
 
 #%% By Launch Site
-dict_sites = {'Baikonur':'拜科努', 'Semnan':'森南', 'JSLC':'酒泉', 'KSC':'肯尼迪', 'Kodaik':'柯迪科', 'Kourou':'库鲁', 'Mahia':'玛西亚', 'Mojave':'莫哈维', 'Naro':'罗老','Plesetsk':'普列谢', 'SDSC':'萨第什','TSLC':'太原','Tanegashima':'种子岛','USC':'内之浦','Vandenberg':'范登堡','Vostochny':'东方','WSLS':'文昌','Wallops':'沃乐普','XSLC':'西昌'}
+dict_sites = {'Baikonur':'拜科努', 'Semnan':'森南', 'JSLC':'酒泉', 'KSC':'卡角', 'Kodaik':'柯迪科', 'Kourou':'库鲁', 'Mahia':'玛西亚', 'Mojave':'莫哈维', 'Naro':'罗老','Plesetsk':'普列谢', 'SDSC':'萨第什','TSLC':'太原','Tanegashima':'种子岛','USC':'内之浦','Vandenberg':'范登堡','Vostochny':'东方','WSLS':'文昌','Wallops':'沃乐普','XSLC':'西昌'}
 cc_dict = {'CHN':'#A30000','ESA':'#194852','IND':'#3989b9','IRN':'cyan','JPN':'#fcc9b9','RUS':'#0033A0','SKO':'#FFA500','USA':'#002868'}
 sites_idx = np.argsort(launch_Bysites)
 site_colors = []
