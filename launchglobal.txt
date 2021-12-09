@@ -138,7 +138,7 @@
 12/07/2021T12:12    CHN 1   JSLC        Ceres-1     Ceres-1 天津大学一号，丽泽一号，宝酝号，金紫荆五号，金紫荆一号03星
 12/07/2021T18:19    USA 1   CC         Atlas-V     Atlas-V551 STP-3
 12/08/2021T15:38    RUS 1   Baikonur    Soyuz-2     Soyuz-2.1a  Soyuz-MS20
-#12/09/2021T07:45   USA 1   Mahia       Electron    Electron    A-Data-with-Destiny
+12/09/2021T08:03    USA 1   Mahia       Electron    Electron    BlackSkyx2
 #12/09/2021T14:00   USA 1   CC         Falcon-9    Falcon-9B5  IXPE
 #12/10/2021T08:10   CHN 1   JSLC        CZ-4        CZ-4C   ???
 #12/12/2021T18:09   RUS 1   Baikonur    Proton-M    Proton-M/Briz-M Ekspress-AMU3&AMU7
