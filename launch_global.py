@@ -74,7 +74,12 @@ for i in np.arange(0,len(launch_time)):
     if(i>0):
         launch_total[i]=launch_total[i-1]
         launch_total[i][idx]=launch_total[i-1][idx]+1 
-#print(launch_time)
+#%% Print out
+print('Total Launches: ', len(launch_time))
+print(countries)
+print(launch_overall)
+print(launch_success)
+print(launch_failure)
 
 #%% Step PLOT by Country
 x_value = launch_time
@@ -139,13 +144,6 @@ plt.ylabel('发射次数', fontproperties = fprop)
 plt.title('2021年全球航天入轨发射统计',fontproperties = fprop_title, fontsize = 30)
 plt.legend(loc='upper center', prop =fprop,ncol=2,frameon=False)
 plt.savefig('launch_2021_barplot.png')
-
-#%% Print out
-print('Total Launches: ', len(launch_time))
-print(countries)
-print(launch_overall)
-print(launch_success)
-print(launch_failure)
 
 #%% By Launch Site
 dict_sites = {'Baikonur':'拜科努', 'Semnan':'森南', 'JSLC':'酒泉', 'CC':'卡角','CCK':'肯尼迪', 'Kodaik':'柯迪科', 'Kourou':'库鲁', 'Mahia':'玛西亚', 'Mojave':'莫哈维', 'Naro':'罗老','Plesetsk':'普列谢', 'SDSC':'萨第什','TSLC':'太原','Tanegashima':'种子岛','USC':'内之浦','Vandenberg':'范登堡','Vostochny':'东方','WSLS':'文昌','Wallops':'沃乐普','XSLC':'西昌'}
