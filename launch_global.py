@@ -82,7 +82,7 @@ print(launch_success)
 print(launch_failure)
 
 #%% Step PLOT by Country
-x_value = launch_time
+x_value = launch_time.copy()
 x_value.append(datetime.now())
 fig,ax = plt.subplots(1,figsize=(12,8),dpi=200)
 for j in np.arange(0,countries.size):
