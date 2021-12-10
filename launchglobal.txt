@@ -140,7 +140,7 @@
 12/08/2021T15:38    RUS 1   Baikonur    Soyuz-2     Soyuz-2.1a  Soyuz-MS20
 12/09/2021T08:03    USA 1   Mahia       Electron    Electron    BlackSky-16,17
 12/09/2021T14:00   USA 1   CC         Falcon-9    Falcon-9B5  IXPE
-#12/10/2021T08:10   CHN 1   JSLC        CZ-4        CZ-4C   ???
+12/10/2021T08:11   CHN 1   JSLC        CZ-4        CZ-4B   实践六号05组
 #12/12/2021T18:09   RUS 1   Baikonur    Proton-M    Proton-M/Briz-M Ekspress-AMU3&AMU7
 #12/19/2021T23:58   USA 1   CC         Falcon-9    Falcon-9B5  Turksat-5B
 #12/21/2021T16:06   USA 1   CCK         Falcon-9    Falcon-9B5  CRS-24
