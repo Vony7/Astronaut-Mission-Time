@@ -10,6 +10,7 @@ from datetime import datetime
 from pylab import *
 import pytz
 import matplotlib.font_manager as fm
+import matplotlib.ticker as tck
 fprop_title = fm.FontProperties(fname='font/ZhiMangXing-Regular.ttf')
 fprop = fm.FontProperties(fname='font/NotoSansSC-Regular.otf')
 datatxt = 'launchglobal'
@@ -34,7 +35,7 @@ for x in linestoken:
 token.close()
 
 # Process Data
-rockets = np.unique(launch_vehicles_family)
+rockets = np.array(launch_vehicles_family)
 # Launch countries
 countries = np.unique(launch_country)
 # Launch Sites
@@ -363,3 +364,77 @@ axes6.legend(cz_3as_unq,bbox_to_anchor=(.9, 1.0))
 # save
 #plt.tight_layout()
 plt.savefig('launch_2021_by_lv.png')
+
+#%% Launch China 2021
+chn_idx = np.where(launch_country=='CHN')
+cs_dict = {'TSLC':'太原','JSLC':'酒泉','WSLS':'文昌','XSLC':'西昌'}
+rs_dict={'CZ-2C':'长二丙', 'CZ-2D':'长二丁', 'CZ-2F':'长二F', 'CZ-3A':'长三甲系列', 'CZ-4':'长四乙系列', 'CZ-5':'长五系列', 
+'CZ-6':'长六', 'CZ-7':'长七系列', 'Ceres-1':'谷神星一号','Hyperbola-1':'双曲线一号', 'Kuaizhou-1A':'快舟一号甲'}
+# launch site bar plots and stacked by rockets
+all_launch_sites = np.array(launch_sites)
+chn_sites =all_launch_sites[chn_idx]
+chn_sites_uniq = np.unique(chn_sites)
+chn_rockets = rocket_series[chn_idx]
+chn_rockets_uniq = np.unique(chn_rockets)
+rockets_fm_sites = np.zeros((len(chn_rockets_uniq),len(chn_sites_uniq)))
+for r in np.arange(0,len(chn_rockets_uniq)):
+    r_idx = np.where(rocket_series==chn_rockets_uniq[r])
+    #print(r_idx)
+    for s in np.arange(0,len(chn_sites_uniq)):
+        s_idx = np.where(all_launch_sites==chn_sites_uniq[s])
+        interaction = np.intersect1d(r_idx,s_idx)
+        #print(s_idx)
+        #print(interaction)
+        rockets_fm_sites[r,s]=len(interaction)
+# stack plot
+fig,ax = plt.subplots(1,figsize=(12,8),dpi=300)
+wd = 0.5
+btm = np.zeros((len(chn_sites_uniq)))
+for rkt in np.arange(0,len(chn_rockets_uniq)):
+    ax.bar(chn_sites_uniq, rockets_fm_sites[rkt],width=wd, bottom=btm,label=rs_dict[chn_rockets_uniq[rkt]])
+    btm+=rockets_fm_sites[rkt]
+x_labels=[]
+for site in chn_sites_uniq:
+    x_labels.append(cs_dict[site])
+ax.xaxis.set_ticks(np.arange(0,len(chn_sites_uniq)))
+ax.xaxis.set_ticklabels(x_labels,fontproperties=fprop)
+lgd_cn=[]
+for lgd_en in chn_rockets_uniq:
+    lgd_cn.append(rs_dict[lgd_en])
+plt.title('2021中国航天各发射场入轨发射统计',fontproperties=fprop_title,fontsize=30)
+plt.legend(lgd_cn,prop=fprop,loc='upper center',facecolor='black',ncol=3,frameon=False)
+plt.xlabel('发射场（中心）',fontproperties=fprop,fontsize=12)
+plt.ylabel('发射次数',fontproperties=fprop,fontsize=12)
+# data labels
+for rect in ax.patches:
+    height=rect.get_height()
+    width=rect.get_width()
+    x=rect.get_x()
+    y=rect.get_y()
+    label_text=f'{height:.0f}'
+    label_x=x+width/2
+    label_y=y+height/2
+    if height>0:
+        ax.text(label_x,label_y,label_text,color='white',ha='center',va='center',fontsize=10)
+# author info
+from datetime import datetime
+time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
+ax.text(.35, .74,"截至北京时间："+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
+ax.text(.35, .7,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
+# data label overall
+for i in range(len(chn_sites_uniq)):
+    site_total=np.sum(rockets_fm_sites[:,i])
+    datastr='{:.0f}'.format(site_total)
+    plt.annotate(datastr,xy=(chn_sites_uniq[i],site_total),ha='center',va='bottom',color='black')
+ax.yaxis.set_major_locator(MultipleLocator(5))
+ax.yaxis.set_minor_locator(MultipleLocator(1))
+plt.savefig('chn_2021_b_sites_stacked.png')
+
+# by rocket family
+chn_launches = rocket_series[chn_idx]
+chn_rockets_2021,chn_rockets_2021_count = np.unique(chn_launches,return_counts=True)
+chn_count_idx = np.argsort(chn_rockets_2021_count)
+fig,ax = plt.subplots(1,figsize=(8,6),dpi=300)
+plt.bar(chn_rockets_2021[chn_count_idx],chn_rockets_2021_count[chn_count_idx])
+plt.setp(ax.get_xticklabels(),rotation=30,ha="right",rotation_mode="anchor")
+plt.savefig('chn_2021_b_Rockest.png')
