@@ -146,7 +146,7 @@
 12/15/2021T10:00    CHN 0   JSLC        Kuaizhou-1A Kuaizhou-1A 2xGeeSAT
 12/18/2021T20:41    USA 1   Vandenberg  Falcon-9    Falcon-9B5  52xStarLink-G4-4
 12/19/2021T11:58    USA 1   CC  Falcon-9    Falcon-9B5  Turksat-5B
-#12/21/2021T16:06   USA 1   CCK         Falcon-9    Falcon-9B5  CRS-24
+12/21/2021T18:07    USA 1   CCK         Falcon-9    Falcon-9B5  CRS-24
 #12/21/2021T20:33   JPN 1   Tanegashima H-IIA       H-IIA/V204  Inmarsat-I6-F1 
 #12/22/2021T18:20   ESA 1   Kourou      Ariane-5    Ariane-5-ECA    JWST
 #12/23/2021T16:30   CHN 1   WSLS        CZ-7        CZ-7A   ???
