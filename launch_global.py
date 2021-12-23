@@ -111,7 +111,7 @@ x_idx = np.argsort(launch_overall)
 xaxis_labels = []
 for country in countries[x_idx]:
     xaxis_labels.append(c_dict[country])
-fig,ax = plt.subplots(1,figsize=(8,6),dpi=300)
+fig,ax = plt.subplots(1,figsize=(12,8),dpi=300)
 plt.bar(countries, launch_overall[x_idx])
 ax.xaxis.set_ticks(np.arange(0,len(countries)))
 ax.xaxis.set_ticklabels(xaxis_labels,fontproperties = fprop)
