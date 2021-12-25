@@ -149,5 +149,5 @@
 12/21/2021T18:07    USA 1   CCK         Falcon-9    Falcon-9B5  CRS-24
 12/22/2021T23:32    JPN 1   Tanegashima H-IIA       H-IIA/V204  Inmarsat-I6-F1 
 12/23/2021T18:12    CHN 1   WSLS        CZ-7        CZ-7A   Shiyan-12-01,02
-#12/25/2021T18:20   ESA 1   Kourou      Ariane-5    Ariane-5-ECA    JWST
+12/25/2021T20:20    ESA 1   Kourou      Ariane-5    Ariane-5-ECA    JWST
 #12/27/2021T00:00   RUS 1   Baikonur    Soyuz-2     Soyuz-2.1b/Fregat   OneWeb-L12       
