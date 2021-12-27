@@ -111,8 +111,9 @@ def css_astronauts():
     sz7eva1 = EVA("神舟七号第一次",'2008/9/27 16:35','2008/9/27 17:01',[zzg,lbm],sz7)
     sz12eva1 = EVA("神舟十二号第一次",'2021/7/5 8:11','2021/7/5 14:57',[lbm,thb],sz12)
     sz12eva2 = EVA("神舟十二号第二次",'2021/8/21 8:38','2021/8/21 14:33',[nhs,lbm],sz12)
-    sz13eva1 = EVA('神舟十三号第一次','2021/11/07/18:51','2021/11/08 01:16',[zzg,wyp],sz13)
-    EVAs = [sz7eva1,sz12eva1,sz12eva2,sz13eva1]
+    sz13eva1 = EVA('神舟十三号第一次','2021/11/07 18:51','2021/11/08 01:16',[zzg,wyp],sz13)
+    sz13eva2 = EVA('神舟十三号第二次','2021/12/26 18:44','2021/12/27 00:55',[zzg,ygf],sz13)
+    EVAs = [sz7eva1,sz12eva1,sz12eva2,sz13eva1,sz13eva2]
 
     #%% Prepare Data for plot
     sorted_astro = sorted(astro,key = operator.attrgetter("num_of_missions"))
@@ -122,7 +123,7 @@ def css_astronauts():
     y_pos = np.arange(len(sorted_astro))
 
     #%% color palettes
-    color_eva= ['#1e295b','#193852','#3989b9','#79a49e','#3c7ba6','#161c37','#c6ca74','#1a425b']
+    color_eva= ['#1e295b','#193852','#3989b9','#79a49e','#161c37','#c6ca74','#1a425b']
     #%% EVA Time
     eva_total = [hty.total_eva_time for hty in astro]
     c = np.zeros((len(EVAs),len(astro)))
