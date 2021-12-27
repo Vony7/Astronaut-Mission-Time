@@ -151,4 +151,4 @@
 12/23/2021T18:12    CHN 1   WSLS        CZ-7        CZ-7A   Shiyan-12-01,02
 12/25/2021T20:20    ESA 1   Kourou      Ariane-5    Ariane-5-ECA    JWST
 12/26/2021T11:11    CHN 1   TSLC        CZ-4        CZ-4C   资源一号02E
-#12/27/2021T00:00   RUS 1   Baikonur    Soyuz-2     Soyuz-2.1b/Fregat   OneWeb-L12       
+12/27/2021T21:10    RUS 1   Baikonur    Soyuz-2     Soyuz-2.1b/Fregat   OneWeb-L12       
