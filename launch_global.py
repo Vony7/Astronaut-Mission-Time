@@ -467,12 +467,14 @@ plt.legend(x_labels,prop=fprop,loc='upper center',facecolor='black',ncol=4,frame
 plt.title('2021年中国航天各火箭入轨发射统计',fontproperties=fprop_title,fontsize=30)
 #plt.xlabel('火箭名称',fontproperties=fprop,fontsize=12)
 plt.ylabel('发射次数',fontproperties=fprop,fontsize=12)
+ylimmax = 0
 for i in range(len(chn_rockets_2021[chn_count_idx])):
     datastr='{:.0f}'.format(rkt_2021_total[i])
+    ylimmax=max([ylimmax,rkt_2021_total[i]])
     plt.annotate(datastr,xy=(rkt_2021_names[i],rkt_2021_total[i]),ha='center',va='bottom',color='black')
 ax.yaxis.set_major_locator(MultipleLocator(5))
 ax.yaxis.set_minor_locator(MultipleLocator(1))
 ax.xaxis.set_ticks(np.arange(0,len(rkt_2021_names)))
 ax.xaxis.set_ticklabels(rkt_labels,fontproperties=fprop)
-plt.ylim([0,14])
+plt.ylim([0,ylimmax+1])
 plt.savefig('chn_2021_b_Rockest.png')
