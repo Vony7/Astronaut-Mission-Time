@@ -154,4 +154,4 @@
 12/27/2021T21:10    RUS 1   Baikonur    Soyuz-2     Soyuz-2.1b/Fregat   OneWeb-L12    
 12/28/2021T00:20    RUS 0   Plesetsk    Angara-A5   Angara-A5/Persey    Dummy-Payload
 12/29/2021T19:13    CHN 1   JSLC        CZ-2D       CZ-2D       Tianhui-4-A,B
-#12/30/2021T00:30    CHN 1   XSLC        CZ-3A       CZ-3B/E     Unknown  
+12/30/2021T00:43    CHN 1   XSLC        CZ-3A       CZ-3B/E     通信技术试验卫星9号  
