@@ -366,7 +366,7 @@ plt.savefig('launch_2021_by_lv.png')
 
 
 #%%  Plot rockets launched by country (sites, launch vehicles)
-fname = 'CHN'
+fname = 'IND'
 launch_country = np.array(launch_country)
 # Launch by XXX 2021
 country_idx = np.where(launch_country==fname)
@@ -376,7 +376,7 @@ rs_dict={'CZ-2C':'长二丙', 'CZ-2D':'长二丁', 'CZ-2F':'长二F', 'CZ-3A':'�
 'Vega':'织女星','Ariane-5':'阿丽亚娜五','Soyuz-2':'联盟-2','Proton-M':'质子-M','Angara-A5':'安加拉A5',
 'Pegasus-XL':'飞马座XL','Minotar-1':'牛头人一号','Firefly-Alpha':'萤火虫-阿尔法','Delta-IV':'德尔塔四重型','Antares':'安塔瑞斯','Rocket-3':'火箭-3','LauncherOne':'发射器一号','Atlas-V':'宇宙神五号','Electron':'电子号','Falcon-9':'猎鹰九号',
 'H-IIA':'H-IIA','Epsilon':'伊普西龙',
-'Simorgh':'凤凰','PSLV-DL':'PSLV-DL','KSLV-II':'KSLV-2','GSLV-MKIII':'GSLV-MK3'}
+'Simorgh':'凤凰','PSLV-DL':'PSLV-DL','KSLV-II':'KSLV-2','GSLV-MKII':'GSLV-MK2'}
 # launch sites and rockets
 all_launch_sites = np.array(launch_sites)
 country_sites =all_launch_sites[country_idx]
@@ -416,8 +416,8 @@ if len(sites_uniq)==1:
     # author info
     from datetime import datetime
     time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
-    ax.text(.35, .95,"截至北京时间: "+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
-    ax.text(.35, .91,"绘制: @Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
+    ax.text(.35, .98,"截至北京时间: "+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
+    ax.text(.35, .94,"绘制: @Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
     plt.savefig('2021_'+fname+'_by_rockets_pie.png')
 else: # multiple launch sites
     # stack plot
