@@ -5,7 +5,6 @@ import pandas as pd
 import os
 from pathlib import Path
 from dateutil import parser
-#from datetime import timedelta
 from datetime import datetime
 from pylab import *
 import pytz
@@ -13,7 +12,7 @@ import matplotlib.font_manager as fm
 import matplotlib.ticker as tck
 fprop_title = fm.FontProperties(fname='font/ZhiMangXing-Regular.ttf')
 fprop = fm.FontProperties(fname='font/NotoSansSC-Regular.otf')
-datatxt = 'launchglobal'
+datatxt = 'launchglobal2021'
 token = open(datatxt + '.txt','r',encoding = 'utf8')
 linestoken=token.readlines()
 launch_time = []
@@ -365,40 +364,47 @@ axes6.legend(cz_3as_unq,bbox_to_anchor=(.9, 1.0))
 #plt.tight_layout()
 plt.savefig('launch_2021_by_lv.png')
 
-#%% Launch China 2021
-chn_idx = np.where(launch_country=='CHN')
-cs_dict = {'TSLC':'太原','JSLC':'酒泉','WSLS':'文昌','XSLC':'西昌'}
+
+#%%  Plot rockets launched by country (sites, launch vehicles)
+fname = 'USA'
+launch_country = np.array(launch_country)
+# Launch by XXX 2021
+country_idx = np.where(launch_country==fname)
+dict_sites = {'Baikonur':'拜科努尔', 'Semnan':'森南', 'JSLC':'酒泉', 'CC':'卡角','CCK':'肯尼迪', 'Kodaik':'柯迪科', 'Kourou':'库鲁', 'Mahia':'玛西亚', 'Mojave':'莫哈维', 'Naro':'罗老','Plesetsk':'普列谢茨克', 'SDSC':'萨第什','TSLC':'太原','Tanegashima':'种子岛','USC':'内之浦','Vandenberg':'范登堡','Vostochny':'东方','WSLS':'文昌','Wallops':'沃乐普','XSLC':'西昌'}
 rs_dict={'CZ-2C':'长二丙', 'CZ-2D':'长二丁', 'CZ-2F':'长二F', 'CZ-3A':'长三甲系列', 'CZ-4':'长四乙系列', 'CZ-5':'长五系列', 
-'CZ-6':'长六', 'CZ-7':'长七系列', 'Ceres-1':'谷神星一号','Hyperbola-1':'双曲线一号', 'Kuaizhou-1A':'快舟一号甲'}
+'CZ-6':'长六', 'CZ-7':'长七系列', 'Ceres-1':'谷神星一号','Hyperbola-1':'双曲线一号', 'Kuaizhou-1A':'快舟一号甲',
+'Vega':'织女星','Ariane-5':'阿丽亚娜五','Soyuz-2':'联盟-2','Proton-M':'质子-M','Angara-A5':'安加拉A5',
+'Pegasus-XL':'飞马座XL','Minotar-1':'牛头人一号','Firefly-Alpha':'萤火虫-阿尔法','Delta-IV':'德尔塔四重型','Antares':'安塔瑞斯','Rocket-3':'火箭-3','LauncherOne':'发射器一号','Atlas-V':'宇宙神五号','Electron':'电子号','Falcon-9':'猎鹰九号'}
 # launch site bar plots and stacked by rockets
 all_launch_sites = np.array(launch_sites)
-chn_sites =all_launch_sites[chn_idx]
-chn_sites_uniq = np.unique(chn_sites)
-chn_rockets = rocket_series[chn_idx]
-chn_rockets_uniq = np.unique(chn_rockets)
-rockets_fm_sites = np.zeros((len(chn_rockets_uniq),len(chn_sites_uniq)))
-for r in np.arange(0,len(chn_rockets_uniq)):
-    r_idx = np.where(rocket_series==chn_rockets_uniq[r])
-    for s in np.arange(0,len(chn_sites_uniq)):
-        s_idx = np.where(all_launch_sites==chn_sites_uniq[s])
+country_sites =all_launch_sites[country_idx]
+sites_uniq = np.unique(country_sites)
+rocket_series = np.array(launch_vehicles_family)
+country_rockets = rocket_series[country_idx]
+country_rockets_uniq = np.unique(country_rockets)
+rockets_fm_sites = np.zeros((len(country_rockets_uniq),len(sites_uniq)))
+for r in np.arange(0,len(country_rockets_uniq)):
+    r_idx = np.where(rocket_series==country_rockets_uniq[r])
+    for s in np.arange(0,len(sites_uniq)):
+        s_idx = np.where(all_launch_sites==sites_uniq[s])
         interaction = np.intersect1d(r_idx,s_idx)
         rockets_fm_sites[r,s]=len(interaction)
 # stack plot
 fig,ax = plt.subplots(1,figsize=(12,8),dpi=300)
 wd = 0.5
-btm = np.zeros((len(chn_sites_uniq)))
-for rkt in np.arange(0,len(chn_rockets_uniq)):
-    ax.bar(chn_sites_uniq, rockets_fm_sites[rkt],width=wd, bottom=btm,label=rs_dict[chn_rockets_uniq[rkt]])
+btm = np.zeros((len(sites_uniq)))
+for rkt in np.arange(0,len(country_rockets_uniq)):
+    ax.bar(sites_uniq, rockets_fm_sites[rkt],width=wd, bottom=btm,label=rs_dict[country_rockets_uniq[rkt]])
     btm+=rockets_fm_sites[rkt]
 x_labels=[]
-for site in chn_sites_uniq:
-    x_labels.append(cs_dict[site])
-ax.xaxis.set_ticks(np.arange(0,len(chn_sites_uniq)))
+for site in sites_uniq:
+    x_labels.append(dict_sites[site])
+ax.xaxis.set_ticks(np.arange(0,len(sites_uniq)))
 ax.xaxis.set_ticklabels(x_labels,fontproperties=fprop)
 lgd_cn=[]
-for lgd_en in chn_rockets_uniq:
+for lgd_en in country_rockets_uniq:
     lgd_cn.append(rs_dict[lgd_en])
-plt.title('2021年中国航天各发射场入轨发射统计',fontproperties=fprop_title,fontsize=30)
+plt.title('2021年'+c_dict[fname]+'航天各发射场入轨发射统计',fontproperties=fprop_title,fontsize=30)
 plt.legend(lgd_cn,prop=fprop,loc='upper center',facecolor='black',ncol=3,frameon=False)
 plt.xlabel('发射场（中心）',fontproperties=fprop,fontsize=12)
 plt.ylabel('发射次数',fontproperties=fprop,fontsize=12)
@@ -419,32 +425,33 @@ time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M
 ax.text(.35, .74,"截至北京时间："+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
 ax.text(.35, .7,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
 # data label overall
-for i in range(len(chn_sites_uniq)):
+ymax = 0
+for i in range(len(sites_uniq)):
     site_total=np.sum(rockets_fm_sites[:,i])
     datastr='{:.0f}'.format(site_total)
-    plt.annotate(datastr,xy=(chn_sites_uniq[i],site_total),ha='center',va='bottom',color='black')
+    ymax=max([ymax,site_total])
+    plt.annotate(datastr,xy=(sites_uniq[i],site_total),ha='center',va='bottom',color='black')
 ax.yaxis.set_major_locator(MultipleLocator(5))
 ax.yaxis.set_minor_locator(MultipleLocator(1))
-plt.savefig('chn_2021_b_sites_stacked.png')
+plt.ylim([0,ymax+1])
+plt.savefig('2021_'+fname+'_by_sites_stacked.png')
 
-#%% by rocket family
-lc_dict = {'XSLC':'#43aa8b','WSLS':'#f9c74f','JSLC':'#90be6d','TSLC':'#577590'}
-chn_launches = rocket_series[chn_idx]
-chn_rockets_2021,chn_rockets_2021_count = np.unique(chn_launches,return_counts=True)
-chn_count_idx = np.argsort(chn_rockets_2021_count)
+## by rocket family
+xx_launches = rocket_series[country_idx]
+xx_rockets_2021,xx_rockets_2021_count = np.unique(xx_launches,return_counts=True)
+xx_count_idx = np.argsort(xx_rockets_2021_count)
 rkt_frm_sites = rockets_fm_sites.transpose()
-rkt_frm_sites = rkt_frm_sites[:,chn_count_idx]
+rkt_frm_sites = rkt_frm_sites[:,xx_count_idx]
 # data label overall
-rkt_2021_names= chn_rockets_2021[chn_count_idx]
-rkt_2021_total = chn_rockets_2021_count[chn_count_idx]
+rkt_2021_names= xx_rockets_2021[xx_count_idx]
+rkt_2021_total = xx_rockets_2021_count[xx_count_idx]
 rkt_labels=[]
 for rkt in rkt_2021_names:
     rkt_labels.append(rs_dict[rkt])
 fig,ax = plt.subplots(1,figsize=(12,8),dpi=300)
-wd = 0.9
-btm = np.zeros((len(chn_rockets_uniq)))
-for rkt in np.arange(0,len(chn_sites_uniq)):
-    ax.bar(rkt_2021_names, rkt_frm_sites[rkt],width=wd, bottom=btm,label=cs_dict[chn_sites_uniq[rkt]],color=lc_dict[chn_sites_uniq[rkt]])
+btm = np.zeros((len(country_rockets_uniq)))
+for rkt in np.arange(0,len(sites_uniq)):
+    ax.bar(rkt_2021_names, rkt_frm_sites[rkt], bottom=btm,label=dict_sites[sites_uniq[rkt]])
     btm+=rkt_frm_sites[rkt]
 plt.setp(ax.get_xticklabels(),rotation=0,ha="center",rotation_mode="anchor")
 # data labels
@@ -461,20 +468,20 @@ for rect in ax.patches:
 # author info
 from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
-ax.text(.35, .94,"截至北京时间："+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
-ax.text(.35, .9,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
+ax.text(.35, .74,"截至北京时间："+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
+ax.text(.35, .7,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
 plt.legend(x_labels,prop=fprop,loc='upper center',facecolor='black',ncol=4,frameon=False)
-plt.title('2021年中国航天各火箭入轨发射统计',fontproperties=fprop_title,fontsize=30)
+plt.title('2021年'+c_dict[fname]+'航天各火箭入轨发射统计',fontproperties=fprop_title,fontsize=30)
 #plt.xlabel('火箭名称',fontproperties=fprop,fontsize=12)
 plt.ylabel('发射次数',fontproperties=fprop,fontsize=12)
-ylimmax = 0
-for i in range(len(chn_rockets_2021[chn_count_idx])):
+ymax = 0
+for i in range(len(xx_rockets_2021[xx_count_idx])):
     datastr='{:.0f}'.format(rkt_2021_total[i])
-    ylimmax=max([ylimmax,rkt_2021_total[i]])
+    ymax=max([ymax,rkt_2021_total[i]])
     plt.annotate(datastr,xy=(rkt_2021_names[i],rkt_2021_total[i]),ha='center',va='bottom',color='black')
 ax.yaxis.set_major_locator(MultipleLocator(5))
 ax.yaxis.set_minor_locator(MultipleLocator(1))
 ax.xaxis.set_ticks(np.arange(0,len(rkt_2021_names)))
 ax.xaxis.set_ticklabels(rkt_labels,fontproperties=fprop)
-plt.ylim([0,ylimmax+1])
-plt.savefig('chn_2021_b_Rockest.png')
+plt.ylim([0,ymax+1])
+plt.savefig('2021_'+fname+'_by_Rockest.png')
