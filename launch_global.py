@@ -94,8 +94,8 @@ ax.yaxis.set_major_locator(MultipleLocator(5))
 ax.yaxis.set_minor_locator(MultipleLocator(1))
 from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
-ax.text(.3, 0.95,"截至北京时间："+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
-ax.text(.3, 0.90,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
+ax.text(.3, 0.95,"截至北京时间: "+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
+ax.text(.3, 0.90,"绘制: @Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
 plt.title('2021年全球航天入轨发射统计',fontproperties = fprop_title, fontsize = 30)
 plt.xlabel('时间',fontproperties=fprop)
 plt.ylabel('发射次数',fontproperties=fprop)
@@ -136,8 +136,8 @@ plt.bar(countries,launch_failure[x_idx],color = '#d21404',label='失败')
 plt.bar(countries, launch_success[x_idx],bottom = launch_failure[x_idx], color = '#053047',label='成功')
 from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
-ax.text(.3, 0.92,"截至北京时间："+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
-ax.text(.42, 0.87,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
+ax.text(.3, 0.92,"截至北京时间: "+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
+ax.text(.42, 0.87,"绘制: @Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
 ax.yaxis.set_major_locator(MultipleLocator(10))
 ax.yaxis.set_minor_locator(MultipleLocator(1))
 plt.ylabel('发射次数', fontproperties = fprop)
@@ -174,8 +174,8 @@ plt.ylabel('发射次数',fontproperties=fprop)
 plt.xlabel('航天发射场/中心名称',fontproperties=fprop)
 from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
-axes1.text(.9, 1.35,"截至北京时间："+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
-axes1.text(.9, 1.30,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
+axes1.text(.9, 1.35,"截至北京时间: "+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
+axes1.text(.9, 1.30,"绘制: @Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
 axes2 = fig.add_axes([-.05, 0.25, 0.7, 0.7]) # inset axes
 axes1.bar(L_sites[sites_idx],launch_Bysites[sites_idx],color = site_colors[sites_idx])
 for rect in axes1.patches:
@@ -246,8 +246,8 @@ plt.ylabel('发射次数',fontproperties=fprop)
 plt.xlabel('运载火箭',fontproperties=fprop)
 from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
-axes1.text(.62, 1.30,"截至北京时间："+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
-axes1.text(.62, 1.26,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
+axes1.text(.62, 1.30,"截至北京时间: "+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
+axes1.text(.62, 1.26,"绘制: @Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
 # add legend for bar plot
 import matplotlib.patches as mpatches
 handles = []
@@ -422,8 +422,8 @@ for rect in ax.patches:
 # author info
 from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
-ax.text(.35, .74,"截至北京时间："+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
-ax.text(.35, .7,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
+ax.text(.35, .74,"截至北京时间: "+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
+ax.text(.35, .7,"绘制: @Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
 # data label overall
 ymax = 0
 for i in range(len(sites_uniq)):
@@ -468,8 +468,8 @@ for rect in ax.patches:
 # author info
 from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
-ax.text(.35, .74,"截至北京时间："+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
-ax.text(.35, .7,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
+ax.text(.35, .74,"截至北京时间: "+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
+ax.text(.35, .7,"绘制: @Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
 plt.legend(x_labels,prop=fprop,loc='upper center',facecolor='black',ncol=4,frameon=False)
 plt.title('2021年'+c_dict[fname]+'航天各火箭入轨发射统计',fontproperties=fprop_title,fontsize=30)
 #plt.xlabel('火箭名称',fontproperties=fprop,fontsize=12)
