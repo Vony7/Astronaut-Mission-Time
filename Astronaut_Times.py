@@ -170,8 +170,8 @@ def css_astronauts():
     plt.title("中国航天员出舱时间统计",fontproperties=fprop_title,fontsize=40,color='white')
     now = datetime.datetime.utcnow()+datetime.timedelta(hours=8)
     ax.yaxis.set_minor_locator(tck.AutoMinorLocator())
-    ax.text(.4, 0.95,"截至北京时间："+ now.strftime("%Y/%m/%d %H:%M:%S.%f"), fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
-    ax.text(.45, 0.92,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
+    ax.text(.4, 0.95,"截至北京时间: "+ now.strftime("%Y/%m/%d %H:%M:%S.%f"), fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
+    ax.text(.45, 0.92,"绘制: @Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
     ax.set_facecolor("black")
     plt.rcParams['savefig.facecolor']='black'
     ax.spines['bottom'].set_color('white')
@@ -232,8 +232,8 @@ def css_astronauts():
     plt.title("中国航天员在轨时间统计",fontproperties=fprop_title,fontsize=40,color='white')
     now = datetime.datetime.utcnow()+datetime.timedelta(hours=8)
     axx.yaxis.set_minor_locator(tck.AutoMinorLocator())
-    axx.text(.4, 0.95,"截至北京时间："+ now.strftime("%Y/%m/%d %H:%M:%S.%f"), fontproperties=fprop,color="gray",transform=axx.transAxes,va='center')
-    axx.text(.4, 0.92,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=axx.transAxes)
+    axx.text(.4, 0.95,"截至北京时间: "+ now.strftime("%Y/%m/%d %H:%M:%S.%f"), fontproperties=fprop,color="gray",transform=axx.transAxes,va='center')
+    axx.text(.4, 0.92,"绘制: @Vony7", fontproperties=fprop,color="gray", transform=axx.transAxes)
     axx.set_facecolor("black")
     plt.rcParams['savefig.facecolor']='black'
     axx.spines['bottom'].set_color('white')
