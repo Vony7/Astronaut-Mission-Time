@@ -232,7 +232,7 @@ def css_astronauts():
     plt.title("中国航天员在轨时间统计",fontproperties=fprop_title,fontsize=40,color='white')
     now = datetime.datetime.utcnow()+datetime.timedelta(hours=8)
     axx.yaxis.set_minor_locator(tck.AutoMinorLocator())
-    axx.text(.4, 0.95,"截至北京时间: "+ now.strftime("%Y/%m/%d %H:%M:%S.%f"), fontproperties=fprop,color="gray",transform=axx.transAxes,va='center')
+    axx.text(.4, 0.95,"截至北京时间: "+ now.strftime("%Y/%m/%d %H:%M:%S"), fontproperties=fprop,color="gray",transform=axx.transAxes,va='center')
     axx.text(.4, 0.92,"绘制: @Vony7", fontproperties=fprop,color="gray", transform=axx.transAxes)
     axx.set_facecolor("black")
     plt.rcParams['savefig.facecolor']='black'
