@@ -12,7 +12,7 @@ import matplotlib.font_manager as fm
 import matplotlib.ticker as tck
 fprop_title = fm.FontProperties(fname='font/ZhiMangXing-Regular.ttf')
 fprop = fm.FontProperties(fname='font/NotoSansSC-Regular.otf')
-datatxt = 'launchglobal2021'
+datatxt = '2022'
 token = open(datatxt + '.txt','r',encoding = 'utf8')
 linestoken=token.readlines()
 launch_time = []
@@ -75,7 +75,7 @@ for i in np.arange(0,len(launch_time)):
         launch_total[i]=launch_total[i-1]
         launch_total[i][idx]=launch_total[i-1][idx]+1 
 #%% Print out
-print('Total Launches: ', len(launch_time))
+print(datatxt+ 'Total Launches: ', len(launch_time))
 print(countries)
 print(launch_overall)
 print(launch_success)
@@ -96,14 +96,14 @@ from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
 ax.text(.3, 0.95,"截至北京时间: "+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
 ax.text(.3, 0.90,"绘制: @Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
-plt.title('2021年全球航天入轨发射统计',fontproperties = fprop_title, fontsize = 30)
+plt.title(datatxt+'年全球航天入轨发射统计',fontproperties = fprop_title, fontsize = 30)
 plt.xlabel('时间',fontproperties=fprop)
 plt.ylabel('发射次数',fontproperties=fprop)
 plt.ylim(ymin=0)
-plt.xlim(datetime(2021,1,8,0,0),xmax=max(x_value))
+plt.xlim(datetime(int(datatxt),1,8,0,0),xmax=max(x_value))
 ax.yaxis.tick_right()
 ax.yaxis.set_label_position('right')
-plt.savefig('launch_2021_step.png')
+plt.savefig('launch_'+datatxt+'_step.png')
 
 #%% Bar By Country
 x_idx = np.argsort(launch_overall)
@@ -141,10 +141,10 @@ ax.text(.42, 0.87,"绘制: @Vony7", fontproperties=fprop,color="gray", transform
 ax.yaxis.set_major_locator(MultipleLocator(10))
 ax.yaxis.set_minor_locator(MultipleLocator(1))
 plt.ylabel('发射次数', fontproperties = fprop)
-plt.title('2021年全球航天入轨发射统计',fontproperties = fprop_title, fontsize = 30)
+plt.title(datatxt+'年全球航天入轨发射统计',fontproperties = fprop_title, fontsize = 30)
 plt.legend(loc='upper center', prop =fprop,ncol=2,frameon=False)
-plt.savefig('launch_2021_barplot.png')
-
+plt.savefig('launch_'+datatxt+'_barplot.png')
+""" 
 #%% By Launch Site
 dict_sites = {'Baikonur':'拜科努', 'Semnan':'森南', 'JSLC':'酒泉', 'CC':'卡角','CCK':'肯尼迪', 'Kodaik':'柯迪科', 'Kourou':'库鲁', 'Mahia':'玛西亚', 'Mojave':'莫哈维', 'Naro':'罗老','Plesetsk':'普列谢', 'SDSC':'萨第什','TSLC':'太原','Tanegashima':'种子岛','USC':'内之浦','Vandenberg':'范登堡','Vostochny':'东方','WSLS':'文昌','Wallops':'沃乐普','XSLC':'西昌'}
 cc_dict = {'CHN':'#A30000','ESA':'#194852','IND':'#3989b9','IRN':'cyan','JPN':'#fcc9b9','RUS':'#0033A0','SKO':'#FFA500','USA':'#002868'}
@@ -514,3 +514,4 @@ else: # multiple launch sites
     ax.xaxis.set_ticklabels(rkt_labels,fontproperties=fprop)
     plt.ylim([0,ymax+1])
     plt.savefig('2021_'+fname+'_by_Rockest.png')
+ """
