@@ -10,9 +10,13 @@ from pylab import *
 import pytz
 import matplotlib.font_manager as fm
 import matplotlib.ticker as tck
-fprop_title = fm.FontProperties(fname='font/ZhiMangXing-Regular.ttf')
-fprop = fm.FontProperties(fname='font/NotoSansSC-Regular.otf')
-datatxt = '2022'
+fprop_title = fm.FontProperties(size=20,fname='font/ZhiMangXing-Regular.ttf')
+## your font directory 
+font_path = 'font/NotoSansSC-Regular.otf'
+## font_name 
+font_name = fm.FontProperties(fname=font_path).get_name()
+fprop = fm.FontProperties(fname='font/NotoSansSC-Regular.otf',size=20)
+datatxt = '2021'
 token = open(datatxt + '.txt','r',encoding = 'utf8')
 linestoken=token.readlines()
 launch_time = []
@@ -108,12 +112,13 @@ plt.savefig('launch_'+datatxt+'_step.png')
 #%% Bar By Country
 x_idx = np.argsort(launch_overall)
 xaxis_labels = []
+ftsz = 20
 for country in countries[x_idx]:
     xaxis_labels.append(c_dict[country])
-fig,ax = plt.subplots(1,figsize=(12,8),dpi=300)
+fig,ax = plt.subplots(1,figsize=(20,16),dpi=300)
 plt.bar(countries, launch_overall[x_idx])
 ax.xaxis.set_ticks(np.arange(0,len(countries)))
-ax.xaxis.set_ticklabels(xaxis_labels,fontproperties = fprop)
+ax.xaxis.set_ticklabels(xaxis_labels,fontsize=ftsz,fontproperties = fprop)
 # Data Labels
 for rect in ax.patches:
     y_value = rect.get_height()
@@ -127,6 +132,7 @@ for rect in ax.patches:
     ax.annotate(
         label,
         (x_value,y_value),
+        fontsize=ftsz,
         xytext=(0,space),
         textcoords = "offset points",
         ha = 'center',
@@ -136,13 +142,15 @@ plt.bar(countries,launch_failure[x_idx],color = '#d21404',label='失败')
 plt.bar(countries, launch_success[x_idx],bottom = launch_failure[x_idx], color = '#053047',label='成功')
 from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
-ax.text(.3, 0.92,"截至北京时间: "+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
-ax.text(.42, 0.87,"绘制: @Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
+ax.text(.3, 0.92,"截至北京时间: "+ time_now, fontsize=ftsz, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
+ax.text(.3, 0.87,"绘制: @Vony7", fontsize=ftsz,fontproperties=fprop,color="gray", transform=ax.transAxes)
 ax.yaxis.set_major_locator(MultipleLocator(10))
 ax.yaxis.set_minor_locator(MultipleLocator(1))
-plt.ylabel('发射次数', fontproperties = fprop)
-plt.title(datatxt+'年全球航天入轨发射统计',fontproperties = fprop_title, fontsize = 30)
-plt.legend(loc='upper center', prop =fprop,ncol=2,frameon=False)
+yaxis_labels=np.arange(0,max(launch_overall),10,dtype=int)
+ax.yaxis.set_ticklabels(yaxis_labels,fontsize=ftsz,fontproperties=fprop)
+plt.ylabel('发射次数', fontsize=ftsz, fontproperties = fprop)
+plt.title(datatxt+'年全球航天入轨发射统计',fontproperties = fprop_title, fontsize = 60)
+plt.legend(loc='upper center', prop=fprop, ncol=2,frameon=False)
 plt.savefig('launch_'+datatxt+'_barplot.png')
 """ 
 #%% By Launch Site
