@@ -3,3 +3,4 @@
 # 1/8/2022T10:15  	USA	1   CC  Falcon-9    Falcon-9B5  Turksat-5A   LC-XX
 01/07/2022T05:49    USA 1   CCK Falcon-9    Falcon-9B5 StarLinkG4-5(x49) LC-39A
 01/13/2022T23:25    USA 1   CCK Falcon-9    Falcon-9B5 Transportor-3(x105) LC-40
+01/14/2022T06:52    USA 1   Mojave LauncherOne LauncherOne PAN-A&B,Ignis,STORK-3,SteamSat-2,ADLER-1

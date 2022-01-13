@@ -16,7 +16,7 @@ font_path = 'font/NotoSansSC-Regular.otf'
 ## font_name 
 font_name = fm.FontProperties(fname=font_path).get_name()
 fprop = fm.FontProperties(fname='font/NotoSansSC-Regular.otf',size=20)
-datatxt = '2021'
+datatxt = '2022'
 token = open(datatxt + '.txt','r',encoding = 'utf8')
 linestoken=token.readlines()
 launch_time = []
@@ -93,14 +93,16 @@ print(launch_failure)
 
 #%% Step PLOT by Country
 x_value = launch_time.copy()
+time_init = datetime(int(datatxt),1,1,0,0,0)
+launches_init = np.zeros((1,countries.size),dtype=int)
 time_moment = datetime.now()+timedelta(hours=15)
 x_value.append(time_moment)
-print(x_value)
+x_value.insert(0,time_init)
 fig,ax = plt.subplots(1,figsize=(12,8),dpi=300)
 for j in np.arange(0,countries.size):
     y_value = launch_total[:,j]
     y_value=np.append(y_value,y_value[-1])
-    print(y_value)
+    y_value = np.insert(y_value,0,launches_init,axis=0) # start from day 1 of the year
     plt.step(x_value,y_value,where='post',color = color_country[j],label=c_dict[countries[j]],linewidth=3)
 plt.legend(prop =fprop)
 ax.yaxis.set_major_locator(MultipleLocator(5))
