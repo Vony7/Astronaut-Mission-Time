@@ -1,4 +1,5 @@
-# Time(UTC+8）Country Results LaunchSite Series Rocket  Payload 
+# Time(UTC+8）Country Results LaunchSite Series Rocket  Payload LaunchPad
 # 2022/01
-# 1/8/2021T10:15  	USA	1   CC         Falcon-9    Falcon-9B5  Turksat-5A   
-1/7/2021T5:49   USA 1   CCK Falcon-9    Falcon-9B5 StarLinkG4-5(x49)
+# 1/8/2022T10:15  	USA	1   CC  Falcon-9    Falcon-9B5  Turksat-5A   LC-XX
+01/07/2022T05:49    USA 1   CCK Falcon-9    Falcon-9B5 StarLinkG4-5(x49) LC-39A
+01/13/2022T23:25    USA 1   CCK Falcon-9    Falcon-9B5 Transportor-3(x105) LC-40

@@ -5,7 +5,7 @@ import pandas as pd
 import os
 from pathlib import Path
 from dateutil import parser
-from datetime import datetime
+from datetime import datetime,timedelta
 from pylab import *
 import pytz
 import matplotlib.font_manager as fm
@@ -21,6 +21,7 @@ launch_results = []
 launch_sites = []
 launch_vehicles_family = []
 launch_rockets = []
+launch_pads = []
 for x in linestoken:
     if not x.startswith("#"):
         from datetime import datetime
@@ -31,6 +32,7 @@ for x in linestoken:
         launch_sites.append(x.split()[3])
         launch_vehicles_family.append(x.split()[4])
         launch_rockets.append(x.split()[5])
+        launch_pads.append(x.split()[6])
 token.close()
 
 # Process Data
@@ -55,6 +57,7 @@ launch_failure = np.zeros(len(countries),dtype=int)
 launch_overall = np.zeros(len(countries),dtype=int)
 launch_Bysites = np.zeros(len(L_sites),dtype=int)
 launch_Byvehicles = np.zeros(len(L_vehicles),dtype=int)
+
 for i in np.arange(0,len(launch_time)):
     #launch sites
     site_idx = [id for id,x in enumerate(L_sites) if x ==launch_sites[i]]
@@ -75,20 +78,26 @@ for i in np.arange(0,len(launch_time)):
         launch_total[i]=launch_total[i-1]
         launch_total[i][idx]=launch_total[i-1][idx]+1 
 #%% Print out
-print(datatxt+ 'Total Launches: ', len(launch_time))
+print(datatxt+ ' Total Launches: ', len(launch_time))
 print(countries)
+print('Total: ')
 print(launch_overall)
+print('Success: ')
 print(launch_success)
+print('Failure: ')
 print(launch_failure)
 
 #%% Step PLOT by Country
 x_value = launch_time.copy()
-x_value.append(datetime.now())
-fig,ax = plt.subplots(1,figsize=(12,8),dpi=200)
+time_moment = datetime.now()+timedelta(hours=15)
+x_value.append(time_moment)
+print(x_value)
+fig,ax = plt.subplots(1,figsize=(12,8),dpi=300)
 for j in np.arange(0,countries.size):
     y_value = launch_total[:,j]
     y_value=np.append(y_value,y_value[-1])
-    plt.plot(x_value,y_value,drawstyle='steps-post',color = color_country[j],label=c_dict[countries[j]],linewidth=3)
+    print(y_value)
+    plt.step(x_value,y_value,where='post',color = color_country[j],label=c_dict[countries[j]],linewidth=3)
 plt.legend(prop =fprop)
 ax.yaxis.set_major_locator(MultipleLocator(5))
 ax.yaxis.set_minor_locator(MultipleLocator(1))
@@ -100,7 +109,7 @@ plt.title(datatxt+'年全球航天入轨发射统计',fontproperties = fprop_tit
 plt.xlabel('时间',fontproperties=fprop)
 plt.ylabel('发射次数',fontproperties=fprop)
 plt.ylim(ymin=0)
-plt.xlim(datetime(int(datatxt),1,8,0,0),xmax=max(x_value))
+#plt.xlim(datetime(int(datatxt),1,8,0,0),xmax=max(x_value))
 ax.yaxis.tick_right()
 ax.yaxis.set_label_position('right')
 plt.savefig('launch_'+datatxt+'_step.png')
