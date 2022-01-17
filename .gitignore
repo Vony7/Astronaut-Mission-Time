@@ -1,6 +1,7 @@
 # images
 *.png 
-
+# folders
+2021/
 # windows desktop manager
 *.ini
 
