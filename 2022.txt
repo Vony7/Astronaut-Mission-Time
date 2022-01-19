@@ -1,7 +1,8 @@
-# dict_sites = {'Baikonur':'拜科努尔', 'Semnan':'森南', 'JSLC':'酒泉', 'CC':'卡角','CCK':'肯尼迪', 'Kodaik':'柯迪科', 'Kourou':'库鲁', 'Mahia':'玛西亚', 'Mojave':'莫哈维', 'Naro':'罗老','Plesetsk':'普列谢茨克', 'SDSC':'萨第什','TSLC':'太原','Tanegashima':'种子岛','USC':'内之浦','Vandenberg':'范登堡','Vostochny':'东方','WSLS':'文昌','Wallops':'沃乐普','XSLC':'西昌'}
+# dict_sites = {'Baikonur':'拜科努尔', 'Semnan':'森南', 'JSLC':'酒泉', 'CC':'卡角','KSC':'肯尼迪', 'Kodaik':'柯迪科', 'Kourou':'库鲁', 'Mahia':'玛西亚', 'Mojave':'莫哈维', 'Naro':'罗老','Plesetsk':'普列谢茨克', 'SDSC':'萨第什','TSLC':'太原','Tanegashima':'种子岛','USC':'内之浦','Vandenberg':'范登堡','Vostochny':'东方','WSLS':'文昌','Wallops':'沃乐普','XSLC':'西昌'}
 # Time(UTC+8）Country Results LaunchSite Series Rocket  Payload LaunchPad
 # 2022/01
-01/07/2022T05:49    USA 1   CCK Falcon-9    Falcon-9B5 StarLinkG4-5(x49) LC-39A
-01/13/2022T23:25    USA 1   CCK Falcon-9    Falcon-9B5 Transportor-3(x105) LC-40
+01/07/2022T05:49    USA 1   KSC Falcon-9    Falcon-9B5 StarLinkG4-5(x49) LC-39A
+01/13/2022T23:25    USA 1   CC  Falcon-9    Falcon-9B5 Transportor-3(x105) LC-40
 01/14/2022T06:52    USA 1   Mojave LauncherOne LauncherOne PAN-A&B,Ignis,STORK-3,SteamSat-2,ADLER-1 Runway
 01/17/2022T10:35    CHN 1   TSLC   CZ-2D    CZ-2D   试验-13号
+01/19/2022T10:02    USA 1   KSC Falcon-9    Falcon-9B5  StarLinkG4-6(x49) LC-39A 

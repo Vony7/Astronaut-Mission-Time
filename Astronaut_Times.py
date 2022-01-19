@@ -187,7 +187,7 @@ def css_astronauts():
     color_sets=['#5899DA','#E8743B','#19A979','#ED4A7B','#945ECF','#13A4B4','#525DF4','#BF399E','#6C8893','#EE6868','#2F6497']
     # plot bars in stack manner
     c = np.zeros((len(missions),len(astro)))
-    figx,axx = plt.subplots(figsize=(16,12),dpi=300)
+    figx,axx = plt.subplots(figsize=(16,12),dpi=600)
     astro_names = [hty.name for hty in astro]
     legend_names =[sz.name for sz in missions]
     astro_total = [hty.total_time for hty in astro]
