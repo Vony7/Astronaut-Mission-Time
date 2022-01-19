@@ -220,7 +220,7 @@ def css_astronauts():
     for i in range(len(astro)):
         datastr = "{:.2f}".format(astro_total[i])
         plt.annotate(datastr,xy=(astro_names[i],astro_total[i]),ha='center',va='bottom',color='white')
-    plt.xlabel("航天员", fontproperties=fprop,fontsize=20,color='white')
+    plt.xlabel("", fontproperties=fprop,fontsize=20,color='white')
     ymax = np.amax(astro_total)
     axx.xaxis.set_ticks(np.arange(0,len(astro)))
     axx.xaxis.set_ticklabels(astro_names,fontproperties=fprop,fontsize=16,color='white')
