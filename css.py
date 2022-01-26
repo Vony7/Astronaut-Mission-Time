@@ -61,7 +61,7 @@ def css_func():
         x_tk_labels.append(h)
     # create a column with the color for each department
     def color(row):
-        c_dict = {'core':'#3d7c43', 'cargo':'#f79804', 'crew':'#e30000'}
+        c_dict = {'core':'#3d7c43', 'cargo':'#f79804', 'crew':'#e30000','clep':'#36454f','pec':'#d6723b'}
         return c_dict[row['Type']]
     dfs['color'] = dfs.apply(color, axis=1)
     #%% PLOT
@@ -78,12 +78,12 @@ def css_func():
         label_x = x + width/2
         label_y = y + height/2
         if height>0:
-            ax.text(label_x,label_y,label_text,color='white',ha='center',va='center',fontsize=12)
-    plt.title('中国空间站建设',fontproperties = fprop_title,fontsize =40)
+            ax.text(label_x,label_y,label_text,color='white',ha='center',va='center',fontsize=8)
+    #plt.title('中国空间站建设',fontproperties = fprop_title,fontsize =40)
     ### Y axis labes###
-    y_axis_labels = ['天和一号','天舟二号','神舟十二号','天舟三号','神舟十三号']
-    y_labels = reversed(y_axis_labels)
-    ax.set_yticklabels(y_labels, fontproperties = fprop,fontsize = 20)
+    #y_axis_labels = ['天和一号','天舟二号','神舟十二号','天舟三号','神舟十三号']
+    #y_labels = reversed(y_axis_labels)
+    #ax.set_yticklabels(y_labels, fontproperties = fprop,fontsize = 20)
     time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
     ax.text(.01, 0.1,"截至北京时间："+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
     ax.text(.01, 0.03,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
