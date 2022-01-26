@@ -66,7 +66,7 @@ def css_func():
     dfs['color'] = dfs.apply(color, axis=1)
     #%% PLOT
     from matplotlib.patches import Patch
-    fig, ax = plt.subplots(1, figsize=(16,6))
+    fig, ax = plt.subplots(1, figsize=(32,12),dpi=300)
     ax.barh(dfs.Task, dfs.days_start_to_end, left=dfs.start_num,height=0.5, color=dfs.color)
     ##### add data labels #####
     for rect in ax.patches:
