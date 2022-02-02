@@ -53,7 +53,7 @@ L_rockets = np.unique(launch_rockets)
 c_dict = {'CHN':'中国','ESA':'欧空局','IND':'印度','IRN':'伊朗','JPN':'日本','RUS':'俄罗斯','SKO':'韩国','USA':'美国'}
 # color code by country
 color_country = np.array(['#A30000','#194852','#3989b9','cyan','#fcc9b9','#0033A0','#FFA500','#002868'])
-
+#color_c_dict ={'CHN':'#A30000','ESA':'194852','IND':'印度','IRN':'伊朗','JPN':'日本','RUS':'俄罗斯','SKO':'韩国','USA':'美国'}
 # Launch countries x time
 launch_total = np.zeros((len(launch_time),countries.size),dtype=int)
 launch_success = np.zeros(len(countries),dtype=int)
@@ -150,7 +150,7 @@ for rect in ax.patches:
         va = va
     )    
 plt.bar(countries,launch_failure[x_idx],color = '#d21404',label='失败')
-plt.bar(countries, launch_success[x_idx],bottom = launch_failure[x_idx], color = '#053047',label='成功')
+plt.bar(countries, launch_success[x_idx],bottom = launch_failure[x_idx], color = '#007500',label='成功')
 from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
 ax.text(.3, 0.92,"截至北京时间: "+ time_now, fontsize=ftsz, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
@@ -163,9 +163,9 @@ plt.ylabel('发射次数', fontsize=ftsz, fontproperties = fprop)
 plt.title(datatxt+'年全球航天入轨发射统计',fontproperties = fprop_title, fontsize = 30)
 plt.legend(loc='upper center', prop=fprop, ncol=2,frameon=False)
 plt.savefig('launch_'+datatxt+'_barplot.png')
-""" 
+
 #%% By Launch Site
-dict_sites = {'Baikonur':'拜科努', 'Semnan':'森南', 'JSLC':'酒泉', 'CC':'卡角','CCK':'肯尼迪', 'Kodaik':'柯迪科', 'Kourou':'库鲁', 'Mahia':'玛西亚', 'Mojave':'莫哈维', 'Naro':'罗老','Plesetsk':'普列谢', 'SDSC':'萨第什','TSLC':'太原','Tanegashima':'种子岛','USC':'内之浦','Vandenberg':'范登堡','Vostochny':'东方','WSLS':'文昌','Wallops':'沃乐普','XSLC':'西昌'}
+dict_sites = {'Baikonur':'拜科努', 'Semnan':'森南', 'JSLC':'酒泉', 'CC':'卡角','KSC':'肯尼迪', 'Kodaik':'柯迪科', 'Kourou':'库鲁', 'Mahia':'玛西亚', 'Mojave':'莫哈维', 'Naro':'罗老','Plesetsk':'普列谢', 'SDSC':'萨第什','TSLC':'太原','Tanegashima':'种子岛','USC':'内之浦','Vandenberg':'范登堡','Vostochny':'东方','WSLS':'文昌','Wallops':'沃乐普','XSLC':'西昌'}
 cc_dict = {'CHN':'#A30000','ESA':'#194852','IND':'#3989b9','IRN':'cyan','JPN':'#fcc9b9','RUS':'#0033A0','SKO':'#FFA500','USA':'#002868'}
 sites_idx = np.argsort(launch_Bysites)
 site_colors = []
@@ -184,18 +184,16 @@ x_labels = np.array(x_labels)
 
 fig=plt.figure(figsize=(12,8),dpi=300)
 axes1 = fig.add_axes([0.1, 0.1, 0.8, 0.8]) # main axes
-axes1.xaxis.set_ticks(np.arange(0,len(dict_sites)))
 axes1.xaxis.set_ticklabels(x_labels[sites_idx],fontproperties = fprop)
 axes1.yaxis.set_major_locator(MultipleLocator(5))
 axes1.yaxis.set_minor_locator(MultipleLocator(1))
-plt.title('2021年全球航天入轨各发射场统计',fontproperties = fprop_title, fontsize = 30)
+plt.title(datatxt+'年全球航天入轨各发射场统计',fontproperties = fprop_title, fontsize = 30)
 plt.ylabel('发射次数',fontproperties=fprop)
 plt.xlabel('航天发射场/中心名称',fontproperties=fprop)
 from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
 axes1.text(.9, 1.35,"截至北京时间: "+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
 axes1.text(.9, 1.30,"绘制: @Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
-axes2 = fig.add_axes([-.05, 0.25, 0.7, 0.7]) # inset axes
 axes1.bar(L_sites[sites_idx],launch_Bysites[sites_idx],color = site_colors[sites_idx])
 for rect in axes1.patches:
     y_value = rect.get_height()
@@ -215,15 +213,15 @@ for rect in axes1.patches:
         va = va
     )  
 sizes = launch_overall[x_idx]/len(launch_time)*100
-explode = (0, 0,0,0,0,0,0,0)
-patches,p_text=axes2.pie(sizes,colors = color_country[x_idx],explode=explode, shadow=False, startangle=90)
-axes2.legend(patches,xaxis_labels,loc='center right',bbox_to_anchor=(1.1, 0.5),prop =fprop)
+explode = np.zeros(len(sizes))
+axes2 = fig.add_axes([.05, 0.35, 0.5, 0.5]) # inset axes
+patches,p_text=axes2.pie(sizes,colors = site_colors[sites_idx],explode=explode, shadow=False, startangle=90)
+axes2.legend(patches,xaxis_labels,loc='center right',bbox_to_anchor=(1.2, 0.5),prop =fprop)
 for font in p_text:
     font.set_fontproperties(fprop)
-plt.savefig('launch_2021_by_sites.png')
+plt.savefig('launch_'+datatxt+'_by_sites.png')
 
 #%% By Launch Vehicle
-cc_dict = {'CHN':'#A30000','ESA':'#194852','IND':'#3989b9','IRN':'cyan','JPN':'#fcc9b9','RUS':'#0033A0','SKO':'#FFA500','USA':'#002868'}
 vehicles_colors = []
 launch_country = np.array(launch_country)
 for vehicle in L_vehicles:
@@ -237,6 +235,7 @@ vehicles_colors = np.array(vehicles_colors)
 launch_Byvehicles = np.array(launch_Byvehicles)
 L_vehicles = np.array(L_vehicles)
 lv_idx = argsort(launch_Byvehicles)
+# plot
 fig=plt.figure(figsize=(12,8),dpi=300)
 axes1 = fig.add_axes([0.1, 0.1, 0.8, 0.8]) # main axes
 axes1.bar(L_vehicles[lv_idx],launch_Byvehicles[lv_idx],color = vehicles_colors[lv_idx])
@@ -257,16 +256,16 @@ for rect in axes1.patches:
         ha = 'center',
         va = va
     )  
-plt.setp(axes1.get_xticklabels(),rotation=45,ha="right",rotation_mode="anchor")
+plt.setp(axes1.get_xticklabels(),rotation=0,ha="center",rotation_mode="anchor")
 axes1.yaxis.set_major_locator(MultipleLocator(5))
 axes1.yaxis.set_minor_locator(MultipleLocator(1))
-plt.title('2021年全球航天入轨按火箭统计',fontproperties = fprop_title, fontsize = 30)
+plt.title(datatxt+'年全球航天入轨按火箭统计',fontproperties = fprop_title, fontsize = 30)
 plt.ylabel('发射次数',fontproperties=fprop)
 plt.xlabel('运载火箭',fontproperties=fprop)
 from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
-axes1.text(.62, 1.30,"截至北京时间: "+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
-axes1.text(.62, 1.26,"绘制: @Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
+axes1.text(.45, 0.94,"截至北京时间: "+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
+axes1.text(.45, .91,"绘制: @Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
 # add legend for bar plot
 import matplotlib.patches as mpatches
 handles = []
@@ -274,7 +273,10 @@ for country in countries:
     handle = mpatches.Patch(color=cc_dict[country],label=c_dict[country])
     handles.append(handle)
 plt.legend(handles = handles,loc='upper center',ncol=len(countries),prop=fprop)
-
+# save
+plt.tight_layout()
+plt.savefig('launch_'+datatxt+'_by_lv.png')
+""" 
 # add axes 2, soyuz 
 axes2 = fig.add_axes([0.0,0.36,0.5,0.5])
 rocket_series = np.array(launch_vehicles_family)
@@ -379,9 +381,6 @@ for t in texts:
     t.set_y(0.5 * y)
 plt.setp(texts, size=10, weight="bold", color="w", ha='center')
 axes6.legend(cz_3as_unq,bbox_to_anchor=(.9, 1.0))
-# save
-#plt.tight_layout()
-plt.savefig('launch_2021_by_lv.png')
 
 
 #%%  Plot rockets launched by country (sites, launch vehicles)
