@@ -212,10 +212,16 @@ for rect in axes1.patches:
         ha = 'center',
         va = va
     )  
+# secondary pie chart
 sizes = launch_overall[x_idx]/len(launch_time)*100
 explode = np.zeros(len(sizes))
 axes2 = fig.add_axes([.05, 0.35, 0.5, 0.5]) # inset axes
-patches,p_text=axes2.pie(sizes,colors = site_colors[sites_idx],explode=explode, shadow=False, startangle=90)
+countries=np.array(countries)
+cnt = countries[x_idx]
+axes2_colors=[]
+for cont in cnt:
+    axes2_colors.append(cc_dict[cont])
+patches,p_text=axes2.pie(sizes,colors = axes2_colors, explode=explode, shadow=False, startangle=90)
 axes2.legend(patches,xaxis_labels,loc='center right',bbox_to_anchor=(1.2, 0.5),prop =fprop)
 for font in p_text:
     font.set_fontproperties(fprop)
