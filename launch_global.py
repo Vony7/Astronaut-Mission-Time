@@ -184,9 +184,10 @@ x_labels = np.array(x_labels)
 
 fig=plt.figure(figsize=(12,8),dpi=300)
 axes1 = fig.add_axes([0.1, 0.1, 0.8, 0.8]) # main axes
-axes1.xaxis.set_ticklabels(x_labels[sites_idx],fontproperties = fprop)
 axes1.yaxis.set_major_locator(MultipleLocator(5))
 axes1.yaxis.set_minor_locator(MultipleLocator(1))
+axes1.xaxis.set_ticklabels(x_labels[sites_idx],fontproperties = fprop)
+
 plt.title(datatxt+'年全球航天入轨各发射场统计',fontproperties = fprop_title, fontsize = 30)
 plt.ylabel('发射次数',fontproperties=fprop)
 plt.xlabel('航天发射场/中心名称',fontproperties=fprop)
@@ -280,7 +281,7 @@ for country in countries:
     handles.append(handle)
 plt.legend(handles = handles,loc='upper center',ncol=len(countries),prop=fprop)
 # save
-plt.tight_layout()
+#plt.tight_layout()
 plt.savefig('launch_'+datatxt+'_by_lv.png')
 """ 
 # add axes 2, soyuz 
