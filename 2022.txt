@@ -13,3 +13,4 @@
 02/03/2022T04:27    USA 1   Vandenberg  Falcon-9    Falcon-9B5 NROL-87 LC-4E B1071-1
 02/04/2022T02:13    USA 1   KSC Falcon-9    Falcon-9B5 StarLinkG4-7 LC-39A B1061-6
 02/05/2022T15:00    RUS 1   Plesetsk    Soyuz-2.1   Soyuz-2.1a/Fregate-M Neitron Site43LC4
+02/11/2022T02:09    RUS 1   Kourou  Soyuz-2.1   Soyuz-2.1b-ST/Fregate-MT Onewebx34 
