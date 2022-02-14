@@ -15,3 +15,4 @@
 02/05/2022T15:00    RUS 1   Plesetsk    Soyuz-2.1   Soyuz-2.1a/Fregate-M Neitron Site43LC4
 02/11/2022T02:09    RUS 1   Kourou  Soyuz-2.1   Soyuz-2.1b-ST/Fregate-MT Onewebx34 
 02/11/2022T03:59    USA 0   CC  Rocket-3.3  Rocket-3.3 ElaNa-41 LC-46
+02/14/2022T08:29    IND 1   SDSC PSLV   PSLV-XL EOS-04,INS-2TD,INSPIREsat-1 LC-01
