@@ -53,6 +53,7 @@ L_rockets = np.unique(launch_rockets)
 c_dict = {'CHN':'中国','ESA':'欧空局','IND':'印度','IRN':'伊朗','JPN':'日本','RUS':'俄罗斯','SKO':'韩国','USA':'美国'}
 # color code by country
 color_country = np.array(['#A30000','#194852','#3989b9','cyan','#fcc9b9','#0033A0','#FFA500','#002868'])
+cc_dict = {'CHN':'#A30000','ESA':'#194852','IND':'#3989b9','IRN':'cyan','JPN':'#fcc9b9','RUS':'#0033A0','SKO':'#FFA500','USA':'#002868'}
 #color_c_dict ={'CHN':'#A30000','ESA':'194852','IND':'印度','IRN':'伊朗','JPN':'日本','RUS':'俄罗斯','SKO':'韩国','USA':'美国'}
 # Launch countries x time
 launch_total = np.zeros((len(launch_time),countries.size),dtype=int)
@@ -103,7 +104,7 @@ for j in np.arange(0,countries.size):
     y_value = launch_total[:,j]
     y_value=np.append(y_value,y_value[-1])
     y_value = np.insert(y_value,0,launches_init,axis=0) # start from day 1 of the year
-    plt.step(x_value,y_value,where='post',color = color_country[j],label=c_dict[countries[j]],linewidth=3)
+    plt.step(x_value,y_value,where='post',color = cc_dict[countries[j]],label=c_dict[countries[j]],linewidth=3)
 plt.legend(prop =fprop)
 ax.yaxis.set_major_locator(MultipleLocator(5))
 ax.yaxis.set_minor_locator(MultipleLocator(1))
@@ -166,7 +167,6 @@ plt.savefig('launch_'+datatxt+'_barplot.png')
 
 #%% By Launch Site
 dict_sites = {'Baikonur':'拜科努', 'Semnan':'森南', 'JSLC':'酒泉', 'CC':'卡角','KSC':'肯尼迪', 'Kodaik':'柯迪科', 'Kourou':'库鲁', 'Mahia':'玛西亚', 'Mojave':'莫哈维', 'Naro':'罗老','Plesetsk':'普列谢', 'SDSC':'萨第什','TSLC':'太原','Tanegashima':'种子岛','USC':'内之浦','Vandenberg':'范登堡','Vostochny':'东方','WSLS':'文昌','Wallops':'沃乐普','XSLC':'西昌'}
-cc_dict = {'CHN':'#A30000','ESA':'#194852','IND':'#3989b9','IRN':'cyan','JPN':'#fcc9b9','RUS':'#0033A0','SKO':'#FFA500','USA':'#002868'}
 sites_idx = np.argsort(launch_Bysites)
 site_colors = []
 launch_country = np.array(launch_country)
