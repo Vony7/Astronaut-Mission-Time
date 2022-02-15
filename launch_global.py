@@ -196,6 +196,12 @@ time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M
 axes1.text(.9, 1.35,"截至北京时间: "+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
 axes1.text(.9, 1.30,"绘制: @Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
 axes1.bar(L_sites[sites_idx],launch_Bysites[sites_idx],color = site_colors[sites_idx])
+import matplotlib.patches as mpatches
+handles = []
+for country in countries:
+    handle = mpatches.Patch(color=cc_dict[country],label=c_dict[country])
+    handles.append(handle)
+axes1.legend(handles = handles,loc='upper center',ncol=len(countries),prop=fprop)
 for rect in axes1.patches:
     y_value = rect.get_height()
     x_value = rect.get_x()+rect.get_width()/2
@@ -213,8 +219,9 @@ for rect in axes1.patches:
         ha = 'center',
         va = va
     )  
-# secondary pie chart
-sizes = launch_overall[x_idx]/len(launch_time)*100
+# axis 2 pie plot
+#sizes = launch_overall[x_idx]/len(launch_time)*100
+sizes = launch_Bysites[sites_idx]/sum(launch_Bysites[sites_idx])*100
 explode = np.zeros(len(sizes))
 axes2 = fig.add_axes([.05, 0.35, 0.5, 0.5]) # inset axes
 countries=np.array(countries)
@@ -222,8 +229,9 @@ cnt = countries[x_idx]
 axes2_colors=[]
 for cont in cnt:
     axes2_colors.append(cc_dict[cont])
-patches,p_text=axes2.pie(sizes,colors = axes2_colors, explode=explode, shadow=False, startangle=90)
-axes2.legend(patches,xaxis_labels,loc='center right',bbox_to_anchor=(1.2, 0.5),prop =fprop)
+patches,p_text=axes2.pie(sizes, explode=explode, shadow=False, startangle=90)
+#axes2.legend(patches,xaxis_labels,loc='center right',bbox_to_anchor=(1.2, 0.5),prop =fprop)
+axes2.legend(launch_Bysites[sites_idx],labels=x_labels[sites_idx],loc='center right',bbox_to_anchor=(1.2,0.5),prop=fprop)
 for font in p_text:
     font.set_fontproperties(fprop)
 plt.savefig('launch_'+datatxt+'_by_sites.png')
@@ -244,6 +252,7 @@ L_vehicles = np.array(L_vehicles)
 lv_idx = argsort(launch_Byvehicles)
 # plot
 fig=plt.figure(figsize=(12,8),dpi=300)
+# Axis 1
 axes1 = fig.add_axes([0.1, 0.1, 0.8, 0.8]) # main axes
 axes1.bar(L_vehicles[lv_idx],launch_Byvehicles[lv_idx],color = vehicles_colors[lv_idx])
 for rect in axes1.patches:
