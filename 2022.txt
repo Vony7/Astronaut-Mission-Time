@@ -17,3 +17,4 @@
 02/11/2022T03:59    USA 0   CC  Rocket-3.3  Rocket-3.3 ElaNa-41 LC-46
 02/14/2022T08:29    IND 1   SDSC PSLV   PSLV-XL EOS-04,INS-2TD,INSPIREsat-1 LC-01
 02/15/2022T12:25    RUS 1   Baikonur Soyuz-2.1 Soyuz-2.1a Progress-MS19 Site31/6
+02/20/2022T01:40    USA 1   Wallops Antares Antares-230+ Cygnus-NG17 LC-0A
