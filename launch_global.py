@@ -193,8 +193,8 @@ plt.ylabel('发射次数',fontproperties=fprop)
 plt.xlabel('航天发射场/中心名称',fontproperties=fprop)
 from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
-axes1.text(.9, 1.35,"截至北京时间: "+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
-axes1.text(.9, 1.30,"绘制: @Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
+axes1.text(.4, .95,"截至北京时间: "+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
+axes1.text(.4, .90,"绘制: @Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
 axes1.bar(L_sites[sites_idx],launch_Bysites[sites_idx],color = site_colors[sites_idx])
 import matplotlib.patches as mpatches
 handles = []
