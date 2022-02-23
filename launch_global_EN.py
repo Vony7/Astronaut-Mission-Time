@@ -105,7 +105,7 @@ from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
 ax.text(.3, 0.95,"Produced at: "+ time_now + " (UTC+8)", color="gray",transform=ax.transAxes,va='center')
 ax.text(.3, 0.90,"Produced by: @Vony7", color="gray", transform=ax.transAxes)
-plt.title('Orbital Launch Attempts in '+datatxt, fontsize = 20)
+plt.title('Orbital Launch Attempt in '+datatxt, fontsize = 20)
 plt.xlabel('Time (UTC+8)')
 plt.ylabel('Launches')
 plt.ylim(ymin=0)
@@ -180,8 +180,8 @@ plt.ylabel('Launches')
 plt.xlabel('Launch Site/Center')
 from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
-ax.text(.3, 0.95,"Produced at: "+ time_now + " (UTC+8)", color="gray",transform=ax.transAxes,va='center')
-ax.text(.3, 0.90,"Produced by: @Vony7",color="gray", transform=ax.transAxes)
+axes1.text(.3, 0.95,"Produced at: "+ time_now + " (UTC+8)", color="gray",transform=ax.transAxes,va='center')
+axes1.text(.3, 0.90,"Produced by: @Vony7",color="gray", transform=ax.transAxes)
 axes1.bar(L_sites[sites_idx],launch_Bysites[sites_idx],color = site_colors[sites_idx])
 import matplotlib.patches as mpatches
 handles = []
@@ -210,15 +210,16 @@ for rect in axes1.patches:
 #sizes = launch_overall[x_idx]/len(launch_time)*100
 sizes = launch_Bysites[sites_idx]/sum(launch_Bysites[sites_idx])*100
 explode = np.zeros(len(sizes))
-axes2 = fig.add_axes([.05, 0.35, 0.5, 0.5]) # inset axes
+axes2 = fig.add_axes([.05, 0.3, 0.5, 0.5]) # inset axes
 countries=np.array(countries)
 cnt = countries[x_idx]
 axes2_colors=[]
 for cont in cnt:
     axes2_colors.append(cc_dict[cont])
-patches,p_text=axes2.pie(sizes, explode=explode, shadow=False, startangle=90)
+#patches,p_text=axes2.pie(sizes, explode=explode, shadow=False, startangle=90)
 #axes2.legend(patches,xaxis_labels,loc='center right',bbox_to_anchor=(1.2, 0.5),prop =fprop)
-axes2.legend(labels=L_sites,loc='center right',bbox_to_anchor=(1.3,0.5))
+#axes2.legend(labels=L_sites,loc='center right',bbox_to_anchor=(1.3,0.5))
+axes2.pie(sizes,labels=L_sites,colors=axes2_colors,autopct='%1.1f%%')
 plt.savefig('EN_launch_'+datatxt+'_by_sites.png')
 
 #%% By Launch Vehicle
@@ -280,9 +281,10 @@ plt.legend(handles = handles,loc='upper center',ncol=len(countries))
 #sizes = launch_overall[x_idx]/len(launch_time)*100
 sizes = launch_Byvehicles[lv_idx]/sum(launch_Byvehicles[lv_idx])*100
 explode = np.zeros(len(sizes))
-axes2 = fig.add_axes([.05, 0.35, 0.5, 0.5]) # inset axes
-patches,p_text=axes2.pie(sizes, explode=explode, shadow=False, startangle=90)
-axes2.legend(launch_Byvehicles[lv_idx],labels=L_vehicles[lv_idx],loc='center right',bbox_to_anchor=(1.3,0.5))
+axes2 = fig.add_axes([.15, 0.25, 0.5, 0.5]) # inset axes
+#patches,p_text=axes2.pie(sizes, explode=explode, shadow=False, startangle=90)
+#axes2.legend(launch_Byvehicles[lv_idx],labels=L_vehicles[lv_idx],loc='center right',bbox_to_anchor=(1.3,0.5))
+axes2.pie(sizes,labels=L_vehicles[lv_idx],autopct='%1.1f%%')
 plt.savefig('EN_launch_'+datatxt+'_by_lv.png')
 """ 
 # add axes 2, soyuz 
