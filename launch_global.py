@@ -229,9 +229,9 @@ cnt = countries[x_idx]
 axes2_colors=[]
 for cont in cnt:
     axes2_colors.append(cc_dict[cont])
-patches,p_text=axes2.pie(sizes, explode=explode, shadow=False, startangle=90)
+patches,p_text=axes2.pie(sizes, labels=x_labels[sites_idx],explode=explode, colors=site_colors[sites_idx],shadow=False, startangle=90)
 #axes2.legend(patches,xaxis_labels,loc='center right',bbox_to_anchor=(1.2, 0.5),prop =fprop)
-axes2.legend(labels=x_labels[sites_idx],loc='center right',bbox_to_anchor=(1.2,0.5),prop=fprop)
+#axes2.legend(labels=x_labels[sites_idx],loc='center right',bbox_to_anchor=(1.2,0.5),prop=fprop)
 for font in p_text:
     font.set_fontproperties(fprop)
 plt.savefig('launch_'+datatxt+'_by_sites.png')

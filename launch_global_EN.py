@@ -210,15 +210,13 @@ for rect in axes1.patches:
 #sizes = launch_overall[x_idx]/len(launch_time)*100
 sizes = launch_Bysites[sites_idx]/sum(launch_Bysites[sites_idx])*100
 explode = np.zeros(len(sizes))
-axes2 = fig.add_axes([.05, 0.3, 0.5, 0.5]) # inset axes
+axes2 = fig.add_axes([.15, 0.3, 0.5, 0.5]) # inset axes
 countries=np.array(countries)
 cnt = countries[x_idx]
 axes2_colors=[]
 for cont in cnt:
     axes2_colors.append(cc_dict[cont])
 #patches,p_text=axes2.pie(sizes, explode=explode, shadow=False, startangle=90)
-#axes2.legend(patches,xaxis_labels,loc='center right',bbox_to_anchor=(1.2, 0.5),prop =fprop)
-#axes2.legend(labels=L_sites,loc='center right',bbox_to_anchor=(1.3,0.5))
 axes2.pie(sizes,labels=L_sites[sites_idx],colors=axes2_colors,autopct='%1.1f%%')
 plt.savefig('EN_launch_'+datatxt+'_by_sites.png')
 
