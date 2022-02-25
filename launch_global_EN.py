@@ -219,7 +219,7 @@ for cont in cnt:
 #patches,p_text=axes2.pie(sizes, explode=explode, shadow=False, startangle=90)
 #axes2.legend(patches,xaxis_labels,loc='center right',bbox_to_anchor=(1.2, 0.5),prop =fprop)
 #axes2.legend(labels=L_sites,loc='center right',bbox_to_anchor=(1.3,0.5))
-axes2.pie(sizes,labels=L_sites,colors=axes2_colors,autopct='%1.1f%%')
+axes2.pie(sizes,labels=L_sites[sites_idx],colors=axes2_colors,autopct='%1.1f%%')
 plt.savefig('EN_launch_'+datatxt+'_by_sites.png')
 
 #%% By Launch Vehicle
