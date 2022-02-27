@@ -166,7 +166,7 @@ plt.legend(loc='upper center', prop=fprop, ncol=2,frameon=False)
 plt.savefig('launch_'+datatxt+'_barplot.png')
 
 #%% By Launch Site
-dict_sites = {'Baikonur':'拜科努', 'Semnan':'森南', 'JSLC':'酒泉', 'CC':'卡角','KSC':'肯尼迪', 'Kodaik':'柯迪科', 'Kourou':'库鲁', 'Mahia':'玛西亚', 'Mojave':'莫哈维', 'Naro':'罗老','Plesetsk':'普列谢', 'SDSC':'萨第什','TSLC':'太原','Tanegashima':'种子岛','USC':'内之浦','Vandenberg':'范登堡','Vostochny':'东方','WSLS':'文昌','Wallops':'沃乐普','XSLC':'西昌'}
+dict_sites = {'Baikonur':'拜科努尔', 'Semnan':'森南', 'JSLC':'酒泉', 'CC':'卡拉维尔角','KSC':'肯尼迪', 'Kodaik':'柯迪科', 'Kourou':'库鲁', 'Mahia':'玛西亚', 'Mojave':'莫哈维', 'Naro':'罗老','Plesetsk':'普列谢茨克', 'SDSC':'萨第什','TSLC':'太原','Tanegashima':'种子岛','USC':'内之浦','Vandenberg':'范登堡','Vostochny':'东方','WSLS':'文昌','Wallops':'沃乐普斯','XSLC':'西昌'}
 sites_idx = np.argsort(launch_Bysites)
 site_colors = []
 launch_country = np.array(launch_country)
@@ -229,7 +229,7 @@ cnt = countries[x_idx]
 axes2_colors=[]
 for cont in cnt:
     axes2_colors.append(cc_dict[cont])
-patches,p_text=axes2.pie(sizes, labels=x_labels[sites_idx],explode=explode, colors=site_colors[sites_idx],shadow=False, startangle=90)
+patches,p_text=axes2.pie(sizes, labels=x_labels[sites_idx],explode=explode,shadow=False, startangle=90)
 #axes2.legend(patches,xaxis_labels,loc='center right',bbox_to_anchor=(1.2, 0.5),prop =fprop)
 #axes2.legend(labels=x_labels[sites_idx],loc='center right',bbox_to_anchor=(1.2,0.5),prop=fprop)
 for font in p_text:
