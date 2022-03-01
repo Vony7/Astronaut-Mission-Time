@@ -22,3 +22,4 @@
 02/26/2022T01:12    USA 1   Vandenberg Falcon-9 Falcon-9B5 StarLinkG4-11(x50) LC-4E B1053-4
 02/27/2022T07:44    CHN 1   JSLC CZ-4C CZ-4C L-SAR01B 9401
 02/27/2022T11:06    CHN 1   WSLS CZ-8   CZ-8Y2 RideShare-22 LC201
+03/01/2022T04:37    USA 1   Mahia Electron ElectronY24 StriX-Beta LC-1B 
