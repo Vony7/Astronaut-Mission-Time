@@ -292,12 +292,14 @@ plt.legend(handles = handles,loc='upper center',ncol=len(countries),prop=fprop)
 # save
 #plt.tight_layout()
 # axis 2 pie plot
-#sizes = launch_overall[x_idx]/len(launch_time)*100
+
 sizes = launch_Byvehicles[lv_idx]/sum(launch_Byvehicles[lv_idx])*100
 explode = np.zeros(len(sizes))
-axes2 = fig.add_axes([.05, 0.35, 0.5, 0.5]) # inset axes
-patches,p_text=axes2.pie(sizes, explode=explode, shadow=False, startangle=90)
-axes2.legend(launch_Byvehicles[lv_idx],labels=L_vehicles[lv_idx],loc='center right',bbox_to_anchor=(1.3,0.5))
+axes2 = fig.add_axes([.12, 0.3, 0.5, 0.5]) # inset axes
+from matplotlib import cm
+n_lv = len(lv_idx)
+cs=cm.jet(np.arange(n_lv)/n_lv)
+patches,p_text=axes2.pie(sizes, labels=L_vehicles[lv_idx],colors=cs,explode=explode, shadow=False, startangle=0)
 plt.savefig('launch_'+datatxt+'_by_lv.png')
 """ 
 # add axes 2, soyuz 
