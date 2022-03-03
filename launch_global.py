@@ -227,9 +227,12 @@ axes2 = fig.add_axes([.05, 0.35, 0.5, 0.5]) # inset axes
 countries=np.array(countries)
 cnt = countries[x_idx]
 axes2_colors=[]
+from matplotlib import cm
+n_lv1 = len(sites_idx)
+cs1=cm.jet(np.arange(n_lv1)/n_lv1)
 for cont in cnt:
     axes2_colors.append(cc_dict[cont])
-patches,p_text=axes2.pie(sizes, labels=x_labels[sites_idx],explode=explode,shadow=False, startangle=90)
+patches,p_text=axes2.pie(sizes, labels=x_labels[sites_idx],colors =cs1,explode=explode,shadow=False, startangle=90)
 #axes2.legend(patches,xaxis_labels,loc='center right',bbox_to_anchor=(1.2, 0.5),prop =fprop)
 #axes2.legend(labels=x_labels[sites_idx],loc='center right',bbox_to_anchor=(1.2,0.5),prop=fprop)
 for font in p_text:
@@ -254,7 +257,7 @@ lv_idx = argsort(launch_Byvehicles)
 fig=plt.figure(figsize=(12,8),dpi=300)
 # Axis 1
 axes1 = fig.add_axes([0.1, 0.1, 0.8, 0.8]) # main axes
-axes1.bar(L_vehicles[lv_idx],launch_Byvehicles[lv_idx],color = vehicles_colors[lv_idx])
+axes1.bar(L_vehicles[lv_idx],launch_Byvehicles[lv_idx],color= vehicles_colors[lv_idx])
 for rect in axes1.patches:
     y_value = rect.get_height()
     x_value = rect.get_x()+rect.get_width()/2
