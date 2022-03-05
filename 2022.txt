@@ -25,3 +25,4 @@
 03/01/2022T04:37    USA 1   Mahia Electron ElectronY24 StriX-Beta LC-1B 
 03/02/2022T05:38    USA 1   CC Atlas-V Atlas-V541 GOES-T LC-41
 03/03/2022T22:25    USA 1   KSC Falcon-9 Falcon-9B5 StarLinkG4-9(x47) LC-39A B1060-11
+03/05/2022T14:01    CHN 1   XSLC CZ-2C CZ-2C/Y62 Yinhe-02(x6),Xingyuan-yaogan LC-3
