@@ -214,10 +214,13 @@ axes2 = fig.add_axes([.15, 0.3, 0.5, 0.5]) # inset axes
 countries=np.array(countries)
 cnt = countries[x_idx]
 axes2_colors=[]
+from matplotlib import cm
+n_lv1 = len(sites_idx)
+cs1=cm.jet(np.arange(n_lv1)/n_lv1)
 for cont in cnt:
     axes2_colors.append(cc_dict[cont])
 #patches,p_text=axes2.pie(sizes, explode=explode, shadow=False, startangle=90)
-axes2.pie(sizes,labels=L_sites[sites_idx],colors=axes2_colors,autopct='%1.1f%%')
+axes2.pie(sizes,labels=L_sites[sites_idx],colors=cs1)
 plt.savefig('EN_launch_'+datatxt+'_by_sites.png')
 
 #%% By Launch Vehicle
@@ -282,7 +285,10 @@ explode = np.zeros(len(sizes))
 axes2 = fig.add_axes([.15, 0.25, 0.5, 0.5]) # inset axes
 #patches,p_text=axes2.pie(sizes, explode=explode, shadow=False, startangle=90)
 #axes2.legend(launch_Byvehicles[lv_idx],labels=L_vehicles[lv_idx],loc='center right',bbox_to_anchor=(1.3,0.5))
-axes2.pie(sizes,labels=L_vehicles[lv_idx],autopct='%1.1f%%')
+from matplotlib import cm
+n_lv = len(lv_idx)
+cs=cm.jet(np.arange(n_lv)/n_lv)
+axes2.pie(sizes,labels=L_vehicles[lv_idx],colors=cs)
 plt.savefig('EN_launch_'+datatxt+'_by_lv.png')
 """ 
 # add axes 2, soyuz 
