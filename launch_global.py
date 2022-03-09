@@ -235,7 +235,7 @@ n_lv1 = len(sites_idx)
 cs1=cm.jet(np.arange(n_lv1)/n_lv1)
 for cont in cnt:
     axes2_colors.append(cc_dict[cont])
-patches,p_text=axes2.pie(sizes, labels=x_labels[sites_idx],colors =cs1,explode=explode,shadow=False, startangle=90)
+patches,p_text=axes2.pie(sizes, labels=x_labels[sites_idx],colors =cs1,explode=explode,shadow=False, startangle=0)
 #axes2.legend(patches,xaxis_labels,loc='center right',bbox_to_anchor=(1.2, 0.5),prop =fprop)
 #axes2.legend(labels=x_labels[sites_idx],loc='center right',bbox_to_anchor=(1.2,0.5),prop=fprop)
 for font in p_text:
