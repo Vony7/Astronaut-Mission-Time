@@ -158,7 +158,7 @@ ax.text(.3, 0.92,"截至北京时间: "+ time_now, fontsize=ftsz, fontproperties
 ax.text(.3, 0.87,"绘制: @Vony7", fontsize=ftsz,fontproperties=fprop,color="gray", transform=ax.transAxes)
 ax.yaxis.set_major_locator(MultipleLocator(5))
 ax.yaxis.set_minor_locator(MultipleLocator(1))
-yaxis_labels=np.arange(0,max(launch_overall),5,dtype=int)
+yaxis_labels=np.arange(0,max(launch_overall),step=5,dtype=int)
 ymax=np.amax(launch_overall)
 ax.set_yticks(np.arange(0,ymax,step=5))
 ax.yaxis.set_ticklabels(yaxis_labels,fontsize=ftsz,fontproperties=fprop)

@@ -151,7 +151,7 @@ ax.text(.3, 0.93,"Produced at: "+ time_now + " (UTC+8)", color="gray",transform=
 ax.text(.3, 0.88,"Produced by: @Vony7", color="gray", transform=ax.transAxes)
 ax.yaxis.set_major_locator(MultipleLocator(10))
 ax.yaxis.set_minor_locator(MultipleLocator(1))
-yaxis_labels=np.arange(0,max(launch_overall),10,dtype=int)
+yaxis_labels=np.arange(0,max(launch_overall),step=10,dtype=int)
 ax.yaxis.set_ticklabels(yaxis_labels,fontsize=ftsz)
 plt.ylabel('Launch', fontsize=ftsz)
 plt.title('Orbital Launch Attempt in '+datatxt, fontsize = 30)
