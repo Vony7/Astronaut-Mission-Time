@@ -410,19 +410,23 @@ for t in texts:
 plt.setp(texts, size=10, weight="bold", color="w", ha='center')
 axes6.legend(cz_3as_unq,bbox_to_anchor=(.9, 1.0))
 
-
+"""
 #%%  Plot rockets launched by country (sites, launch vehicles)
-fname = 'IND'
+fname = 'USA'
 launch_country = np.array(launch_country)
-# Launch by XXX 2021
+# Launch by COUNTRY
 country_idx = np.where(launch_country==fname)
-dict_sites = {'Baikonur':'拜科努尔', 'Semnan':'森南', 'JSLC':'酒泉', 'CC':'卡角','CCK':'肯尼迪', 'Kodaik':'柯迪科', 'Kourou':'库鲁', 'Mahia':'玛西亚', 'Mojave':'莫哈维', 'Naro':'罗老','Plesetsk':'普列谢茨克', 'SDSC':'萨第什','TSLC':'太原','Tanegashima':'种子岛','USC':'内之浦','Vandenberg':'范登堡','Vostochny':'东方','WSLS':'文昌','Wallops':'沃乐普','XSLC':'西昌'}
+dict_sites = {'Shahroud':'沙赫鲁德','Baikonur':'拜科努尔', 'Semnan':'森南', 'JSLC':'酒泉', 'CC':'卡拉维尔角','KSC':'肯尼迪', 
+'Kodaik':'柯迪科', 'Kourou':'库鲁', 'Mahia':'玛西亚', 'Mojave':'莫哈维', 'Naro':'罗老','Plesetsk':'普列谢茨克', 'SDSC':'萨第什',
+'TSLC':'太原','Tanegashima':'种子岛','USC':'内之浦','Vandenberg':'范登堡','Vostochny':'东方','WSLS':'文昌','Wallops':'沃乐普斯',
+'XSLC':'西昌'}
 rs_dict={'CZ-2C':'长二丙', 'CZ-2D':'长二丁', 'CZ-2F':'长二F', 'CZ-3A':'长三甲系列', 'CZ-4':'长四乙系列', 'CZ-5':'长五系列', 
-'CZ-6':'长六', 'CZ-7':'长七系列', 'Ceres-1':'谷神星一号','Hyperbola-1':'双曲线一号', 'Kuaizhou-1A':'快舟一号甲',
+'CZ-6':'长六', 'CZ-7':'长七系列','CZ-8':'长征八号', 'Ceres-1':'谷神星一号','Hyperbola-1':'双曲线一号', 'Kuaizhou-1A':'快舟一号甲',
 'Vega':'织女星','Ariane-5':'阿丽亚娜五','Soyuz-2':'联盟-2','Proton-M':'质子-M','Angara-A5':'安加拉A5',
-'Pegasus-XL':'飞马座XL','Minotar-1':'牛头人一号','Firefly-Alpha':'萤火虫-阿尔法','Delta-IV':'德尔塔四重型','Antares':'安塔瑞斯','Rocket-3':'火箭-3','LauncherOne':'发射器一号','Atlas-V':'宇宙神五号','Electron':'电子号','Falcon-9':'猎鹰九号',
-'H-IIA':'H-IIA','Epsilon':'伊普西龙',
-'Simorgh':'凤凰','PSLV-DL':'PSLV-DL','KSLV-II':'KSLV-2','GSLV-MKII':'GSLV-MK2'}
+'Pegasus-XL':'飞马座XL','Minotar-1':'牛头人一号','Firefly-Alpha':'萤火虫-阿尔法','Delta-IV':'德尔塔四重型','Antares':'安塔瑞斯',
+'Rocket-3':'火箭-3','LauncherOne':'发射器一号','Atlas-V':'宇宙神五号','Electron':'电子号','Falcon-9':'猎鹰九号',
+'H-IIA':'H-IIA','Epsilon':'伊普西龙','Simorgh':'凤凰','PSLV-DL':'PSLV-DL','KSLV-II':'KSLV-2','GSLV-MKII':'GSLV-MK2',
+'Qased':'信使'}
 # launch sites and rockets
 all_launch_sites = np.array(launch_sites)
 country_sites =all_launch_sites[country_idx]
@@ -510,7 +514,7 @@ else: # multiple launch sites
     ax.yaxis.set_major_locator(MultipleLocator(5))
     ax.yaxis.set_minor_locator(MultipleLocator(1))
     plt.ylim([0,ymax+1])
-    plt.savefig('2021_'+fname+'_by_sites_stacked.png')
+    plt.savefig(datatxt+'_'+fname+'_by_sites_stacked.png')
     ## by rocket family
     xx_launches = rocket_series[country_idx]
     xx_rockets_2021,xx_rockets_2021_count = np.unique(xx_launches,return_counts=True)
@@ -559,5 +563,4 @@ else: # multiple launch sites
     ax.xaxis.set_ticks(np.arange(0,len(rkt_2021_names)))
     ax.xaxis.set_ticklabels(rkt_labels,fontproperties=fprop)
     plt.ylim([0,ymax+1])
-    plt.savefig('2021_'+fname+'_by_Rockest.png')
- """
+    plt.savefig(datatxt+'_'+fname+'_by_Rockest.png')
