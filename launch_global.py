@@ -465,7 +465,7 @@ def plotByCountry(fname,launch_country):
         for rkt in country_rockets_uniq:
             lg_labels.append(rs_dict[rkt])
         ax.legend(lg_labels,prop=fprop)
-        plt.title('2021年'+c_dict[fname]+'各型火箭入轨发射统计',fontproperties=fprop_title,fontsize=30)
+        plt.title(datatxt+'年'+c_dict[fname]+'各型火箭入轨发射统计',fontproperties=fprop_title,fontsize=30)
         # author info
         from datetime import datetime
         time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
@@ -487,7 +487,7 @@ def plotByCountry(fname,launch_country):
         lgd_cn=[]
         for lgd_en in country_rockets_uniq:
             lgd_cn.append(rs_dict[lgd_en])
-        plt.title('2021年'+c_dict[fname]+'航天各发射场入轨发射统计',fontproperties=fprop_title,fontsize=30)
+        plt.title(datatxt+'年'+c_dict[fname]+'航天各发射场入轨发射统计',fontproperties=fprop_title,fontsize=30)
         plt.legend(lgd_cn,prop=fprop,loc='upper center',facecolor='black',ncol=3,frameon=False)
         plt.xlabel('发射场（中心）',fontproperties=fprop,fontsize=12)
         plt.ylabel('发射次数',fontproperties=fprop,fontsize=12)
@@ -553,7 +553,7 @@ def plotByCountry(fname,launch_country):
         ax.text(.35, .74,"截至北京时间: "+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
         ax.text(.35, .7,"绘制: @Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
         plt.legend(x_labels,prop=fprop,loc='upper center',facecolor='black',ncol=4,frameon=False)
-        plt.title('2021年'+c_dict[fname]+'航天各火箭入轨发射统计',fontproperties=fprop_title,fontsize=30)
+        plt.title(datatxt+'年'+c_dict[fname]+'航天各火箭入轨发射统计',fontproperties=fprop_title,fontsize=30)
         #plt.xlabel('火箭名称',fontproperties=fprop,fontsize=12)
         plt.ylabel('发射次数',fontproperties=fprop,fontsize=12)
         ymax = 0
