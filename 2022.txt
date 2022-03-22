@@ -30,3 +30,4 @@
 03/17/2022T15:09    CHN 1   JSLC CZ-4 CZ-4C Yaogan-34(02) 9401     
 03/18/2022T23:55    RUS 1   Baikonur Soyuz-2.1 Soyuz-2.1a Soyuz-MS21 31/6
 03/19/2022T12:42    USA 1   CC Falcon-9 Falcon-9B5 StarLinkG4-12(x53) LC-40
+03/22/2022T20:48    RUS 1   Plesetsk Soyuz-2.1 Soyuz-2.1a/Fregate Meridian-M 43/3
