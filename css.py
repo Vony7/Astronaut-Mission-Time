@@ -66,7 +66,7 @@ def css_func():
     dfs['color'] = dfs.apply(color, axis=1)
     #%% PLOT
     from matplotlib.patches import Patch
-    fig, ax = plt.subplots(1, figsize=(32,12),dpi=300)
+    fig, ax = plt.subplots(1, figsize=(12,6),dpi=300)
     ax.barh(dfs.Task, dfs.days_start_to_end, left=dfs.start_num,height=0.5, color=dfs.color)
     ##### add data labels #####
     for rect in ax.patches:
@@ -78,18 +78,18 @@ def css_func():
         label_x = x + width/2
         label_y = y + height/2
         if height>0:
-            ax.text(label_x,label_y,label_text,color='white',ha='center',va='center',fontsize=8)
-    #plt.title('中国空间站建设',fontproperties = fprop_title,fontsize =40)
+            ax.text(label_x,label_y,label_text,color='white',ha='center',va='center',fontsize=12)
+    plt.title('中国空间站建设',fontproperties = fprop_title,fontsize =30)
     ### Y axis labes###
-    #y_axis_labels = ['天和一号','天舟二号','神舟十二号','天舟三号','神舟十三号']
-    #y_labels = reversed(y_axis_labels)
-    #ax.set_yticklabels(y_labels, fontproperties = fprop,fontsize = 20)
+    y_axis_labels = ['天和一号','天舟二号','神舟十二号','天舟三号','神舟十三号']
+    y_labels = reversed(y_axis_labels)
+    ax.set_yticklabels(y_labels, fontproperties = fprop,fontsize = 16)
     time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
     ax.text(.01, 0.1,"截至北京时间："+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
     ax.text(.01, 0.03,"绘制：@Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
     ##### TICKS #####
     ax.set_xticks(idx)
-    ax.set_xticklabels(x_tk_labels,rotation=15)
+    ax.set_xticklabels(x_tk_labels,rotation=10)
     ax.set_xlabel('北京时间（UTC+8)',fontproperties = fprop)
     fig.autofmt_xdate()
     plt.savefig('css_mission_timeline.png')
