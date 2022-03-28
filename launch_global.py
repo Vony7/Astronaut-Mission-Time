@@ -53,7 +53,7 @@ L_rockets = np.unique(launch_rockets)
 c_dict = {'CHN':'中国','ESA':'欧空局','IND':'印度','IRN':'伊朗','JPN':'日本','RUS':'俄罗斯','SKO':'韩国','USA':'美国'}
 # color code by country
 color_country = np.array(['#A30000','#194852','#3989b9','cyan','#fcc9b9','#0033A0','#FFA500','#002868'])
-cc_dict = {'CHN':'#A30000','ESA':'#194852','IND':'#3989b9','IRN':'#239f40','JPN':'#fcc9b9','RUS':'#0033A0','SKO':'#FFA500','USA':'#b31942'}
+cc_dict = {'CHN':'#A30000','ESA':'#194852','IND':'#ff9933','IRN':'#239f40','JPN':'#fcc9b9','RUS':'#0033A0','SKO':'#FFA500','USA':'#b31942'}
 #color_c_dict ={'CHN':'#A30000','ESA':'194852','IND':'印度','IRN':'伊朗','JPN':'日本','RUS':'俄罗斯','SKO':'韩国','USA':'美国'}
 # Launch countries x time
 launch_total = np.zeros((len(launch_time),countries.size),dtype=int)
