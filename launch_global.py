@@ -53,7 +53,7 @@ L_rockets = np.unique(launch_rockets)
 c_dict = {'CHN':'中国','ESA':'欧空局','IND':'印度','IRN':'伊朗','JPN':'日本','RUS':'俄罗斯','SKO':'韩国','USA':'美国'}
 # color code by country
 color_country = np.array(['#A30000','#194852','#3989b9','cyan','#fcc9b9','#0033A0','#FFA500','#002868'])
-cc_dict = {'CHN':'#A30000','ESA':'#194852','IND':'#3989b9','IRN':'cyan','JPN':'#fcc9b9','RUS':'#0033A0','SKO':'#FFA500','USA':'#202A44'}
+cc_dict = {'CHN':'#A30000','ESA':'#194852','IND':'#3989b9','IRN':'cyan','JPN':'#fcc9b9','RUS':'#0033A0','SKO':'#FFA500','USA':'#b31942'}
 #color_c_dict ={'CHN':'#A30000','ESA':'194852','IND':'印度','IRN':'伊朗','JPN':'日本','RUS':'俄罗斯','SKO':'韩国','USA':'美国'}
 # Launch countries x time
 launch_total = np.zeros((len(launch_time),countries.size),dtype=int)
@@ -112,15 +112,26 @@ ax.yaxis.set_major_locator(MultipleLocator(5))
 ax.yaxis.set_minor_locator(MultipleLocator(1))
 from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
-ax.text(.3, 0.95,"截至北京时间: "+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
+ax.text(.3, 0.93,"截至北京时间: "+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
 ax.text(.3, 0.90,"绘制: @Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
-plt.title(datatxt+'年全球航天入轨发射统计',fontproperties = fprop_title, fontsize = 30)
+plt.title(datatxt+'年全球航天入轨发射统计',fontproperties = fprop_title, fontsize = 30,color='white')
 plt.xlabel('时间',fontproperties=fprop)
 plt.ylabel('发射次数',fontproperties=fprop)
 plt.ylim(ymin=0)
 #plt.xlim(datetime(int(datatxt),1,8,0,0),xmax=max(x_value))
 ax.yaxis.tick_right()
 ax.yaxis.set_label_position('right')
+ax.set_facecolor("black")
+I=plt.legend(loc='upper center', prop=fprop, ncol=5,frameon=False)
+for text in I.get_texts():
+    text.set_color('white')
+ax.spines['bottom'].set_color('white')
+ax.spines['top'].set_color('white') 
+ax.spines['right'].set_color('white')
+ax.spines['left'].set_color('white')
+plt.rcParams['savefig.facecolor']='black'
+ax.tick_params(axis='x', colors='white')
+ax.tick_params(axis='y', which='both',colors='white')
 plt.savefig('launch_'+datatxt+'_step.png')
 
 #%% Bar By Country
@@ -165,9 +176,9 @@ yaxis_labels=np.arange(0,max(launch_overall),step=5,dtype=int)
 ymax=np.amax(launch_overall)
 ax.set_yticks(np.arange(0,ymax,step=5))
 ax.yaxis.set_ticklabels(yaxis_labels,fontsize=ftsz,fontproperties=fprop,color='white')
-ax.set_facecolor("black")
 plt.ylabel('发射次数', fontsize=ftsz, fontproperties = fprop,color='white')
 plt.title(datatxt+'年全球航天入轨发射统计',fontproperties = fprop_title, fontsize = 30,color='white')
+ax.set_facecolor("black")
 I=plt.legend(loc='upper center', prop=fprop, ncol=2,frameon=False)
 for text in I.get_texts():
     text.set_color('white')
@@ -216,7 +227,7 @@ handles = []
 for country in countries:
     handle = mpatches.Patch(color=cc_dict[country],label=c_dict[country])
     handles.append(handle)
-I1=axes1.legend(handles = handles,loc='upper center',ncol=len(countries),prop=fprop,facecolor='black')
+I1=axes1.legend(handles = handles,loc='upper center',ncol=len(countries),prop=fprop,facecolor='black',frameon=False)
 for rect in axes1.patches:
     y_value = rect.get_height()
     x_value = rect.get_x()+rect.get_width()/2
@@ -262,7 +273,7 @@ for cont in cnt:
 patches,p_text=axes2.pie(sizes, labels=x_labels[sites_idx],colors =cs1,explode=explode,shadow=False, startangle=0)
 for font in p_text:
     font.set_fontproperties(fprop)
-    font.set_color('white')
+    font.set_color('white') 
 plt.savefig('launch_'+datatxt+'_by_sites.png')
 
 #%% By Launch Vehicle
@@ -299,12 +310,13 @@ for rect in axes1.patches:
         xytext=(0,space),
         textcoords = "offset points",
         ha = 'center',
-        va = va
+        va = va,
+        color='white'
     )  
 plt.setp(axes1.get_xticklabels(),rotation=0,ha="center",rotation_mode="anchor")
 axes1.yaxis.set_major_locator(MultipleLocator(5))
 axes1.yaxis.set_minor_locator(MultipleLocator(1))
-plt.title(datatxt+'年全球航天入轨按火箭统计',fontproperties = fprop_title, fontsize = 30)
+plt.title(datatxt+'年全球航天入轨按火箭统计',fontproperties = fprop_title, fontsize = 30,color='white')
 plt.ylabel('发射次数',fontproperties=fprop)
 plt.xlabel('运载火箭',fontproperties=fprop)
 from datetime import datetime
@@ -317,11 +329,18 @@ handles = []
 for country in countries:
     handle = mpatches.Patch(color=cc_dict[country],label=c_dict[country])
     handles.append(handle)
-plt.legend(handles = handles,loc='upper center',ncol=len(countries),prop=fprop)
-# save
-#plt.tight_layout()
+I1=plt.legend(handles = handles,loc='upper center',ncol=len(countries),prop=fprop,frameon=False)
+for text in I1.get_texts():
+    text.set_color('white')
+axes1.spines['bottom'].set_color('white')
+axes1.spines['top'].set_color('white') 
+axes1.spines['right'].set_color('white')
+axes1.spines['left'].set_color('white')
+axes1.set_facecolor("black")
+plt.rcParams['savefig.facecolor']='black'
+axes1.tick_params(axis='x', colors='white')
+axes1.tick_params(axis='y', which='both',colors='white')
 # axis 2 pie plot
-
 sizes = launch_Byvehicles[lv_idx]/sum(launch_Byvehicles[lv_idx])*100
 explode = np.zeros(len(sizes))
 axes2 = fig.add_axes([.12, 0.3, 0.5, 0.5]) # inset axes
@@ -329,6 +348,9 @@ from matplotlib import cm
 n_lv = len(lv_idx)
 cs=cm.jet(np.arange(n_lv)/n_lv)
 patches,p_text=axes2.pie(sizes, labels=L_vehicles[lv_idx],colors=cs,explode=explode, shadow=False, startangle=0)
+for font in p_text:
+    font.set_fontproperties(fprop)
+    font.set_color('white') 
 plt.savefig('launch_'+datatxt+'_by_lv.png')
 """ 
 # add axes 2, soyuz 
