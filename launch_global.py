@@ -132,7 +132,7 @@ for country in countries[x_idx]:
 fig,ax = plt.subplots(1,figsize=(12,8),dpi=300)
 plt.bar(countries, launch_overall[x_idx])
 ax.xaxis.set_ticks(np.arange(0,len(countries)))
-ax.xaxis.set_ticklabels(xaxis_labels,fontsize=ftsz,fontproperties = fprop)
+ax.xaxis.set_ticklabels(xaxis_labels,fontsize=ftsz,fontproperties = fprop,color='white')
 # Data Labels
 for rect in ax.patches:
     y_value = rect.get_height()
@@ -150,10 +150,11 @@ for rect in ax.patches:
         xytext=(0,space),
         textcoords = "offset points",
         ha = 'center',
-        va = va
+        va = va,
+        color='white'
     )    
-plt.bar(countries,launch_failure[x_idx],color = '#a71930',label='失败')
-plt.bar(countries, launch_success[x_idx],bottom = launch_failure[x_idx], color = '#0B2265',label='成功')
+plt.bar(countries,launch_failure[x_idx],color = '#612a60',label='失败')
+plt.bar(countries, launch_success[x_idx],bottom = launch_failure[x_idx], color = '#009194',label='成功')
 from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
 ax.text(.3, 0.92,"截至北京时间: "+ time_now, fontsize=ftsz, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
@@ -163,10 +164,20 @@ ax.yaxis.set_minor_locator(MultipleLocator(1))
 yaxis_labels=np.arange(0,max(launch_overall),step=5,dtype=int)
 ymax=np.amax(launch_overall)
 ax.set_yticks(np.arange(0,ymax,step=5))
-ax.yaxis.set_ticklabels(yaxis_labels,fontsize=ftsz,fontproperties=fprop)
-plt.ylabel('发射次数', fontsize=ftsz, fontproperties = fprop)
-plt.title(datatxt+'年全球航天入轨发射统计',fontproperties = fprop_title, fontsize = 30)
-plt.legend(loc='upper center', prop=fprop, ncol=2,frameon=False)
+ax.yaxis.set_ticklabels(yaxis_labels,fontsize=ftsz,fontproperties=fprop,color='white')
+ax.set_facecolor("black")
+plt.rcParams['savefig.facecolor']='black'
+plt.ylabel('发射次数', fontsize=ftsz, fontproperties = fprop,color='white')
+plt.title(datatxt+'年全球航天入轨发射统计',fontproperties = fprop_title, fontsize = 30,color='white')
+I=plt.legend(loc='upper center', prop=fprop, ncol=2,frameon=False)
+for text in I.get_texts():
+    text.set_color('white')
+ax.spines['bottom'].set_color('white')
+ax.spines['top'].set_color('white') 
+ax.spines['right'].set_color('white')
+ax.spines['left'].set_color('white')
+ax.tick_params(axis='x', colors='white')
+ax.tick_params(axis='y', which='both',colors='white')
 plt.savefig('launch_'+datatxt+'_barplot.png')
 
 #%% By Launch Site
