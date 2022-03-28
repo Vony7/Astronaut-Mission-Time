@@ -53,7 +53,7 @@ L_rockets = np.unique(launch_rockets)
 c_dict = {'CHN':'中国','ESA':'欧空局','IND':'印度','IRN':'伊朗','JPN':'日本','RUS':'俄罗斯','SKO':'韩国','USA':'美国'}
 # color code by country
 color_country = np.array(['#A30000','#194852','#3989b9','cyan','#fcc9b9','#0033A0','#FFA500','#002868'])
-cc_dict = {'CHN':'#A30000','ESA':'#194852','IND':'#3989b9','IRN':'cyan','JPN':'#fcc9b9','RUS':'#0033A0','SKO':'#FFA500','USA':'#002868'}
+cc_dict = {'CHN':'#A30000','ESA':'#194852','IND':'#3989b9','IRN':'cyan','JPN':'#fcc9b9','RUS':'#0033A0','SKO':'#FFA500','USA':'#202A44'}
 #color_c_dict ={'CHN':'#A30000','ESA':'194852','IND':'印度','IRN':'伊朗','JPN':'日本','RUS':'俄罗斯','SKO':'韩国','USA':'美国'}
 # Launch countries x time
 launch_total = np.zeros((len(launch_time),countries.size),dtype=int)
@@ -166,7 +166,6 @@ ymax=np.amax(launch_overall)
 ax.set_yticks(np.arange(0,ymax,step=5))
 ax.yaxis.set_ticklabels(yaxis_labels,fontsize=ftsz,fontproperties=fprop,color='white')
 ax.set_facecolor("black")
-plt.rcParams['savefig.facecolor']='black'
 plt.ylabel('发射次数', fontsize=ftsz, fontproperties = fprop,color='white')
 plt.title(datatxt+'年全球航天入轨发射统计',fontproperties = fprop_title, fontsize = 30,color='white')
 I=plt.legend(loc='upper center', prop=fprop, ncol=2,frameon=False)
@@ -176,6 +175,7 @@ ax.spines['bottom'].set_color('white')
 ax.spines['top'].set_color('white') 
 ax.spines['right'].set_color('white')
 ax.spines['left'].set_color('white')
+plt.rcParams['savefig.facecolor']='black'
 ax.tick_params(axis='x', colors='white')
 ax.tick_params(axis='y', which='both',colors='white')
 plt.savefig('launch_'+datatxt+'_barplot.png')
@@ -203,10 +203,9 @@ axes1.yaxis.set_major_locator(MultipleLocator(5))
 axes1.yaxis.set_minor_locator(MultipleLocator(1))
 axes1.set_xticks(np.arange(0,len(L_sites),step=1))
 axes1.xaxis.set_ticklabels(x_labels[sites_idx],fontproperties = fprop)
-
-plt.title(datatxt+'年全球航天入轨各发射场统计',fontproperties = fprop_title, fontsize = 30)
-plt.ylabel('发射次数',fontproperties=fprop)
+plt.title(datatxt+'年全球航天入轨各发射场统计',fontproperties = fprop_title, fontsize = 30,color='white')
 plt.xlabel('航天发射场/中心名称',fontproperties=fprop)
+plt.ylabel('发射次数',fontproperties=fprop)
 from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
 axes1.text(.4, .95,"截至北京时间: "+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
@@ -217,7 +216,7 @@ handles = []
 for country in countries:
     handle = mpatches.Patch(color=cc_dict[country],label=c_dict[country])
     handles.append(handle)
-axes1.legend(handles = handles,loc='upper center',ncol=len(countries),prop=fprop)
+I1=axes1.legend(handles = handles,loc='upper center',ncol=len(countries),prop=fprop,facecolor='black')
 for rect in axes1.patches:
     y_value = rect.get_height()
     x_value = rect.get_x()+rect.get_width()/2
@@ -233,8 +232,20 @@ for rect in axes1.patches:
         xytext=(0,space),
         textcoords = "offset points",
         ha = 'center',
-        va = va
+        va = va,
+        color='white'
     )  
+for text in I1.get_texts():
+    text.set_color('white')
+axes1.spines['bottom'].set_color('white')
+axes1.spines['top'].set_color('white') 
+axes1.spines['right'].set_color('white')
+axes1.spines['left'].set_color('white')
+axes1.set_facecolor("black")
+plt.rcParams['savefig.facecolor']='black'
+axes1.tick_params(axis='x', colors='white')
+axes1.tick_params(axis='y', which='both',colors='white')
+
 # axis 2 pie plot
 #sizes = launch_overall[x_idx]/len(launch_time)*100
 sizes = launch_Bysites[sites_idx]/sum(launch_Bysites[sites_idx])*100
@@ -249,10 +260,9 @@ cs1=cm.jet(np.arange(n_lv1)/n_lv1)
 for cont in cnt:
     axes2_colors.append(cc_dict[cont])
 patches,p_text=axes2.pie(sizes, labels=x_labels[sites_idx],colors =cs1,explode=explode,shadow=False, startangle=0)
-#axes2.legend(patches,xaxis_labels,loc='center right',bbox_to_anchor=(1.2, 0.5),prop =fprop)
-#axes2.legend(labels=x_labels[sites_idx],loc='center right',bbox_to_anchor=(1.2,0.5),prop=fprop)
 for font in p_text:
     font.set_fontproperties(fprop)
+    font.set_color('white')
 plt.savefig('launch_'+datatxt+'_by_sites.png')
 
 #%% By Launch Vehicle
