@@ -67,6 +67,17 @@ def css_func():
     #%% PLOT
     from matplotlib.patches import Patch
     fig, ax = plt.subplots(1, figsize=(12,6),dpi=300)
+    ax.set_facecolor('black')
+    I=plt.legend(loc='upper center', prop=fprop, ncol=5,frameon=False)
+    for text in I.get_texts():
+        text.set_color('white')
+    ax.spines['bottom'].set_color('white')
+    ax.spines['top'].set_color('white') 
+    ax.spines['right'].set_color('white')
+    ax.spines['left'].set_color('white')
+    plt.rcParams['savefig.facecolor']='black'
+    ax.tick_params(axis='x', colors='white')
+    ax.tick_params(axis='y', which='both',colors='white')
     ax.barh(dfs.Task, dfs.days_start_to_end, left=dfs.start_num,height=0.5, color=dfs.color)
     ##### add data labels #####
     for rect in ax.patches:
@@ -79,7 +90,7 @@ def css_func():
         label_y = y + height/2
         if height>0:
             ax.text(label_x,label_y,label_text,color='white',ha='center',va='center',fontsize=12)
-    plt.title('中国空间站建设',fontproperties = fprop_title,fontsize =30)
+    plt.title('中国空间站建设工程',fontproperties = fprop_title,fontsize =30,color='white')
     ### Y axis labes###
     y_axis_labels = ['天和一号','天舟二号','神舟十二号','天舟三号','神舟十三号']
     y_labels = reversed(y_axis_labels)
