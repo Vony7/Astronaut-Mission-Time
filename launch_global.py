@@ -152,8 +152,8 @@ for rect in ax.patches:
         ha = 'center',
         va = va
     )    
-plt.bar(countries,launch_failure[x_idx],color = '#d21404',label='失败')
-plt.bar(countries, launch_success[x_idx],bottom = launch_failure[x_idx], color = '#007500',label='成功')
+plt.bar(countries,launch_failure[x_idx],color = '#a71930',label='失败')
+plt.bar(countries, launch_success[x_idx],bottom = launch_failure[x_idx], color = '#0B2265',label='成功')
 from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
 ax.text(.3, 0.92,"截至北京时间: "+ time_now, fontsize=ftsz, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
