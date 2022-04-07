@@ -36,3 +36,4 @@
 04/02/2022T00:24    USA 1   CC  Falcon-9 Falcon-9B5 Transporter-4 LC-40 B1061-7
 04/02/2022T20:41    USA 1   Mahia Electron ElectronY25 Blacksky-16,17 LC-1A
 04/07/2022T07:47    CHN 1   JSLC CZ-4 CZ-4C Gaofen-303 9401 Y38
+04/07/2022T19:20    RUS 1   Plesetsk Soyuz-2.1 Soyuz-2.1b Lotos-s1 43/3
