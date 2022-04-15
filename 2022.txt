@@ -38,3 +38,4 @@
 04/07/2022T07:47    CHN 1   JSLC CZ-4 CZ-4C Gaofen-303 9401 Y38
 04/07/2022T19:20    RUS 1   Plesetsk Soyuz-2.1 Soyuz-2.1b Lotos-s1 43/3
 04/08/2022T23:17    USA 1   KSC Falcon-9 Falcon-9B5 Axiom-1 LC-39A
+04/15/2022T20:00    CHN 1   XSLC CZ-3A CZ-3B/E ChinaSat-6D LC-xx
