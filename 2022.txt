@@ -42,3 +42,4 @@
 04/16/2022T02:16    CHN 1   TSLC CZ-4 CZ-4CY28 Daqi-1 LC-xx
 04/17/2022T21:13    USA 1   Vandenberg Falcon-9 Falcon-9B5 NROL-85 SLC-4E LZ-4 
 04/22/2022T01:51    USA 1   CC Falcon-9 Falcon-9B5 StarLinkG4-14(x53) SLC-40
+04/27/2022T15:52    USA 1   KSC Falcon-9 Falcon-9B5 Dragon-Crew-4 SLC-39A
