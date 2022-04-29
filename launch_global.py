@@ -466,7 +466,7 @@ def plotByCountry(fname,launch_country):
     'XSLC':'西昌'}
     rs_dict={'CZ-2C':'长二丙', 'CZ-2D':'长二丁', 'CZ-2F':'长二F', 'CZ-3A':'长三甲系列', 'CZ-4':'长四乙系列', 'CZ-5':'长五系列', 
     'CZ-6':'长六', 'CZ-6A':'长六甲','CZ-7':'长七系列','CZ-8':'长征八号', 'CZ-11':'长征11','Ceres-1':'谷神星一号','Hyperbola-1':'双曲线一号', 'Kuaizhou-1A':'快舟一号甲',
-    'Vega':'织女星','Ariane-5':'阿丽亚娜五','Soyuz-2':'联盟-2','Proton-M':'质子-M','Angara-A5':'安加拉A5',
+    'Vega':'织女星','Ariane-5':'阿丽亚娜五','Soyuz-2':'联盟-2','Proton-M':'质子-M','Angara-A5':'安加拉A5','Angara-1.2':'安加拉1.2',
     'Pegasus-XL':'飞马座XL','Minotar-1':'牛头人一号','Firefly-Alpha':'萤火虫-阿尔法','Delta-IV':'德尔塔四重型','Antares':'安塔瑞斯',
     'Rocket-3':'火箭-3','LauncherOne':'发射器一号','Atlas-V':'宇宙神五号','Electron':'电子号','Falcon-9':'猎鹰九号',
     'H-IIA':'H-IIA','Epsilon':'伊普西龙','Simorgh':'凤凰','PSLV-DL':'PSLV-DL','KSLV-II':'KSLV-2','GSLV-MKII':'GSLV-MK2',
