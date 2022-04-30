@@ -188,7 +188,7 @@ ax.tick_params(axis='y', which='both',colors='white')
 plt.savefig('launch_'+datatxt+'_barplot.png')
 
 #%% By Launch Site
-dict_sites = {'Shahroud':'沙赫鲁德','Baikonur':'拜科努尔', 'Semnan':'森南', 'JSLC':'酒泉', 'CC':'卡角','KSC':'肯尼迪', 'Kodaik':'柯迪科', 'Kourou':'库鲁', 'Mahia':'玛西亚', 'Mojave':'莫哈维', 'Naro':'罗老','Plesetsk':'普列谢', 'SDSC':'萨第什','TSLC':'太原','Tanegashima':'种子岛','USC':'内之浦','Vandenberg':'范登堡','Vostochny':'东方','WSLS':'文昌','Wallops':'沃乐普斯','XSLC':'西昌','Donghae':'东海'}
+dict_sites = {'Shahroud':'沙赫鲁','Baikonur':'拜科努', 'Semnan':'森南', 'JSLC':'酒泉', 'CC':'卡角','KSC':'肯尼迪', 'Kodaik':'柯迪科', 'Kourou':'库鲁', 'Mahia':'玛西亚', 'Mojave':'莫哈维', 'Naro':'罗老','Plesetsk':'普列谢', 'SDSC':'萨第什','TSLC':'太原','Tanegashima':'种子岛','USC':'内之浦','Vandenberg':'范登堡','Vostochny':'东方','WSLS':'文昌','Wallops':'沃乐普','XSLC':'西昌','Donghae':'东海'}
 sites_idx = np.argsort(launch_Bysites)
 site_colors = []
 launch_country = np.array(launch_country)
@@ -460,10 +460,6 @@ def plotByCountry(fname,launch_country):
     launch_country = np.array(launch_country)
     # Launch by COUNTRY
     country_idx = np.where(launch_country==fname)
-    dict_sites = {'Shahroud':'沙赫鲁德','Baikonur':'拜科努尔', 'Semnan':'森南', 'JSLC':'酒泉', 'CC':'卡拉维尔角','KSC':'肯尼迪', 
-    'Kodaik':'柯迪科', 'Kourou':'库鲁', 'Mahia':'玛西亚', 'Mojave':'莫哈维', 'Naro':'罗老','Plesetsk':'普列谢茨克', 'SDSC':'萨第什',
-    'TSLC':'太原','Tanegashima':'种子岛','USC':'内之浦','Vandenberg':'范登堡','Vostochny':'东方','WSLS':'文昌','Wallops':'沃乐普斯',
-    'XSLC':'西昌','Donghae':'东海'}
     rs_dict={'CZ-2C':'长二丙', 'CZ-2D':'长二丁', 'CZ-2F':'长二F', 'CZ-3A':'长三甲系列', 'CZ-4':'长四乙系列', 'CZ-5':'长五系列', 
     'CZ-6':'长六', 'CZ-6A':'长六甲','CZ-7':'长七系列','CZ-8':'长征八号', 'CZ-11':'长征11','Ceres-1':'谷神星一号','Hyperbola-1':'双曲线一号', 'Kuaizhou-1A':'快舟一号甲',
     'Vega':'织女星','Ariane-5':'阿丽亚娜五','Soyuz-2':'联盟-2','Proton-M':'质子-M','Angara-A5':'安加拉A5','Angara-1.2':'安加拉1.2',
