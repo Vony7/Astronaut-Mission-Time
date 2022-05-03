@@ -273,6 +273,13 @@ for font in p_text:
 plt.savefig('launch_'+datatxt+'_by_sites.png')
 
 #%% By Launch Vehicle
+rs_dict={'CZ-2C':'长二丙', 'CZ-2D':'长二丁', 'CZ-2F':'长二F', 'CZ-3A':'长三甲', 'CZ-4':'长四乙', 'CZ-5':'长五', 
+    'CZ-6':'长六', 'CZ-6A':'长六甲','CZ-7':'长七系列','CZ-8':'长征八', 'CZ-11':'长征11','Ceres-1':'谷神星1','Hyperbola-1':'双曲线1', 'Kuaizhou-1A':'快舟一甲',
+    'Vega':'织女星','Ariane-5':'阿里安5','Soyuz-2.1':'联盟2.1','Proton-M':'质子M','Angara-A5':'安加A5','Angara-1.2':'安加1.2',
+    'Pegasus-XL':'飞马座XL','Minotar-1':'牛头人1','Firefly-Alpha':'阿尔法','Delta-IV':'德塔四重','Antares':'安塔瑞斯',
+    'Rocket-3':'火箭3','LauncherOne':'发射器1','Atlas-V':'宇宙神五','Electron':'电子号','Falcon-9':'猎鹰9',
+    'H-IIA':'H-IIA','Epsilon':'伊普西龙','Simorgh':'凤凰','PSLV-DL':'PSLV-DL','PSLV':'PSLV','KSLV-II':'KSLV-2','GSLV-MKII':'GSLV-MK2',
+    'Qased':'信使'}
 vehicles_colors = []
 launch_country = np.array(launch_country)
 for vehicle in L_vehicles:
@@ -291,6 +298,13 @@ fig=plt.figure(figsize=(12,8),dpi=300)
 # Axis 1
 axes1 = fig.add_axes([0.1, 0.1, 0.8, 0.8]) # main axes
 axes1.bar(L_vehicles[lv_idx],launch_Byvehicles[lv_idx],color= vehicles_colors[lv_idx])
+x_labels=[]
+for lv in L_vehicles:
+    x_labels.append(rs_dict[lv])
+x_labels = np.array(x_labels)
+axes1.set_xticks(np.arange(0,len(L_vehicles),step=1))
+axes1.xaxis.set_ticklabels(x_labels[lv_idx],fontproperties = fprop)
+# add number to patches
 for rect in axes1.patches:
     y_value = rect.get_height()
     x_value = rect.get_x()+rect.get_width()/2
@@ -315,6 +329,7 @@ axes1.yaxis.set_minor_locator(MultipleLocator(1))
 plt.title(datatxt+'年全球航天入轨按火箭统计',fontproperties = fprop_title, fontsize = 30,color='white')
 plt.ylabel('发射次数',fontproperties=fprop)
 plt.xlabel('运载火箭',fontproperties=fprop)
+# add time of plot and producer
 from datetime import datetime
 time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
 axes1.text(.45, 0.94,"截至北京时间: "+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
@@ -326,6 +341,7 @@ for country in countries:
     handle = mpatches.Patch(color=cc_dict[country],label=c_dict[country])
     handles.append(handle)
 I1=plt.legend(handles = handles,loc='upper center',ncol=len(countries),prop=fprop,frameon=False)
+# axis 1 color
 for text in I1.get_texts():
     text.set_color('white')
 axes1.spines['bottom'].set_color('white')
@@ -343,7 +359,7 @@ axes2 = fig.add_axes([.12, 0.3, 0.5, 0.5]) # inset axes
 from matplotlib import cm
 n_lv = len(lv_idx)
 cs=cm.jet(np.arange(n_lv)/n_lv)
-patches,p_text=axes2.pie(sizes, labels=L_vehicles[lv_idx],colors=cs,explode=explode, shadow=False, startangle=0)
+patches,p_text=axes2.pie(sizes, labels=x_labels[lv_idx],colors=cs,explode=explode, shadow=False, startangle=0)
 for font in p_text:
     font.set_fontproperties(fprop)
     font.set_color('white') 
@@ -460,13 +476,6 @@ def plotByCountry(fname,launch_country):
     launch_country = np.array(launch_country)
     # Launch by COUNTRY
     country_idx = np.where(launch_country==fname)
-    rs_dict={'CZ-2C':'长二丙', 'CZ-2D':'长二丁', 'CZ-2F':'长二F', 'CZ-3A':'长三甲系列', 'CZ-4':'长四乙系列', 'CZ-5':'长五系列', 
-    'CZ-6':'长六', 'CZ-6A':'长六甲','CZ-7':'长七系列','CZ-8':'长征八号', 'CZ-11':'长征11','Ceres-1':'谷神星一号','Hyperbola-1':'双曲线一号', 'Kuaizhou-1A':'快舟一号甲',
-    'Vega':'织女星','Ariane-5':'阿丽亚娜五','Soyuz-2':'联盟-2','Proton-M':'质子-M','Angara-A5':'安加拉A5','Angara-1.2':'安加拉1.2',
-    'Pegasus-XL':'飞马座XL','Minotar-1':'牛头人一号','Firefly-Alpha':'萤火虫-阿尔法','Delta-IV':'德尔塔四重型','Antares':'安塔瑞斯',
-    'Rocket-3':'火箭-3','LauncherOne':'发射器一号','Atlas-V':'宇宙神五号','Electron':'电子号','Falcon-9':'猎鹰九号',
-    'H-IIA':'H-IIA','Epsilon':'伊普西龙','Simorgh':'凤凰','PSLV-DL':'PSLV-DL','KSLV-II':'KSLV-2','GSLV-MKII':'GSLV-MK2',
-    'Qased':'信使'}
     # launch sites and rockets
     all_launch_sites = np.array(launch_sites)
     country_sites =all_launch_sites[country_idx]
