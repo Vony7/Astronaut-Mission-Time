@@ -188,7 +188,7 @@ ax.tick_params(axis='y', which='both',colors='white')
 plt.savefig('launch_'+datatxt+'_barplot.png')
 
 #%% By Launch Site
-dict_sites = {'Shahroud':'沙赫鲁','Baikonur':'拜科努', 'Semnan':'森南', 'JSLC':'酒泉', 'CC':'卡角','KSC':'肯尼迪', 'Kodaik':'柯迪科', 'Kourou':'库鲁', 'Mahia':'玛西亚', 'Mojave':'莫哈维', 'Naro':'罗老','Plesetsk':'普列谢', 'SDSC':'萨第什','TSLC':'太原','Tanegashima':'种子岛','USC':'内之浦','Vandenberg':'范登堡','Vostochny':'东方','WSLS':'文昌','Wallops':'沃乐普','XSLC':'西昌','Donghae':'东海'}
+dict_sites = {'Shahroud':'沙赫鲁','Baikonur':'拜科努', 'Semnan':'森南', 'JSLC':'酒泉', 'CC':'卡角','KSC':'肯尼迪', 'Kodaik':'柯迪科', 'Kourou':'库鲁', 'Mahia':'玛西亚', 'Mojave':'莫哈维', 'Naro':'罗老','Plesetsk':'普列谢', 'SDSC':'萨第什','TSLC':'太原','Tanegashima':'种子岛','USC':'内之浦','Vandenberg':'范登堡','Vostochny':'东方','WSLS':'文昌','Wallops':'沃乐普','XSLC':'西昌','Sea':'东海'}
 sites_idx = np.argsort(launch_Bysites)
 site_colors = []
 launch_country = np.array(launch_country)
@@ -533,8 +533,10 @@ def plotByCountry(fname,launch_country):
         lgd_cn=[]
         for lgd_en in country_rockets_uniq:
             lgd_cn.append(rs_dict[lgd_en])
-        plt.title(datatxt+'年'+c_dict[fname]+'航天各发射场入轨发射统计',fontproperties=fprop_title,fontsize=30)
-        plt.legend(lgd_cn,prop=fprop,loc='upper center',facecolor='black',ncol=3,frameon=False)
+        plt.title(datatxt+'年'+c_dict[fname]+'航天各发射场入轨发射统计',fontproperties=fprop_title,color='white',fontsize=30)
+        leg=plt.legend(lgd_cn,prop=fprop,loc='upper center',facecolor='white',ncol=5,frameon=False)
+        for text in leg.texts:
+            text.set_color('white')
         plt.xlabel('发射场（中心）',fontproperties=fprop,fontsize=12)
         plt.ylabel('发射次数',fontproperties=fprop,fontsize=12)
         # data labels
@@ -559,11 +561,23 @@ def plotByCountry(fname,launch_country):
             site_total=np.sum(rockets_fm_sites[:,i])
             datastr='{:.0f}'.format(site_total)
             ymax=max([ymax,site_total])
-            plt.annotate(datastr,xy=(sites_uniq[i],site_total),ha='center',va='bottom',color='black')
+            plt.annotate(datastr,xy=(sites_uniq[i],site_total),ha='center',va='bottom',color='white')
         ax.yaxis.set_major_locator(MultipleLocator(5))
         ax.yaxis.set_minor_locator(MultipleLocator(1))
         plt.ylim([0,ymax+1])
+        # axis 1 color
+        for text in I1.get_texts():
+            text.set_color('white')
+        ax.spines['bottom'].set_color('white')
+        ax.spines['top'].set_color('white') 
+        ax.spines['right'].set_color('white')
+        ax.spines['left'].set_color('white')
+        ax.set_facecolor("black")
+        plt.rcParams['savefig.facecolor']='black'
+        ax.tick_params(axis='x', colors='white')
+        ax.tick_params(axis='y', which='both',colors='white')
         plt.savefig(datatxt+'_'+fname+'_by_sites_stacked.png')
+
         ## by rocket family
         xx_launches = rocket_series[country_idx]
         xx_rockets_2021,xx_rockets_2021_count = np.unique(xx_launches,return_counts=True)
@@ -598,20 +612,33 @@ def plotByCountry(fname,launch_country):
         time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
         ax.text(.35, .74,"截至北京时间: "+ time_now, fontproperties=fprop,color="gray",transform=ax.transAxes,va='center')
         ax.text(.35, .7,"绘制: @Vony7", fontproperties=fprop,color="gray", transform=ax.transAxes)
-        plt.legend(x_labels,prop=fprop,loc='upper center',facecolor='black',ncol=4,frameon=False)
-        plt.title(datatxt+'年'+c_dict[fname]+'航天各火箭入轨发射统计',fontproperties=fprop_title,fontsize=30)
+        leg=plt.legend(x_labels,prop=fprop,loc='upper center',facecolor='white',edgecolor='white',ncol=5,frameon=False)
+        for text in leg.texts:
+            text.set_color('white')
+        plt.title(datatxt+'年'+c_dict[fname]+'航天各火箭入轨发射统计',fontproperties=fprop_title,color='white',fontsize=30)
         #plt.xlabel('火箭名称',fontproperties=fprop,fontsize=12)
         plt.ylabel('发射次数',fontproperties=fprop,fontsize=12)
         ymax = 0
         for i in range(len(xx_rockets_2021[xx_count_idx])):
             datastr='{:.0f}'.format(rkt_2021_total[i])
             ymax=max([ymax,rkt_2021_total[i]])
-            plt.annotate(datastr,xy=(rkt_2021_names[i],rkt_2021_total[i]),ha='center',va='bottom',color='black')
+            plt.annotate(datastr,xy=(rkt_2021_names[i],rkt_2021_total[i]),ha='center',va='bottom',color='white')
         ax.yaxis.set_major_locator(MultipleLocator(5))
         ax.yaxis.set_minor_locator(MultipleLocator(1))
         ax.xaxis.set_ticks(np.arange(0,len(rkt_2021_names)))
         ax.xaxis.set_ticklabels(rkt_labels,fontproperties=fprop)
         plt.ylim([0,ymax+1])
+        # axis 1 color
+        for text in I1.get_texts():
+            text.set_color('white')
+        ax.spines['bottom'].set_color('white')
+        ax.spines['top'].set_color('white') 
+        ax.spines['right'].set_color('white')
+        ax.spines['left'].set_color('white')
+        ax.set_facecolor("black")
+        plt.rcParams['savefig.facecolor']='black'
+        ax.tick_params(axis='x', colors='white')
+        ax.tick_params(axis='y', which='both',colors='white')
         plt.savefig(datatxt+'_'+fname+'_by_Rockest.png')
 #%% Plot
 plotByCountry('CHN',launch_country)
