@@ -89,7 +89,7 @@ print('Total: ')
 print(launch_overall)
 print('-----------------------------------------------')
 last_launch_ctry_index=np.where(countries==launch_country[-1])
-print('Global: ',len(launch_time),'th, ',launch_country[-1],launch_overall[last_launch_ctry_index],'th,',L_vehicles[lv_idx],launch_Byvehicles[lv_idx],'th')
+print('Global: ',len(launch_time),'th, ',launch_country[-1],launch_overall[last_launch_ctry_index],'th,',L_vehicles[lv_idx][0],launch_Byvehicles[lv_idx],'th')
 #%% Step PLOT by Country
 x_value = launch_time.copy()
 time_init = datetime(int(datatxt),1,1,0,0,0)
