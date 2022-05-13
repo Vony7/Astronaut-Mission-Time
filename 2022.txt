@@ -52,3 +52,4 @@
 05/06/2022T17:42    USA 1   KSC Falcon-9 Falcon-9B5 StarLinkG4-17(x53) SLC-39A
 05/10/2022T01:56    CHN 1   WSLS CZ-7 CZ-7/Y5 Tianzhou-4 LC-201
 05/13/2022T15:09    CHN 0   JSLC Hyperbola-1 Hyperbola-1/Y4 Jiling-1MF01A
+05/14/2022T06:07    USA 1   Vandenberg Falcon-9 FalconB5 StarLinkG4-13(x53) B1053-5
