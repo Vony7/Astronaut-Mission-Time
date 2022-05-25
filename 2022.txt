@@ -58,4 +58,4 @@
 05/19/2022T16:03    RUS 1   Plesetsk Soyuz-2.1 Soyuz-2.1a Kosmos-2556/Bars-M-No.3 LC43/4
 05/20/2022T06:54    USA 1   CC Atlas-V Atlas-VN22 Starliner-OFT2 LC-41    
 05/20/2022T18:30    CHN 1   JSLC CZ-2C CZ-2C/YZ-1S DiguiTongXinShiyan-A,B,C 9401
-05/26/2022T02:35    USA 1   KSC Falcon-9 Falcon-9B5 Transportor-5 SLC-40
+05/26/2022T02:35    USA 1   CC Falcon-9 Falcon-9B5 Transportor-5 SLC-40
