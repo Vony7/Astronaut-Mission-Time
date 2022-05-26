@@ -93,6 +93,7 @@ def css_astronauts():
     cd = Astronaut('陈冬','cd','Male','1978/12/01')
     thb = Astronaut('汤洪波','thb','Male','1975/10/1')
     ygf = Astronaut('叶光富','ygf','Male', '1980/9/1')
+    cxz = Astronaut('蔡旭哲','cxz','Male','1980/1/1')
     astro = [ylw,nhs,fjl,zzg,lbm,jhp,lw,ly,zxg,wyp,cd,thb,ygf]
 
     # Add Missions
