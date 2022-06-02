@@ -59,3 +59,4 @@
 05/20/2022T06:54    USA 1   CC Atlas-V Atlas-VN22 Starliner-OFT2 LC-41    
 05/20/2022T18:30    CHN 1   JSLC CZ-2C CZ-2C/YZ-1S DiguiTongXinShiyan-A,B,C 9401
 05/26/2022T02:35    USA 1   CC Falcon-9 Falcon-9B5 Transporter-5 SLC-40
+06/02/2022T12:00    CHN 1   XSLC CZ-2C CZ-2C Jili-1(x9)
