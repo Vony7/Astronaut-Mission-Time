@@ -94,7 +94,7 @@ def css_astronauts():
     thb = Astronaut('汤洪波','thb','Male','1975/10/1')
     ygf = Astronaut('叶光富','ygf','Male', '1980/9/1')
     cxz = Astronaut('蔡旭哲','cxz','Male','1980/1/1')
-    astro = [ylw,nhs,fjl,zzg,lbm,jhp,lw,ly,zxg,wyp,cd,thb,ygf]
+    astro = [ylw,nhs,fjl,zzg,lbm,jhp,lw,ly,zxg,wyp,cd,thb,ygf,cxz]
 
     # Add Missions
     # Name, MID, Start, End,[crew1, crew2, crew3]
@@ -106,7 +106,8 @@ def css_astronauts():
     sz11= Mission("神舟十一号",'sz11','2016/10/17 7:30:00','2016/11/18 13:59:00',[jhp,cd])
     sz12= Mission("神舟十二号",'sz12','2021/06/17 9:22:00','2021/09/17 13:34:00',[nhs,lbm,thb])
     sz13 = Mission("神舟十三号",'sz13','2021/10/16 00:23:56','2022/04/16 09:56:00',[zzg,wyp,ygf])
-    missions = [sz5,sz6,sz7,sz9,sz10,sz11,sz12,sz13] 
+    sz14 = Mission('神舟十四号','sz14','2022/06/05 10:44:15','2022/12/05/ 09:56:00',[cd,ly,cxz])
+    missions = [sz5,sz6,sz7,sz9,sz10,sz11,sz12,sz13,sz14] 
     # Add EVAs
     #EID,start, end,[crew1,crew2],mission
     sz7eva1 = EVA("神舟七号第一次",'2008/9/27 16:35','2008/9/27 17:01',[zzg,lbm],sz7)
@@ -202,7 +203,7 @@ def css_astronauts():
         ptt = plt.bar(astro_names,c[idx_sz],bottom=bottom,color=color_sets[idx_sz])
         #axx.bar_label(ptt,label_type='center',fmt='%.2f')
         bottom +=c[idx_sz]
-    I=plt.legend(legend_names,prop=fprop,loc='upper center',facecolor='black',ncol=len(astro),frameon=False)
+    I=plt.legend(legend_names,prop=fprop,loc='upper center',facecolor='black',ncol=7,frameon=False,mode='expand')
     plt.plot(astro_names,astro_total,'.r')
     for text in I.get_texts():
         text.set_color('white')
@@ -232,6 +233,7 @@ def css_astronauts():
     plt.ylim(0,np.amax(astro_total)+30)
     plt.title("中国航天员在轨时间统计",fontproperties=fprop_title,fontsize=40,color='white')
     now = datetime.datetime.utcnow()+datetime.timedelta(hours=8)
+    #now = datetime.datetime.utcnow()+datetime.timedelta(days=184)
     axx.yaxis.set_minor_locator(tck.AutoMinorLocator())
     axx.text(.4, 0.95,"截至北京时间: "+ now.strftime("%Y/%m/%d %H:%M:%S"), fontproperties=fprop,color="gray",transform=axx.transAxes,va='center')
     axx.text(.4, 0.92,"绘制: @Vony7", fontproperties=fprop,color="gray", transform=axx.transAxes)
