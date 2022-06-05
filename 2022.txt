@@ -61,3 +61,4 @@
 05/26/2022T02:35    USA 1   CC Falcon-9 Falcon-9B5 Transporter-5 SLC-40
 06/02/2022T12:00    CHN 1   XSLC CZ-2C CZ-2C Jili-1(x9)
 06/03/2022T17:32    RUS 1   Baikonur Soyuz-2.1 Soyuz-2.1a Progress-MS-20 Site31/6
+06/05/2022T10:44    CHN 1   JSLC CZ-2F CZ-2F/Y14 Shenzhou-14 921
