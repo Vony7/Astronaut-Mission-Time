@@ -106,7 +106,7 @@ def css_astronauts():
     sz11= Mission("神舟十一号",'sz11','2016/10/17 7:30:00','2016/11/18 13:59:00',[jhp,cd])
     sz12= Mission("神舟十二号",'sz12','2021/06/17 9:22:00','2021/09/17 13:34:00',[nhs,lbm,thb])
     sz13 = Mission("神舟十三号",'sz13','2021/10/16 00:23:56','2022/04/16 09:56:00',[zzg,wyp,ygf])
-    sz14 = Mission('神舟十四号','sz14','2022/06/05 10:44:15','2022/12/05/ 09:56:00',[cd,ly,cxz])
+    sz14 = Mission('神舟十四号','sz14','2022/06/05 10:44:10',0,[cd,ly,cxz])
     missions = [sz5,sz6,sz7,sz9,sz10,sz11,sz12,sz13,sz14] 
     # Add EVAs
     #EID,start, end,[crew1,crew2],mission
