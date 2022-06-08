@@ -108,7 +108,8 @@ wyp = Astronaut('王亚平','wyp','Female','1980/01/01')
 cd = Astronaut('陈冬','cd','Male','1978/12/01')
 thb = Astronaut('汤洪波','thb','Male','1975/10/1')
 ygf = Astronaut('叶光富','ygf','Male', '1980/9/1')
-astro = [ylw,nhs,fjl,zzg,lbm,jhp,lw,ly,zxg,wyp,cd,thb,ygf]
+cxz = Astronaut('蔡旭哲','cxz','Male','1976/5/1')
+astro = [ylw,nhs,fjl,zzg,lbm,jhp,lw,ly,zxg,wyp,cd,thb,ygf,cxz]
 
 
 # In[13]:
@@ -124,7 +125,8 @@ sz10 = Mission("神舟十号",'sz10','2013/06/11 17:38:00','2013/06/26 8:07:00',
 sz11= Mission("神舟十一号",'sz11','2016/10/17 7:30:00','2016/11/18 13:59:00',[jhp,cd])
 sz12= Mission("神舟十二号",'sz12','2021/06/17 9:22:00','2021/09/17 13:34:00',[nhs,lbm,thb])
 sz13 = Mission("神舟十三号",'sz13','2021/10/16 00:23:56','2022/04/16 09:56:00',[zzg,wyp,ygf])
-missions = [sz5,sz6,sz7,sz9,sz10,sz11,sz12,sz13] 
+sz14 = Mission('神舟十四号','sz14','2022/06/05 10:44:10',0,[cd,ly,cxz])
+missions = [sz5,sz6,sz7,sz9,sz10,sz11,sz12,sz13,sz14]
 
 
 # In[14]:
