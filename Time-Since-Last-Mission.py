@@ -205,8 +205,8 @@ cbar = plt.colorbar(sm)
 cbar.set_label('', rotation=270,labelpad=25)
 
 plt.xticks(data_x)   
-ax3.xaxis.set_ticklabels(astro_names,fontproperties=fprop,fontsize=16,color=txtcolor)
-plt.ylabel("距上一次任务结束（年）", fontproperties=fprop,fontsize=20,color=txtcolor)
+ax3.xaxis.set_ticklabels(astro_names,fontproperties=fprop,fontsize=14,color=txtcolor)
+plt.ylabel("距上一次任务结束（年）", fontproperties=fprop,fontsize=14,color=txtcolor)
 #make labels
 for i in range(len(astro)):
     datastr = "{:.2f}".format(time_since[i])
