@@ -67,3 +67,4 @@
 06/18/2022T00:09    USA 1   KSC Falcon-9 Falcon-9B5 StarLinkG4-19(x53) SLC-39A
 06/18/2022T22:19    USA 1   Vandenberg Falcon-9 Falcon-9B5 SARah-1 SLC-4E
 06/19/2022T12:27    USA 1   CC Falcon-9 Falcon-9B5 Globalstar-FM15&unknown B1061-9 SLC-40
+06/21/2022T15:00    SKO 1   Naro KSLV-II Nuri DummyPayload&PerVsat Flight2 SLC-1
