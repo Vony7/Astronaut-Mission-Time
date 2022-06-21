@@ -294,7 +294,7 @@ launch_Byvehicles = np.array(launch_Byvehicles)
 L_vehicles = np.array(L_vehicles)
 lv_idx = argsort(launch_Byvehicles)
 # plot
-fig=plt.figure(figsize=(12,8),dpi=300)
+fig=plt.figure(figsize=(14,8),dpi=300)
 # Axis 1
 axes1 = fig.add_axes([0.1, 0.1, 0.8, 0.8]) # main axes
 axes1.bar(L_vehicles[lv_idx],launch_Byvehicles[lv_idx],color= vehicles_colors[lv_idx])
