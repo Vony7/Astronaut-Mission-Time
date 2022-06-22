@@ -278,7 +278,7 @@ rs_dict={'CZ-2C':'长二丙', 'CZ-2D':'长二丁', 'CZ-2F':'长二F', 'CZ-3A':'�
     'Vega':'织女星','Ariane-5':'阿里安5','Soyuz-2.1':'联盟2.1','Proton-M':'质子M','Angara-A5':'安加A5','Angara-1.2':'安加1.2',
     'Pegasus-XL':'飞马座XL','Minotar-1':'牛头人1','Firefly-Alpha':'阿尔法','Delta-IV':'德塔四重','Antares':'安塔瑞斯',
     'Rocket-3':'火箭3','LauncherOne':'发射器1','Atlas-V':'宇宙神五','Electron':'电子号','Falcon-9':'猎鹰9',
-    'H-IIA':'H-IIA','Epsilon':'伊普西龙','Simorgh':'凤凰','PSLV-DL':'PSLV-DL','PSLV':'PSLV','KSLV-II':'KSLV-2','GSLV-MKII':'GSLV-MK2',
+    'H-IIA':'H-IIA','Epsilon':'伊普西龙','Simorgh':'凤凰','PSLV-DL':'PSLV-DL','PSLV':'PSLV','KSLV-II':'KSLV2','GSLV-MKII':'GSLV-MK2',
     'Qased':'信使'}
 vehicles_colors = []
 launch_country = np.array(launch_country)
@@ -294,7 +294,7 @@ launch_Byvehicles = np.array(launch_Byvehicles)
 L_vehicles = np.array(L_vehicles)
 lv_idx = argsort(launch_Byvehicles)
 # plot
-fig=plt.figure(figsize=(14,8),dpi=300)
+fig=plt.figure(figsize=(16,8),dpi=300)
 # Axis 1
 axes1 = fig.add_axes([0.1, 0.1, 0.8, 0.8]) # main axes
 axes1.bar(L_vehicles[lv_idx],launch_Byvehicles[lv_idx],color= vehicles_colors[lv_idx])
@@ -355,7 +355,7 @@ axes1.tick_params(axis='y', which='both',colors='white')
 # axis 2 pie plot
 sizes = launch_Byvehicles[lv_idx]/sum(launch_Byvehicles[lv_idx])*100
 explode = np.zeros(len(sizes))
-axes2 = fig.add_axes([.12, 0.3, 0.5, 0.5]) # inset axes
+axes2 = fig.add_axes([.10, 0.13, 0.4, 0.7]) # inset axes
 from matplotlib import cm
 n_lv = len(lv_idx)
 cs=cm.jet(np.arange(n_lv)/n_lv)
