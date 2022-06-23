@@ -70,3 +70,4 @@
 06/21/2022T15:00    SKO 1   Naro KSLV-II Nuri DummyPayload&PerVsat Flight2 SLC-1
 06/22/2022T10:08    CHN 1   JSLC Kuaizhou-1A Kuaizhou-1AYx Tianxing-1 Field
 06/23/2022T05:50    ESA 1   Kourou Ariane-5 Ariane-5VA257 MEASAT-3d&GSat-24 pad-2
+06/23/2022T10:22    CHN 1   XSLC CZ-2D CZ-2D/Y64 Yaogan-35-02(ABC) Pad-2
