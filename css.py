@@ -92,7 +92,7 @@ def css_func():
             ax.text(label_x,label_y,label_text,color='white',ha='center',va='center',fontsize=12)
     plt.title('中国空间站建设工程',fontproperties = fprop_title,fontsize =30,color='white')
     ### Y axis labes###
-    y_axis_labels = ['天和一号','天舟二号','神舟十二号','天舟三号','神舟十三号']
+    y_axis_labels = ['天和一号','天舟二号','神舟十二号','天舟三号','神舟十三号','天舟四号','神舟十四号']
     y_labels = reversed(y_axis_labels)
     ax.set_yticklabels(y_labels, fontproperties = fprop,fontsize = 16)
     time_now = datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y/%m/%d %H:%M:%S')
