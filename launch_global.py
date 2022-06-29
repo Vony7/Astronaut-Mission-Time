@@ -118,7 +118,7 @@ plt.ylim(ymin=0)
 ax.yaxis.tick_right()
 ax.yaxis.set_label_position('right')
 ax.set_facecolor("black")
-I=plt.legend(loc='upper center', prop=fprop, ncol=5,frameon=False)
+I=plt.legend(loc='upper center', prop=fprop, ncol=7,frameon=False)
 for text in I.get_texts():
     text.set_color('white')
 ax.spines['bottom'].set_color('white')
