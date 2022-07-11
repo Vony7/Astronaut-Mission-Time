@@ -78,4 +78,5 @@
 07/02/2022T07:15    USA 1   CC Atlas-V Atlas-V541 USSF-12(WFOV,Ring) SLC-41
 07/02/2022T14:53    USA 1   Mojave LauncherOne LauncherOne/R6 StraightUP 120.8W,32.3N
 07/07/2022T17:18    RUS 1   Plesetsk Soyuz-2.1 Soyuz-2.1b/Fregate-M Glonass-K
-07/07/2022T21:11    USA 1   CC Falcon-9 FalconB5 StarlinerG4-21(x53) SLC-40 B1058-13
+07/07/2022T21:11    USA 1   CC Falcon-9 Falcon-9B5 StarlinerG4-21(x53) SLC-40 B1058-13
+07/11/2022T09:39    USA 1   Vandenberg Falcon-9 Falcon-9B5 StarlinerG3-1(x46) SLC-4E B1063-6
