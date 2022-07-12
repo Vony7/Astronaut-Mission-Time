@@ -80,3 +80,4 @@
 07/07/2022T17:18    RUS 1   Plesetsk Soyuz-2.1 Soyuz-2.1b/Fregate-M Glonass-K
 07/07/2022T21:11    USA 1   CC Falcon-9 Falcon-9B5 StarlinerG4-21(x53) SLC-40 B1058-13
 07/11/2022T09:39    USA 1   Vandenberg Falcon-9 Falcon-9B5 StarlinerG3-1(x46) SLC-4E B1063-6
+07/13/2022T00:30    CHN 1   XSLC CZ-3A CZ-3B/E Tianlian-2-03 LP2  
