@@ -82,3 +82,4 @@
 07/11/2022T09:39    USA 1   Vandenberg Falcon-9 Falcon-9B5 StarlinerG3-1(x46) SLC-4E B1063-6
 07/13/2022T00:30    CHN 1   XSLC CZ-3A CZ-3B/E Tianlian-2-03 LP2  
 07/13/2022T14:30    USA 1   Mahia Electron ElectronY28 NROL-162 LC-1A
+07/13/2022T21:13    ESA 1   Kourou Vega Vega-C/Y1 LARES-2&cubesats
