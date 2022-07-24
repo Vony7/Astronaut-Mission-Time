@@ -87,3 +87,4 @@
 07/16/2022T06:57    CHN 1   TSLC CZ-2C  CZ-2C 四维高景二号01和02
 07/17/2022T22:20    USA 1   CC Falcon-9 Falcon-9B5 StarlinerG4-22(x53) SLC-40 B1051-13
 07/23/2022T01:39    USA 1   Vandenberg Falcon-9 Falcon-9B5 StarlinerG3-2 SLC-4E B1071-4
+07/24/2022T14:22    CHN 1   WSLS CZ-5 CZ-5B/Y3 Wentian 101
