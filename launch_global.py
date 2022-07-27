@@ -53,7 +53,7 @@ L_rockets = np.unique(launch_rockets)
 c_dict = {'CHN':'中国','ESA':'欧空局','IND':'印度','IRN':'伊朗','JPN':'日本','RUS':'俄罗斯','SKO':'韩国','USA':'美国'}
 # color code by country
 color_country = np.array(['#A30000','#194852','#3989b9','cyan','#fcc9b9','#0033A0','#FFA500','#002868'])
-cc_dict = {'CHN':'#A30000','ESA':'#194852','IND':'#ff9933','IRN':'#239f40','JPN':'#fcc9b9','RUS':'#0033A0','SKO':'#FFA500','USA':'#b31942'}
+cc_dict = {'CHN':'#A30000','ESA':'#194852','IND':'#ff9933','IRN':'#239f40','JPN':'#fcc9b9','RUS':'#0033A0','SKO':'#FFF000','USA':'#b31942'}
 #color_c_dict ={'CHN':'#A30000','ESA':'194852','IND':'印度','IRN':'伊朗','JPN':'日本','RUS':'俄罗斯','SKO':'韩国','USA':'美国'}
 # Launch countries x time
 launch_total = np.zeros((len(launch_time),countries.size),dtype=int)
@@ -274,7 +274,7 @@ plt.savefig('launch_'+datatxt+'_by_sites.png')
 
 #%% By Launch Vehicle
 rs_dict={'CZ-2C':'长二丙', 'CZ-2D':'长二丁', 'CZ-2F':'长二F', 'CZ-3A':'长三甲', 'CZ-4':'长四乙', 'CZ-5':'长五', 
-    'CZ-6':'长六', 'CZ-6A':'长六甲','CZ-7':'长七系列','CZ-8':'长征八', 'CZ-11':'长征11','Ceres-1':'谷神星1','Hyperbola-1':'双曲线1', 'Kuaizhou-1A':'快舟一甲',
+    'CZ-6':'长六', 'CZ-6A':'长六甲','CZ-7':'长七系列','CZ-8':'长征八', 'CZ-11':'长征11','Ceres-1':'谷神星1','Hyperbola-1':'双曲线1', 'Kuaizhou-1A':'快舟一甲','ZK-1A':'力箭一号',
     'Vega':'织女星','Ariane-5':'阿里安5','Soyuz-2.1':'联盟2.1','Proton-M':'质子M','Angara-A5':'安加A5','Angara-1.2':'安加1.2',
     'Pegasus-XL':'飞马座XL','Minotar-1':'牛头人1','Firefly-Alpha':'阿尔法','Delta-IV':'德塔四重','Antares':'安塔瑞斯',
     'Rocket-3':'火箭3','LauncherOne':'发射器1','Atlas-V':'宇宙神五','Electron':'电子号','Falcon-9':'猎鹰9',
@@ -294,7 +294,7 @@ launch_Byvehicles = np.array(launch_Byvehicles)
 L_vehicles = np.array(L_vehicles)
 lv_idx = argsort(launch_Byvehicles)
 # plot
-fig=plt.figure(figsize=(16,8),dpi=300)
+fig=plt.figure(figsize=(18,8),dpi=300)
 # Axis 1
 axes1 = fig.add_axes([0.1, 0.1, 0.8, 0.8]) # main axes
 axes1.bar(L_vehicles[lv_idx],launch_Byvehicles[lv_idx],color= vehicles_colors[lv_idx])

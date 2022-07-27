@@ -89,3 +89,4 @@
 07/23/2022T01:39    USA 1   Vandenberg Falcon-9 Falcon-9B5 StarlinerG3-2 SLC-4E B1071-4
 07/24/2022T14:22    CHN 1   WSLS CZ-5 CZ-5B/Y3 Wentian 101
 07/24/2022T21:38    USA 1   KSC Falcon-9 Falcon-9B5 StarLinkG4-25(x53) SLC-39A B1062-8
+07/27/2022T12:12    CHN 1   JSLC ZK-1A ZK-1A Chuangxin-X&NanYue ZK-Site 
